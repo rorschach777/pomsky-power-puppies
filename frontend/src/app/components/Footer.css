@@ -1,0 +1,10 @@
+footer {
+    background-color: #231a3f;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+footer > div {
+    display: flex;
+    justify-content: space-between;
+}

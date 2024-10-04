@@ -1,0 +1,11 @@
+header {
+    background-color: #fafafa;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    color: #333;
+    width: 100%;
+}
+header > div {
+    display: flex;
+    justify-content: space-between;
+}

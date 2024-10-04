@@ -1,0 +1,72 @@
+
+import {defineField, defineType} from 'sanity'
+
+export const pomskyType = defineType({
+    name: 'pomsky',
+    title: 'Pomsky',
+    type: 'document',
+    fields: [
+      defineField({
+        name: 'pomsky_name',
+        type: 'string',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'slug',
+        type: 'slug',
+        options: {source: 'pomsky name'},
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'published_at',
+        type: 'datetime',
+        initialValue: () => new Date().toISOString(),
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'image',
+        type: 'image',
+      }),
+      defineField({
+        name: 'published',
+        type: 'boolean',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'puppy',
+        type: 'boolean',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'female',
+        type: 'boolean',
+        validation: (rule) => rule.required(),
+      }),
+      
+      defineField({
+        name: 'currently_available',
+        type: 'boolean',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'price',
+        type: 'number',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'weight',
+        type: 'number'
+      }),
+      defineField({
+        name: 'eyeColor',
+        type: 'string'
+      }),
+      defineField({
+        name: 'description',
+        type: 'string',
+        validation: (rule) => rule.required(),
+      })
+ 
+    ],
+  })
+  
