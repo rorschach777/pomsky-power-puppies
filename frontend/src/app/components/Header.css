@@ -1,11 +1,36 @@
 header {
-    background-color: #fafafa;
+
     padding: 1.5rem;
     box-sizing: border-box;
     color: #333;
     width: 100%;
+    display: fixed;
 }
 header > div {
     display: flex;
     justify-content: space-between;
+}
+
+
+header nav li {
+    display: inline-block;
+    list-style: none;
+    padding: 0 .5rem;
+}
+
+
+/* ORGANIZE THIS */
+
+.hero, .gallery {
+    min-height: 50rem;
+    background-color: #e7e7e7;
+}
+.adult-pomsky {
+    min-height: 150rem;
+    background-color: #fafafa;
+}
+
+.ppp-header > nav >  header ul > li > a {
+    background-color: var(--ppp-primary);
+    color: white;
 }

@@ -2,4 +2,25 @@
     padding: 1.5rem;
     background-color: #fafafa;
     color: #333;
+    background-image: url('/images/dog-background.jpg');
+    background-size: cover;
+    min-height: 30rem;
+    border-radius: .5rem;
+}
+
+.puppy-card-heading {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+.puppy-card-content {
+    background-color: #fafafa;
+    padding: 1rem;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+.puppy-card-content-name {
+    font-size: 1.3rem;
+    margin: 1rem 0;
 }

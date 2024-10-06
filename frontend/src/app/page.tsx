@@ -4,32 +4,35 @@ import styles from "./page.module.css";
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import PuppyCard from './components/PuppyCard';
+import { useReducer} from 'react'
+
+import * as React from "react";
+
+import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
+
+import "./components/FilterList";
+import Litter from "./components/Litter";
 
 
-const POSTS_QUERY = `*[
-  _type == "pomsky"
-  && defined(slug.current)
-]|order(publishedAt desc)[0...12]{_id, pomsky_name, currently_available,price, weight, eyeColor, description}`;
+
+const PAGE_DATA = `
+*[_type == "litter" && defined(location) ]{ _id, litterName,  location[]->{location_name}, puppies[]->{pomsky_name, description, price, weight, eyeColor, image, female, currently_available}}
+`
 
 const options = { next: { revalidate: 30 } };
 
+
 export default async function Home() {
-  const pomskys = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+  const data = await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options);
+  console.log(data);
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        {pomskys.map((c)=>{return(
-          <div>
-           <PuppyCard 
-              name={c.pomsky_name}
-              price={c.price} 
-              weight={c.weight} 
-              description={c.description}
-              available={c.currently_available}
-              />
-    
-          </div>
-        )})}
+      <div className="hero">Hero</div>
+      <Litter data={data}/>
+
+      <div className="gallery">Gallery</div>
+      <div className="adult-pomsky">Adult Dogs</div>
       </main>
      
     </div>

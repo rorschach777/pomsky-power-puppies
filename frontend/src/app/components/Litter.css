@@ -1,0 +1,21 @@
+
+.litter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2.5rem;
+    box-sizing: border-box;
+    width: 108rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .litter > div {
+    margin: .5rem;
+    flex-basis: 20rem;
+  }
+
+
+  .litter  .filters  {
+   color: #333; 
+  }

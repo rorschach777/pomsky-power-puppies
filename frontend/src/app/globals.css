@@ -1,19 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --ppp-primary: #231a3f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ffffff;
     --foreground: #ededed;
   }
 }
 
-html {
-  font-size: 62.5%;
+.primary {
+  background-color: var(--primary) !important;
 }
-
 
 
 html,
@@ -29,7 +35,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.2rem;
+
 }
 
 * {
@@ -47,4 +53,33 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+
+
+select {
+  background-color: #fafafa;
+  margin: .5rem;
+}
+
+/* PPP */
+.ppp-container, .ppp-flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+
+.ppp-container {
+  padding: 1.5rem;
+  width: 108rem;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+.filters {
+  color: #333;
 }
