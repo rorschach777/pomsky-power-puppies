@@ -52,7 +52,7 @@ export default async function Home() {
         <Litter data={data}/>
         <div className="gallery"></div>
         <div className="adult-pomsky">
-        <div className="ppp-container ppp-container-sm ">
+        <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">
               <div className="adult-pomsky-image">
                 <img src="./images/ppp-adult.png" />
@@ -68,6 +68,7 @@ export default async function Home() {
             </div>
           </div>
         </div>
+        <section>
         <div className="ppp-adult-list">
           <div className="ppp-container ppp-container-md">
             <div className="ppp-headline">
@@ -128,6 +129,8 @@ export default async function Home() {
             </div>
           </div>
         </div>
+        </section>
+    
         </main>
       </div>
     </>

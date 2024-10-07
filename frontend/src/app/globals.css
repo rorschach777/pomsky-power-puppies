@@ -17,6 +17,12 @@
   }
 }
 
+@font-face {
+  font-family: 'BigCaslon';
+  src: url('/assets/fonts/BigCaslon.ttf');
+  font-weight: 700;
+}
+
 .primary {
   background-color: var(--primary) !important;
 }
@@ -95,6 +101,7 @@ select {
 .adult-pomsky-image, .adult-pomsky-image img {
   display: block;
   width: 20rem;
+
 }
 
 
@@ -149,11 +156,18 @@ select {
 
 .adult-pomsky-text {
   color: var(--ppp-primary) !important;
+
 }
 
 .adult-pomsky-text span {
   display: block;
-  font-size: 3.5rem;
+  font-size: 6.5rem;
+  line-height: 6rem;
+}
+
+.ppp-headline, .adult-pomsky-text, .ppp-dog-bio-text span {
+  font-family: 'BigCaslon';
+  letter-spacing: -.25px;
 }
 
 
@@ -166,13 +180,20 @@ select {
 
 .ppp-headline {
   font-size: 2.5rem;
-
   text-align: center;
+  color: var(--ppp-primary);
+  margin-top: 2.5rem;
 }
 
 .ppp-dog-bio {
   display: flex;
   justify-content: space-between;
+}
+.ppp-dog-bio-text {
+  color: var(--ppp-primary);
+}
+.ppp-dog-bio-text span{
+  font-size: 2rem;
 }
 .ppp-dog-bio-image {
   background-color: #333;
@@ -184,4 +205,10 @@ select {
 
 .u-pad {
  padding: 1.5rem;
+}
+
+
+section {
+  padding: 2.5rem 0;
+  box-sizing: border-box;
 }
