@@ -54,7 +54,7 @@ export const litterType = defineType({
         validation: (rule) => rule.required(),
       }),
       defineField({
-        name: 'sold_out',
+        name: 'soldOut',
         type: 'boolean',
         validation: (rule) => rule.required(),
       }),

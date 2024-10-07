@@ -1,13 +1,13 @@
 
 import {defineField, defineType} from 'sanity'
 
-export const locationType = defineType({
-    name: 'location',
-    title: 'Location',
+export const pageType = defineType({
+    name: 'page',
+    title: 'Pages',
     type: 'document',
     fields: [
       defineField({
-        name: 'locationName',
+        name: 'pageName',
         type: 'string',
         validation: (rule) => rule.required(),
       }),
@@ -27,7 +27,28 @@ export const locationType = defineType({
         name: 'published',
         type: 'boolean',
         validation: (rule) => rule.required(),
-      })
+      }),
+      defineField({
+        name: 'metaData',
+        type: 'string',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'title',
+        type: 'string',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'description',
+        type: 'string',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'keywords',
+        type: 'array',
+        of: [{type: 'string'}],
+        validation: (rule) => rule.required(),
+      }),
      
     ],
   })
