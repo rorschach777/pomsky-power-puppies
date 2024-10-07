@@ -6,9 +6,13 @@ header {
     width: 100%;
     display: fixed;
 }
+header * {
+    font-size: 1.6rem;
+}
 header > div {
     display: flex;
     justify-content: space-between;
+
 }
 
 
@@ -16,21 +20,18 @@ header nav li {
     display: inline-block;
     list-style: none;
     padding: 0 .5rem;
+
 }
 
-
-/* ORGANIZE THIS */
-
-.hero, .gallery {
-    min-height: 50rem;
-    background-color: #e7e7e7;
+header > ul > li > a  {
+    font-size: 1.6rem;
 }
-.adult-pomsky {
-    min-height: 150rem;
-    background-color: #fafafa;
-}
+
 
 .ppp-header > nav >  header ul > li > a {
     background-color: var(--ppp-primary);
     color: white;
+    font-size: 1.3rem;
+    padding: 1rem;
 }
+

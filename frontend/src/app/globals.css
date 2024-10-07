@@ -21,6 +21,9 @@
   background-color: var(--primary) !important;
 }
 
+html {
+  font-size: 62.5%;
+}
 
 html,
 body {
@@ -33,6 +36,8 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -63,11 +68,11 @@ select {
 }
 
 /* PPP */
-.ppp-container, .ppp-flex-container {
+.ppp-flex-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  width: inherit;
 }
 
 
@@ -79,7 +84,104 @@ select {
   box-sizing: border-box;
 }
 
+.ppp-container-md{
+  width: 75rem;
+}
+
+.ppp-container-sm{
+  width: 50rem;
+}
+
+.adult-pomsky-image, .adult-pomsky-image img {
+  display: block;
+  width: 20rem;
+}
+
 
 .filters {
   color: #333;
+}
+
+.hero {
+  min-height: 40rem;
+}
+
+.hero {
+  background-image: url('/images/ppp-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+
+
+
+.hero-container {
+  position: absolute;
+  background: rgb(61,76,255);
+  background: linear-gradient(94deg, rgba(61,76,255,1) 0%, rgba(94,51,242,0) 100%);
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ORGANIZE THIS */
+
+.adult-pomsky {
+  background-color: #e7e7e7 !important;
+  position: relative;
+}
+
+.adult-pomsky:after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(0 0, 100% 0%, 50% 100%);
+  bottom: -2rem;
+  left: 0;
+  right: 0;
+  background-color: #e7e7e7;
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.adult-pomsky-text {
+  color: var(--ppp-primary) !important;
+}
+
+.adult-pomsky-text span {
+  display: block;
+  font-size: 3.5rem;
+}
+
+
+.ppp-navbar 
+.gallery {
+  background-color: #333;
+  padding: 2.5rem;
+  box-sizing: border-box;
+}
+
+.ppp-headline {
+  font-size: 2.5rem;
+
+  text-align: center;
+}
+
+.ppp-dog-bio {
+  display: flex;
+  justify-content: space-between;
+}
+.ppp-dog-bio-image {
+  background-color: #333;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 1rem 2rem;
+}
+
+.u-pad {
+ padding: 1.5rem;
 }

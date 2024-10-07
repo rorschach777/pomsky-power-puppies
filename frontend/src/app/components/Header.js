@@ -27,7 +27,7 @@ const Header = () => {
         
         // </header>
         <div class="ppp-header">
-            <Navbar shouldHideOnScroll>
+            <Navbar className="ppp-navbar" shouldHideOnScroll>
                 <NavbarBrand>
                 [LOGO]
                 </NavbarBrand>
@@ -54,7 +54,7 @@ const Header = () => {
                 </NavbarItem>
                 <NavbarItem>
                     <Button size="sm" as={Link} color="primary" href="#" variant="flat">
-                    Sign Up
+                    Request Information
                     </Button>
                 </NavbarItem>
                 </NavbarContent>
