@@ -5,8 +5,10 @@ footer {
     
 }
 
-footer > div {
+footer > div > div {
     display: flex;
-    align-items: start;
-    justify-content: space-between;
+    align-items: center;
+
+    flex-direction: column;
+    justify-content: center;
 }

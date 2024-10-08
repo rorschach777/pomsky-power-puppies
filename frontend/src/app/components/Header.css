@@ -20,12 +20,45 @@ header nav li {
     display: inline-block;
     list-style: none;
     padding: 0 .5rem;
+}
+
+
+.ppp-header > ul > li > a  {
+    font-size: 1.8rem;
 
 }
 
-header > ul > li > a  {
-    font-size: 1.6rem;
+.ppp-mega-menu  li > a {
+    font-size: 3.8rem !important;
+    line-height: 4.5rem;
+    text-align: center;
+
+  
 }
+.ppp-header, .ppp-mega-menu li a {
+    font-family: 'BigCaslon';
+
+    color: var(--ppp-primary) !important;
+    transition: all .2s ease;
+}
+
+.ppp-mega-menu  li a{
+    letter-spacing: -.25rem;
+}
+
+.ppp-mega-menu li a:hover {
+    font-size: 8.5rem;
+    letter-spacing: 0rem;
+}
+
+.ppp-mega-menu  {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
 
 
 .ppp-header > nav >  header ul > li > a {

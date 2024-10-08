@@ -47,10 +47,20 @@ export default async function Home() {
       <div className={styles.page}>
         <main className={styles.main}>
         <div className="hero">
-          <div className="hero-container"></div>
+          <div className="hero-container">
+            <h1>Ethical Pomsky Breeders</h1>
+            <p>
+            We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies. 
+            </p>
+            <div className="cta">
+              <h2>Waitlist Currently Open</h2>
+              <p>Make your home a puppies home by going through our process!</p>
+            </div>
+           
+          </div>
         </div>
         <Litter data={data}/>
-        <div className="gallery"></div>
+        <div className="gallery">GALLERY</div>
         <div className="adult-pomsky">
         <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">
@@ -130,7 +140,6 @@ export default async function Home() {
           </div>
         </div>
         </section>
-    
         </main>
       </div>
     </>

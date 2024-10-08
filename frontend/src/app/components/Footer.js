@@ -2,10 +2,12 @@ import './Footer.css';
 const Footer = () => {
     return (
         <footer>
-            <div>
-                <div>Content Left</div>
-                <div>Content Center</div>
-                <div>Content Right</div>
+            <div className="ppp-container">
+                <div >
+                    <div>Content Left</div>
+                    <div>Content Center</div>
+                    <div>Content Right</div>
+                </div>
             </div>
         </footer>
     );

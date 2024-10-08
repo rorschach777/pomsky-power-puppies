@@ -1,65 +1,79 @@
+"use client"
+
+import React from 'react'
 import './Header.css';
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
 
 
 const Header = () => {
+
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+    const menuItems = [
+      "Home",
+      "Blog",
+      "About Us",
+      "More Information",
+    ];
     return(
-    
-        // <header>
-        //     <div > 
-        //         <div>Content Left</div>
-        //         <div>
-        //             <nav>
-        //                 <ul>
-        //                     <li>
-        //                         <a>Home</a>
-        //                     </li>
-        //                     <li>
-        //                         <a>About Us</a>
-        //                     </li>
-        //                     <li>
-        //                         <a>Request Information</a>
-        //                     </li>
-        //                 </ul>
-        //             </nav>
-        //         </div>
-        //     </div>
-        
-        // </header>
+
         <div class="ppp-header">
-            <Navbar className="ppp-navbar" shouldHideOnScroll>
+            <Navbar onMenuOpenChange={setIsMenuOpen}>
+            <NavbarContent>
+                <NavbarMenuToggle
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                className="sm:hidden"
+                />
                 <NavbarBrand>
-                [LOGO]
+
+                <p className="font-bold text-inherit">Pomsky Power Puppies</p>
                 </NavbarBrand>
-                <NavbarContent className="hidden sm:flex gap-4" justify="center">
+            </NavbarContent>
+
+            <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarItem>
-                    <Link color="foreground" href="#">
+                <Link color="foreground" href="#">
                     Features
-                    </Link>
+                </Link>
                 </NavbarItem>
                 <NavbarItem isActive>
-                    <Link href="#" aria-current="page">
+                <Link href="#" aria-current="page">
                     Customers
-                    </Link>
+                </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link color="foreground" href="#">
+                <Link color="foreground" href="#">
                     Integrations
-                    </Link>
+                </Link>
                 </NavbarItem>
-                </NavbarContent>
-                <NavbarContent justify="end">
+            </NavbarContent>
+            <NavbarContent justify="end">
                 <NavbarItem className="hidden lg:flex">
-                    <Link href="#">Login</Link>
+                <Link href="#">Login</Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Button size="sm" as={Link} color="primary" href="#" variant="flat">
-                    Request Information
-                    </Button>
+                <Button as={Link} color="primary" href="#" variant="flat">
+                    Sign Up
+                </Button>
                 </NavbarItem>
-                </NavbarContent>
+            </NavbarContent>
+            <NavbarMenu className="ppp-mega-menu ">
+                {menuItems.map((item, index) => (
+                <NavbarMenuItem key={`${item}-${index}`}>
+                    <Link
+              
+                    className="w-full"
+                    href="#"
+                    size="lg"
+                    >
+                    {item}
+                    </Link>
+                </NavbarMenuItem>
+                ))}
+            </NavbarMenu>
             </Navbar>
-        </div>
+      </div>
       
     )
 }

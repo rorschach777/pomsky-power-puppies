@@ -110,14 +110,13 @@ const Litter = (props ) => {
         <>
         <div className="ppp-container filters">
             <div></div>
-            <div className="ppp-flex-container">
-                <div>Filters:</div>
+            <div className="filters-list" >
+                <span>Filters:</span>
                 <FilterList change={locationHandler} options={ [ "Spring City, PA", "New York, NY", "Pottstown, PA"]} />
                 <FilterList change={statusHandler} options={ ["All", "Sold", "Available"] } />
             </div>
         </div>
         <div className="litter">
-       
             { 
                 <>
                     {

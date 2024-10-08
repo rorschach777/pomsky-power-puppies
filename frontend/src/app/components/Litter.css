@@ -19,3 +19,12 @@
   .litter  .filters  {
    color: #333; 
   }
+
+  .filters-list{
+    display: flex;
+    align-items: center;
+  }
+  .filters span {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
