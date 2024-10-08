@@ -7,14 +7,18 @@ export const pageType = defineType({
     type: 'document',
     fields: [
       defineField({
-        name: 'pageName',
+        name: 'title',
+        type: 'string',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'metaTitle',
         type: 'string',
         validation: (rule) => rule.required(),
       }),
       defineField({
         name: 'slug',
         type: 'slug',
-        options: {source: 'litter name'},
         validation: (rule) => rule.required(),
       }),
       defineField({
@@ -28,19 +32,51 @@ export const pageType = defineType({
         type: 'boolean',
         validation: (rule) => rule.required(),
       }),
-      defineField({
-        name: 'metaData',
-        type: 'string',
-        validation: (rule) => rule.required(),
-      }),
-      defineField({
-        name: 'title',
-        type: 'string',
-        validation: (rule) => rule.required(),
-      }),
+
+ 
       defineField({
         name: 'description',
         type: 'string',
+        validation: (rule) => rule.required(),
+      }),
+      // Other Docs
+      defineField({
+        name: 'litters',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            to: [
+              {type: 'litter'},
+            ]
+          }
+        ],
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'locations',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            to: [
+              {type: 'location'},
+            ]
+          }
+        ],
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
+        name: 'pomsky',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            to: [
+              {type: 'pomsky'},
+            ]
+          }
+        ],
         validation: (rule) => rule.required(),
       }),
       defineField({
@@ -49,7 +85,6 @@ export const pageType = defineType({
         of: [{type: 'string'}],
         validation: (rule) => rule.required(),
       }),
-     
     ],
   })
   

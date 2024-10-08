@@ -2,14 +2,17 @@
 
 import PuppyCard from './PuppyCard';
 import FilterList from "./FilterList";
-import {useReducer} from "react";
+import {useReducer, useEffect} from "react";
 import './Litter.css'
 import { filter } from 'framer-motion/client';
 
 
+
 const initialState = {
+    allResults: [],
+    filteredResults: [],
     filters: {
-        filteredPuppies : [],
+
         useFilter : false,
         location : {     
             name : '',
@@ -22,43 +25,45 @@ const initialState = {
     }
 }
 const litterReducer = (state, action) => {
+    if (action.type === "DEFAULT_SETUP"){
+        return {
+            ...state,
+            allResults : action.payload.value,
+            filteredResults : action.payload.value,
+            filters : {
+                ...state.filters
+            
+            }
+        }
+    }
+    if (action.type === "UPDATE_FILTERS"){
+        return {
+            ...state,
+            filteredResults : action.payload.filteredResults 
+        }
+    }
+    if (action.type === "DEFAULT_SETUP"){
+        return {
+            ...state,
+            allResults : action.payload.value,
+            filteredResults : action.payload.value,
+            filters : {
+                ...state.filters
+            
+            }
+        }
+    }
     if (action.type === "REMOVE_FILTER"){
         return {
             ...state,
+            filteredResults : action.payload.value,
             filters: {
+                ...state.filters,
                 useFilter: false, 
-                filteredPuppies: []
             }
         }
     }
-    if (action.type === "UPDATE_LOCATION"){
-        return {
-            ...state,
-            filters: {
-                ...state.filters,
-                useFilter: true,
-                filteredPuppies: action.payload.filteredPuppies,
-                location : {
-                    name : action.payload.value,
-                    use: true
-                }
-            }
-        }
-    }
-    if(action.type === "UPDATE_STATUS"){
-        return {
-            ...state,
-            filters: {
-                ...state.filters,
-                useFilter: true,
-                filteredPuppies: action.payload.filteredPuppies,
-                status : {
-                    available : action.payload.status,
-                    use: true
-                }
-            }
-        }
-    }
+ 
 }
 
 
@@ -66,97 +71,90 @@ const Litter = (props ) => {
     const [litterState, litterDispatch] = useReducer(litterReducer, initialState);
   
 
-    const filterStatus = (inputValue) => {
-        const allPuppies = [];
-        props.data.forEach((c)=>{
-            c.puppies.forEach(p=>{
-                allPuppies.push(p);
-            })
-        });
-        return allPuppies.filter(puppy => puppy.currently_available === (inputValue.toLowerCase() === "available" ? true : false));
-     
-    }
 
-    const statusHandler = (inputValue) => {
-        const filteredByStatus = filterStatus(inputValue);
-        if (inputValue.toLowerCase() === "all"){
-   
-            litterDispatch({type: "REMOVE_FILTER"})
-        } else {
-            litterDispatch({type: "UPDATE_STATUS", payload: { filteredPuppies: filteredByStatus, status:  inputValue}})
+    useEffect(()=>{
+        const defaultPuppies = props.data.litters.map(l=>{return l});
+        console.log(defaultPuppies);
+        litterDispatch({type: "DEFAULT_SETUP", payload : { value : defaultPuppies}});
+    },[])
+
+    useEffect(()=>{
+        createPuppies() 
+    }, [litterState.filteredResults])
+
+
+    const updateFilterOptions = ({type, inputValue}) => {
+        let updatedFilterOptions = [...litterState.filteredResults];
+        if(type === "location"){
+            updatedFilterOptions = [ ...litterState.allResults.filter(l=> l.location[0].locationName === inputValue)];
         }
-    }
-
-
-
-    const filterLocation = (inputValue) => {
-        const litters = props.data;
-        const filteredPuppies = [];
-         litters.forEach( litter =>{ 
-            litter.location[0].location_name.toLowerCase() === inputValue.toLowerCase() ? litter.puppies.forEach(puppy => filteredPuppies.push(puppy)) : null;
-        });
-        return filteredPuppies;
+        if(type==="status"){
+            console.log("UPDATED FILTER OPTIONS")
+            console.log(inputValue);
+            const inputValueBool = inputValue === "Available" ? true : false;
+            const filteredResults =  litterState.allResults.map(l=> {
+                let updatedLitter = {
+                    ...l,
+                    puppies : []
+                }
+                updatedLitter.puppies = l.puppies.filter(p=> p.currentlyAvailable  === inputValueBool);
+                return updatedLitter;
+            })
+            updatedFilterOptions = [ ...filteredResults];
+            console.log(updatedFilterOptions);
+        }
+        litterDispatch({type: "UPDATE_FILTERS", payload: { filteredResults : updatedFilterOptions }});
     }
 
     const locationHandler = (inputValue) => {
-        const filteredByLocation = filterLocation(inputValue);
-        if(filteredByLocation.length > 0){
-            litterDispatch({type: "UPDATE_LOCATION", payload: { value : inputValue, filteredPuppies : filteredByLocation }});
-        }
+        updateFilterOptions({type: "location", inputValue : inputValue})
     }
     
+    const statusHandler = (inputValue) => {
+        updateFilterOptions({type: "status", inputValue : inputValue})
+    }
 
+
+    const createPuppies = () => {
+        
+        if(litterState.filteredResults.length > 0){
+            console.log(litterState.filteredResults)
+            return litterState.filteredResults.map(litter=> {
+                return(
+                    <>
+                        { litter.puppies.map((puppy)=>{
+                            return (
+                                <PuppyCard 
+                                description={puppy.description}
+                                name={puppy.pomskyName} 
+                                weight={puppy.weight} 
+                                price={puppy.price}
+                                location={litter.location[0].locationName} 
+                                available={puppy.currentlyAvailable}
+                                
+                                />
+                            );
+                        })}
+                    </>
+                )
+            })
+        } else {
+            <div>...Sorry, No Puppies match those results.</div>
+        }
+       
+    }
+    
     return(
         <>
         <div className="ppp-container filters">
             <div></div>
             <div className="filters-list" >
-                <span>Filters:</span>
-                <FilterList change={locationHandler} options={ [ "Spring City, PA", "New York, NY", "Pottstown, PA"]} />
-                <FilterList change={statusHandler} options={ ["All", "Sold", "Available"] } />
+                <FilterList change={locationHandler} options={ props.data.litters.map(l=>l.location[0].locationName)} label="Location:" />
+                <FilterList change={statusHandler} options={ ["All", "Sold", "Available"] } label="Availability:"  />
             </div>
         </div>
         <div className="litter">
-            { 
-                <>
-                    {
-                        litterState.filters.useFilter === false && (
-                            props.data.map((curLitter)=>{
-                             return(
-                             curLitter.puppies.map((curPuppy)=>{
-                                 return(
-                                 <PuppyCard 
-                                     name={curPuppy.pomsky_name}
-                                     price={curPuppy.price} 
-                                     weight={curPuppy.weight} 
-                                     description={curPuppy.description}
-                                     available={curPuppy.currently_available}
-                                     location={curLitter.location[0].location_name}
-                                     />
-                             )}))
-                         })
-                     )
-                    }
-                </>
-            }
-            { litterState.filters.useFilter === true  && (
-                <>
-                    {
-                        litterState.filters.filteredPuppies.map((curPuppy)=> {
-                        return(
-                            <PuppyCard 
-                                name={curPuppy.pomsky_name}
-                                price={curPuppy.price} 
-                                weight={curPuppy.weight} 
-                                description={curPuppy.description}
-                                available={curPuppy.currently_available}
-                                />
-                        );
-                    })
-                    }
-                </>
-          
-            )}
+            { createPuppies() }
         </div>
         </>
        

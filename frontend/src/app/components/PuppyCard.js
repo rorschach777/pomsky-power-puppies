@@ -11,7 +11,7 @@ const PuppyCard = (props) => {
             <div className="puppy-card-content">
                 <div className="puppy-card-content-name">{props.name}</div>
                 <div>{props.description}</div>
-                <div>Price: {props.price}</div>
+                <div>Price: ${props.price}</div>
                 <div>Status: {props.available ? 'Available' : 'Sold'}</div>
                 <div>Location: {props.location}</div>
             </div>

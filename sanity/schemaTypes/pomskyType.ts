@@ -7,7 +7,7 @@ export const pomskyType = defineType({
     type: 'document',
     fields: [
       defineField({
-        name: 'pomsky_name',
+        name: 'pomskyName',
         type: 'string',
         validation: (rule) => rule.required(),
       }),
@@ -18,7 +18,7 @@ export const pomskyType = defineType({
         validation: (rule) => rule.required(),
       }),
       defineField({
-        name: 'published_at',
+        name: 'publishedAt',
         type: 'datetime',
         initialValue: () => new Date().toISOString(),
         validation: (rule) => rule.required(),
@@ -33,7 +33,7 @@ export const pomskyType = defineType({
         validation: (rule) => rule.required(),
       }),
       defineField({
-        name: 'puppy',
+        name: 'IsPuppy',
         type: 'boolean',
         validation: (rule) => rule.required(),
       }),
@@ -44,7 +44,7 @@ export const pomskyType = defineType({
       }),
       
       defineField({
-        name: 'currently_available',
+        name: 'currentlyAvailable',
         type: 'boolean',
         validation: (rule) => rule.required(),
       }),

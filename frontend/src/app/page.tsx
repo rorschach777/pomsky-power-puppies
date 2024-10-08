@@ -5,12 +5,11 @@ import styles from "./page.module.css";
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import PuppyCard from './components/PuppyCard';
-import { useReducer, useState} from 'react'
+import { useReducer, useState, useEffect} from 'react'
 
 import type { Metadata } from 'next'
 import * as React from "react";
 
-import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
 
 
 import "./components/FilterList";
@@ -18,37 +17,59 @@ import Litter from "./components/Litter";
 
 const options = { next: { revalidate: 30 } };
 
-const PAGE_META = `*[_type == "page"]`;
+const PAGE_META_DATA = `*[_type == "page"]{
+  title,
+  description, 
+  pageName,
+  keywords,
+ }`
 
-const PAGE_DATA = `
-*[_type == "litter" && defined(location) ]{ _id, litterName,  location[]->{location_name}, puppies[]->{pomsky_name, description, price, weight, eyeColor, image, female, currently_available}}
-`
+const PAGE_DATA = `*[_type == "page"]{
+  locations[]->{_id, locationName, published},
+  slug->{},
+  litters[]->{
+    _id,
+    description, 
+    location[]->{
+      locationName
+    },
+    soldOut,
+    published,
+    puppies[]->{
+      description,
+      currentlyAvailable,
+      published,
+      pomskyName,
+      weight,
+      eyeColor,
+      isPuppy,
+      price
+    }
+  }
+}`;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page_meta = await client.fetch<SanityDocument[]>(PAGE_META, {}, options);
+  const request = await client.fetch<SanityDocument[]>(PAGE_META_DATA, {}, options);
+  const data = await request[0];
   return {
-    title: page_meta[0].title,
-    description: page_meta[0].description,
-    keywords: page_meta[0].keywords.map((k : any)=>{return k})
+    title: data.title,
+    description: data.description ,
+    keywords: 'Z'
   }
 }
 
 
 export default async function Home() {
-
-
-  const data = await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options);
-  
-  console.log("PAGE DATA");
-
-  return (
+  const request = await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options);
+  const data = await request[0];
+  console.log(data);
+  return(
     <>
-
       <div className={styles.page}>
         <main className={styles.main}>
         <div className="hero">
           <div className="hero-container">
-            <h1>Ethical Pomsky Breeders</h1>
+            <h1>Ethical Dog Breeders</h1>
             <p>
             We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies. 
             </p>
@@ -56,7 +77,6 @@ export default async function Home() {
               <h2>Waitlist Currently Open</h2>
               <p>Make your home a puppies home by going through our process!</p>
             </div>
-           
           </div>
         </div>
         <Litter data={data}/>
@@ -90,7 +110,7 @@ export default async function Home() {
                   <div className="left">
                   <div className="ppp-dog-bio">
                     <div className="ppp-dog-bio-image">
-                     </div>
+                    </div>
                     <div className="ppp-dog-bio-text">
                       <span>Judas & Ester</span>
                       <p>
@@ -143,6 +163,5 @@ export default async function Home() {
         </main>
       </div>
     </>
-
   );
 }
