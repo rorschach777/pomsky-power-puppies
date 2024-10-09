@@ -1,14 +1,14 @@
 
-import Image from "next/image";
+
 import styles from "./page.module.css";
 
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
-import PuppyCard from './components/PuppyCard';
-import { useReducer, useState, useEffect} from 'react'
+import {Button} from "@nextui-org/react";
 
 import type { Metadata } from 'next'
 import * as React from "react";
+import Gallery from './components/Gallery'
 
 
 
@@ -70,22 +70,31 @@ export default async function Home() {
         <div className="hero">
           <div className="hero-container">
             <h1>Ethical Dog Breeders</h1>
+            <div className="established">
+              <span></span>
+              <span> Since 2017 </span>
+              <span></span>
+            </div>
             <p>
             We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies. 
             </p>
             <div className="cta">
               <h2>Waitlist Currently Open</h2>
               <p>Make your home a puppies home by going through our process!</p>
+              <Button size="lg"  color="primary" >
+                Join Waitlist
+              </Button> 
             </div>
           </div>
         </div>
         <Litter data={data}/>
-        <div className="gallery">GALLERY</div>
+        <Gallery images={["ppp-1", "ppp-2"]}/>
         <div className="adult-pomsky">
         <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">
               <div className="adult-pomsky-image">
                 <img src="./images/ppp-adult.png" />
+                
               </div>
               <div className="adult-pomsky-text">
                 <span>

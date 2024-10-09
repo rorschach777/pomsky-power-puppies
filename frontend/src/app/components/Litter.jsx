@@ -89,8 +89,6 @@ const Litter = (props ) => {
             updatedFilterOptions = [ ...litterState.allResults.filter(l=> l.location[0].locationName === inputValue)];
         }
         if(type==="status"){
-            console.log("UPDATED FILTER OPTIONS")
-            console.log(inputValue);
             const inputValueBool = inputValue === "Available" ? true : false;
             const filteredResults =  litterState.allResults.map(l=> {
                 let updatedLitter = {
@@ -101,7 +99,6 @@ const Litter = (props ) => {
                 return updatedLitter;
             })
             updatedFilterOptions = [ ...filteredResults];
-            console.log(updatedFilterOptions);
         }
         litterDispatch({type: "UPDATE_FILTERS", payload: { filteredResults : updatedFilterOptions }});
     }
@@ -118,7 +115,6 @@ const Litter = (props ) => {
     const createPuppies = () => {
         
         if(litterState.filteredResults.length > 0){
-            console.log(litterState.filteredResults)
             return litterState.filteredResults.map(litter=> {
                 return(
                     <>
@@ -147,10 +143,17 @@ const Litter = (props ) => {
     return(
         <>
         <div className="ppp-container filters">
-            <div></div>
+            <div className="ppp-litter-title">
+                <h2>Most Recent Litter</h2>
+                <span>Esther & Judas</span>
+            </div>
             <div className="filters-list" >
-                <FilterList change={locationHandler} options={ props.data.litters.map(l=>l.location[0].locationName)} label="Location:" />
-                <FilterList change={statusHandler} options={ ["All", "Sold", "Available"] } label="Availability:"  />
+                <span>Filters:</span>
+                <div className="filters-list-selects">
+                    <FilterList change={locationHandler} options={ props.data.litters.map(l=>l.location[0].locationName)} label="Location:" />
+                    <FilterList change={statusHandler} options={ ["All", "Sold", "Available"] } label="Availability:"  />
+                </div>
+               
             </div>
         </div>
         <div className="litter">

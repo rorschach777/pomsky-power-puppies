@@ -35,8 +35,12 @@ header nav li {
 
   
 }
-.ppp-header, .ppp-mega-menu li a {
+
+.ppp-header p {
     font-family: 'BigCaslon';
+}
+
+.ppp-header, .ppp-mega-menu li a {
 
     color: var(--ppp-primary) !important;
     transition: all .2s ease;

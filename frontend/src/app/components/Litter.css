@@ -16,15 +16,50 @@
   }
 
 
-  .litter  .filters  {
+  .litter .filters  {
    color: #333; 
   }
 
   .filters-list{
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #333;
+    margin: 1rem;
+    padding: 1rem;
+
   }
+  
   .filters span {
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    margin-right: 2.5rem;
+    position: relative;
+    margin-top: -3.5rem;
+  }
+  .ppp-litter-title h2,   .ppp-litter-title span {
+    font-family: 'BigCaslon';
+    text-align: center;
+  }
+
+  .ppp-litter-title span {
+    font-style: italic;
+    font-size: 2.5rem;
+    color: var(--ppp-secondary);
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .ppp-litter-title h2{
+    font-size: 5.5rem;
+    line-height: 5.5rem;
+    margin: .5rem 0;
+    letter-spacing: -.5rem;
+    color: var(--ppp-primary);
+  }
+
+  .filters-list-selects {
+    display: flex;
+    justify-content: flex-end;
   }

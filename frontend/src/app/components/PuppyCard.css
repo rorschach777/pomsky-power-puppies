@@ -24,3 +24,23 @@
     font-size: 1.3rem;
     margin: 1rem 0;
 }
+
+.puppy-card-content-name {
+    font-family: 'BigCaslon';
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.puppy-card-description {
+    margin-bottom: 1.5rem;
+}
+
+.puppy-card-bottom-content {
+    border-top: 1px #333 solid;
+    padding: 1.2rem 0;
+}
+
+.puppy-card-bottom-status > div {
+    margin: 4px 7px;
+}

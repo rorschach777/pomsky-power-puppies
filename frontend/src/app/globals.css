@@ -8,6 +8,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --ppp-primary: #231a3f;
+  --ppp-secondary: #423689;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -81,6 +82,8 @@ select {
   width: inherit;
   max-width: 100%;
 }
+
+
 
 
 .ppp-container {
@@ -240,7 +243,7 @@ section {
 
 .hero-container p {
 
-  width: 45rem;
+  width: 55rem;
   max-width: 100%;
 }
 .hero-container h2 {
@@ -250,7 +253,7 @@ section {
 }
 
 .cta {
-  width: 45rem;
+  width: 55rem;
   max-width: 100%;
   text-align: center;
 }
@@ -260,3 +263,36 @@ section {
 .ppp-headline,  .ppp-dog-bio-text span{
   font-family: 'BigCaslon';
 }
+
+.cta button {
+  font-size: 1.7rem; 
+  color: white;
+  background-color: var(--ppp-secondary);
+  border-color: var(--ppp-secondary);
+  position: relative;
+  top: -2rem;
+}
+
+.established {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2rem;
+  width: 55rem;
+  max-width: 100%;
+}
+.established span:first-child, .established span:last-child {
+  display: block;
+  flex: 2;
+  border-top: .5rem var(--ppp-secondary) solid;
+  top: 4.5rem;
+  position: relative;
+}
+.established span:nth-child(even){
+  padding: .5rem;
+  flex: 2;
+  font-size: 2.7rem;
+  text-align: center;
+  font-family: 'BigCaslon';
+  letter-spacing: -.25rem;
+  font-style: italic ;
+} 
