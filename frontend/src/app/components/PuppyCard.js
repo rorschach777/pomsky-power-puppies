@@ -4,9 +4,9 @@ import {Badge, Avatar} from "@nextui-org/react";
 
 const PuppyCard = (props) => {
     return(
-        <div className="puppy-card" >
+        <div className="puppy-card" style={{background: "linear-gradient(180deg, rgba(0, 144, 231, .75) 0%, rgba(0, 144, 231,0) 100%), url(" + `${props.image !== null ? props.image.asset.url : '/images/dog-image.jpg' }` + ")" }}>
             <div className="puppy-card-heading">
-                <Image src="/images/dog-image.jpg" width="300" height="150"/>
+                <Image src={props.image !== null ? props.image.asset.url : '/images/dog-image.jpg'} width="300" height="150"/>
             </div>
             <div className="puppy-card-content">
                 <div className="puppy-card-content-name">{props.name}</div>

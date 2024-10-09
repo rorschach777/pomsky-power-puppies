@@ -1,12 +1,13 @@
 .puppy-card {
     padding: 1.5rem;
-    background-color: #fafafa;
     color: #333;
-    background-image: url('/images/dog-background.jpg');
     background-size: cover;
     min-height: 30rem;
     border-radius: .5rem;
+    
 }
+
+
 
 .puppy-card-heading {
     border-top-left-radius: .5rem;

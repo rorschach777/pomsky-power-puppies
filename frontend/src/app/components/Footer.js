@@ -4,9 +4,18 @@ const Footer = () => {
         <footer>
             <div className="ppp-container">
                 <div >
-                    <div>Content Left</div>
-                    <div>Content Center</div>
-                    <div>Content Right</div>
+                    <div>&copy; Pomsky Power Puppies 2024</div>
+                    <div>
+                        Follow us on Social Media
+                        <ul>
+                            <li>
+                                <img src="./images/icons/instagram.svg" href=""  />
+                            </li>
+                            <li>
+                                <img src="./images/icons/facebook.svg" href=""  />
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>

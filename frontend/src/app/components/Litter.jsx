@@ -127,6 +127,7 @@ const Litter = (props ) => {
                                 price={puppy.price}
                                 location={litter.location[0].locationName} 
                                 available={puppy.currentlyAvailable}
+                                image={puppy.image}
                                 
                                 />
                             );

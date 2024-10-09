@@ -41,8 +41,11 @@ const PAGE_DATA = `*[_type == "page"]{
       published,
       pomskyName,
       weight,
+      image{
+      asset->
+      },
       eyeColor,
-      isPuppy,
+      puppy,
       price
     }
   }
@@ -170,6 +173,33 @@ export default async function Home() {
         </div>
         </section>
         </main>
+        <div className="ppp-form">
+          <form>
+            <div className="form-group">
+              <label>First Name:</label>
+              <input type="text" placeholder="John" />
+            </div>
+            <div className="form-group">
+              <label>Last Name:</label>
+              <input type="text" placeholder="Doe" />
+            </div>
+            <div className="form-group">
+              <label>Email:</label>
+              <input type="email" placeholder="example.email@gmail.com" />
+            </div>
+            <div className="form-group">
+              <label>Phone Number:</label>
+              <input type="phone" placeholder="999-999-9999"/>
+            </div>
+            <div className="form-group">
+              <label>Message:</label>
+              <textarea placeholder="I wanted to inquire to see the status of..." />
+            </div>
+            <div>
+              <button >Send</button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

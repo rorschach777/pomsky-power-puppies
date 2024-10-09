@@ -144,8 +144,8 @@ select {
   content: "";
   position: absolute;
   top: 0;
-  background: rgb(61,76,255);
-  background: linear-gradient(94deg, rgb(0, 144, 231) 0%, rgba(0, 144, 231,0) 100%);
+
+  background: linear-gradient(94deg, rgba(0, 144, 231, .75) 0%, rgba(0, 144, 231,0) 100%);
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -296,3 +296,39 @@ section {
   letter-spacing: -.25rem;
   font-style: italic ;
 } 
+
+
+.ppp-form {
+  color: var(--ppp-secondary);
+}
+
+.ppp-form label {
+  font-size: 1.6rem;
+}
+
+.ppp-form, .ppp-form input, .ppp-form textarea {
+  width: 45rem;
+}
+.ppp-form input, .ppp-form textarea {
+  background-color: #e7e7e7;
+  padding: .5rem 1.5rem;
+  border-radius: .5rem;
+}
+
+.ppp-form textarea {
+  height: 15rem;
+}
+
+.ppp-form .form-group {
+  margin: 1.5rem 0;
+}
+
+.ppp-form button {
+  width: 15rem;
+  padding: 1rem 2rem;
+  background-color: var(--ppp-secondary);
+  color: white;
+  margin: 1.5rem 0;
+  display: block;
+  border-radius: .5rem;
+}
