@@ -16,11 +16,9 @@ const PuppyCard = (props) => {
                         <Badge content="" color={props.available ? "success" : "danger"} shape="circle" placement="bottom-right"></Badge>
                         {props.available ? 'Available' : 'Sold'}</div>
                     <div>Price: 
-               
                          ${props.price}</div>
                     <div>Location: {props.location}</div>
                 </div>
-      
             </div>
         </div>
     );

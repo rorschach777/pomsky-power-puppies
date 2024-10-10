@@ -1,0 +1,44 @@
+
+.ppp-form {
+    color: var(--ppp-secondary);
+  }
+  
+  .ppp-form label {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;;
+  }
+  
+  .ppp-form input::placeholder, textarea {
+    font-size: 1.5rem;
+  }
+  
+  .ppp-form, .ppp-form input, .ppp-form textarea {
+    width: 45rem;
+  }
+  .ppp-form input, .ppp-form textarea {
+    background-color: #e7e7e7;
+    padding: .5rem 1.5rem;
+    border-radius: .5rem;
+  }
+  
+  .ppp-form textarea {
+    height: 15rem;
+  }
+  
+  .ppp-form .form-group {
+    margin: 1.5rem 0;
+  }
+  
+  .ppp-form button {
+    width: 15rem;
+    padding: 1rem 2rem;
+    background-color: var(--ppp-secondary);
+    color: white;
+    margin: 1.5rem 0;
+    display: block;
+    border-radius: .5rem;
+  }
+
+  .ppp-form .form-group span {
+    margin: .5rem 0;
+  }

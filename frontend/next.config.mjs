@@ -12,6 +12,8 @@ const nextConfig = {
       taint: true,
     },
     // ...other config settings
-  };
+};
+
+
 
 export default nextConfig;

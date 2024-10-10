@@ -297,38 +297,10 @@ section {
   font-style: italic ;
 } 
 
-
-.ppp-form {
-  color: var(--ppp-secondary);
+.invalid-field {
+  border: 1px solid #f54702;
 }
 
-.ppp-form label {
-  font-size: 1.6rem;
-}
-
-.ppp-form, .ppp-form input, .ppp-form textarea {
-  width: 45rem;
-}
-.ppp-form input, .ppp-form textarea {
-  background-color: #e7e7e7;
-  padding: .5rem 1.5rem;
-  border-radius: .5rem;
-}
-
-.ppp-form textarea {
-  height: 15rem;
-}
-
-.ppp-form .form-group {
-  margin: 1.5rem 0;
-}
-
-.ppp-form button {
-  width: 15rem;
-  padding: 1rem 2rem;
-  background-color: var(--ppp-secondary);
-  color: white;
-  margin: 1.5rem 0;
-  display: block;
-  border-radius: .5rem;
+.danger {
+  color: #f54702;
 }

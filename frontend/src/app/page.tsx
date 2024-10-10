@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {Button} from "@nextui-org/react";
+import ContactForm from './components/Form';
 
 import type { Metadata } from 'next'
 import * as React from "react";
@@ -60,6 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: 'Z'
   }
 }
+
 
 
 export default async function Home() {
@@ -164,7 +166,6 @@ export default async function Home() {
                       </div>
                     </div>
                   </div>
-                
                 </div>
               </div>
               <div>Y</div>
@@ -173,33 +174,8 @@ export default async function Home() {
         </div>
         </section>
         </main>
-        <div className="ppp-form">
-          <form>
-            <div className="form-group">
-              <label>First Name:</label>
-              <input type="text" placeholder="John" />
-            </div>
-            <div className="form-group">
-              <label>Last Name:</label>
-              <input type="text" placeholder="Doe" />
-            </div>
-            <div className="form-group">
-              <label>Email:</label>
-              <input type="email" placeholder="example.email@gmail.com" />
-            </div>
-            <div className="form-group">
-              <label>Phone Number:</label>
-              <input type="phone" placeholder="999-999-9999"/>
-            </div>
-            <div className="form-group">
-              <label>Message:</label>
-              <textarea placeholder="I wanted to inquire to see the status of..." />
-            </div>
-            <div>
-              <button >Send</button>
-            </div>
-          </form>
-        </div>
+  
+        <ContactForm  />
       </div>
     </>
   );
