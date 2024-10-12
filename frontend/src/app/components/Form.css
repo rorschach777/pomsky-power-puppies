@@ -42,3 +42,6 @@
   .ppp-form .form-group span {
     margin: .5rem 0;
   }
+  .ppp-form button:disabled {
+    opacity: .2;
+  }

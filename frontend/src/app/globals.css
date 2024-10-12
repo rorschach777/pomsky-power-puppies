@@ -210,7 +210,8 @@ select {
 
 .ppp-dog-bio {
   display: flex;
-  justify-content: space-between;
+
+  margin: 1.5rem 0;
 }
 .ppp-dog-bio-text {
   color: var(--ppp-primary);
@@ -221,9 +222,11 @@ select {
 .ppp-dog-bio-image {
   background-color: #333;
   border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  min-width: 5.5rem;
   margin: 1rem 2rem;
+  background-size: contain !important;
 }
 
 .u-pad {
@@ -303,4 +306,18 @@ section {
 
 .danger {
   color: #f54702;
+}
+
+.half-column {
+  min-width: 50%;
+  max-width: 100%;
+}
+
+.ppp-a-pomsky {
+  align-items: flex-start;
+}
+
+.ppp-no-puppies-message {
+  color: #3a3a3a;
+  font-size: 1.5rem;
 }

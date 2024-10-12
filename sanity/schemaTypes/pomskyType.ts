@@ -28,12 +28,16 @@ export const pomskyType = defineType({
         type: 'image',
       }),
       defineField({
+        name: 'backgroundImage',
+        type: 'image',
+      }),
+      defineField({
         name: 'published',
         type: 'boolean',
         validation: (rule) => rule.required(),
       }),
       defineField({
-        name: 'IsPuppy',
+        name: 'isPuppy',
         type: 'boolean',
         validation: (rule) => rule.required(),
       }),

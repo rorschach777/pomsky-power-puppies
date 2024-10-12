@@ -113,32 +113,42 @@ const Litter = (props ) => {
 
 
     const createPuppies = () => {
-        
+        let puppiesToDisplay = false;
         if(litterState.filteredResults.length > 0){
+         
+
             return litterState.filteredResults.map(litter=> {
                 return(
                     <>
                         { litter.puppies.map((puppy)=>{
-                            return (
-                                <PuppyCard 
-                                description={puppy.description}
-                                name={puppy.pomskyName} 
-                                weight={puppy.weight} 
-                                price={puppy.price}
-                                location={litter.location[0].locationName} 
-                                available={puppy.currentlyAvailable}
-                                image={puppy.image}
-                                
-                                />
-                            );
+                            if(puppy.isPuppy){
+                                puppiesToDisplay = true;
+                                return (
+                                    <PuppyCard 
+                                    description={puppy.description}
+                                    name={puppy.pomskyName} 
+                                    weight={puppy.weight} 
+                                    price={puppy.price}
+                                    location={litter.location[0].locationName} 
+                                    available={puppy.currentlyAvailable}
+                                    image={puppy.image}
+                                    backgroundImage={puppy.backgroundImage}
+                                    
+                                    />
+                                );
+                            }
+                         
                         })}
+                        { puppiesToDisplay === false && (
+                            <div className="ppp-no-puppies-message">No Results Available.</div>
+                        )}
                     </>
                 )
             })
-        } else {
-            <div>...Sorry, No Puppies match those results.</div>
-        }
-       
+        } 
+
+        
+
     }
     
     return(

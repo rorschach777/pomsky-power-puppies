@@ -4,6 +4,7 @@
     background-size: cover;
     min-height: 30rem;
     border-radius: .5rem;
+    background-repeat: none;
     
 }
 

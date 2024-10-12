@@ -36,6 +36,7 @@ const PAGE_DATA = `*[_type == "page"]{
     },
     soldOut,
     published,
+    litterName,
     puppies[]->{
       description,
       currentlyAvailable,
@@ -43,10 +44,13 @@ const PAGE_DATA = `*[_type == "page"]{
       pomskyName,
       weight,
       image{
-      asset->
+        asset->
+      },
+      backgroundImage{
+        asset->
       },
       eyeColor,
-      puppy,
+      isPuppy,
       price
     }
   }
@@ -67,7 +71,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const request = await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options);
   const data = await request[0];
-  console.log(data);
+
   return(
     <>
       <div className={styles.page}>
@@ -113,6 +117,7 @@ export default async function Home() {
           </div>
         </div>
         <section>
+ 
         <div className="ppp-adult-list">
           <div className="ppp-container ppp-container-md">
             <div className="ppp-headline">
@@ -120,51 +125,61 @@ export default async function Home() {
             </div>
             <div className="ppp-flex-container u-pad">
               <div>
-                <div className="ppp-flex-container ">
-                  <div className="left">
-                  <div className="ppp-dog-bio">
-                    <div className="ppp-dog-bio-image">
-                    </div>
-                    <div className="ppp-dog-bio-text">
-                      <span>Judas & Ester</span>
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                      </p>
-                    </div>
+                <div className="ppp-flex-container ppp-a-pomsky ">
+                  <div className="half-column">
+                  { data.litters.map((l : any)=>{
+                    
+                    if(l.litterName === "Adult Pomskys" ){
+                      return(
+                        <>
+                        {l.puppies.map((p : any, i : any) => {
+                            if(i % 2 === 0){
+                              return (
+                                <div className="ppp-dog-bio">
+                                  <div className="ppp-dog-bio-image" style={{background: `url(${p.image !== null ? p.image.asset.url : null})`}}>
+                                  </div>
+                                  <div className="ppp-dog-bio-text">
+                                    <span>{p.pomskyName}</span>
+                                    <p>
+                                      {p.description}
+                                    </p>
+                                  </div>
+                                </div>
+                              );
+                            }
+                        })}
+                      </>
+                      )
+                    }
+                    
+                  })}
                   </div>
-                  <div className="ppp-dog-bio">
-                      <div className="ppp-dog-bio-image">
-                      </div>
-                      <div className="ppp-dog-bio-text">
-                        <span>Judas & Ester</span>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        </p>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div className="right">
-                    <div className="ppp-dog-bio">
-                      <div className="ppp-dog-bio-image">
-                      </div>
-                      <div className="ppp-dog-bio-text">
-                        <span>Judas & Ester</span>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        </p>
-                      </div>
-                    </div>
-                    <div className="ppp-dog-bio">
-                      <div className="ppp-dog-bio-image">
-                      </div>
-                      <div className="ppp-dog-bio-text">
-                        <span>Judas & Ester</span>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        </p>
-                      </div>
-                    </div>
+                  <div className="half-column">
+                  { data.litters.map((l : any, i : any)=>{
+                    if(l.litterName === "Adult Pomskys" && (i % 1 === 0)){
+                      return(
+                        <>
+                        {l.puppies.map((p : any, i : any) => {
+                          console.log(p)
+                            if(i % 2 === 1){
+                              return (
+                                <div className="ppp-dog-bio">
+                                  <div className="ppp-dog-bio-image" style={{background: `url(${p.image !== null ? p.image.asset.url : null})`}}>
+                                  </div>
+                                  <div className="ppp-dog-bio-text">
+                                    <span>{p.pomskyName}</span>
+                                    <p>
+                                      {p.description}
+                                    </p>
+                                  </div>
+                                </div>
+                              );
+                            }
+                        })}
+                      </>
+                      )
+                    }
+                   })}
                   </div>
                 </div>
               </div>
@@ -174,8 +189,6 @@ export default async function Home() {
         </div>
         </section>
         </main>
-  
-        <ContactForm  />
       </div>
     </>
   );

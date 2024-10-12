@@ -4,7 +4,7 @@ import React from 'react'
 import './Header.css';
 
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
-
+import Logo from './Logo';
 
 const Header = () => {
 
@@ -21,13 +21,10 @@ const Header = () => {
         <div class="ppp-header">
             <Navbar onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
-                <NavbarMenuToggle
-                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                className="sm:hidden"
-                />
+           
                 <NavbarBrand>
 
-                <p className="font-bold text-inherit">Pomsky Power Puppies</p>
+                <Logo color="purple" />
                 </NavbarBrand>
             </NavbarContent>
 
@@ -54,15 +51,21 @@ const Header = () => {
                 </NavbarItem>
                 <NavbarItem>
                 <Button as={Link} color="primary" href="#" variant="flat">
-                    Sign Up
+                    Request Information
                 </Button>
+           
                 </NavbarItem>
+                <NavbarMenuToggle
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                className="sm:hidden"
+                />
+
             </NavbarContent>
             <NavbarMenu className="ppp-mega-menu ">
                 {menuItems.map((item, index) => (
                 <NavbarMenuItem key={`${item}-${index}`}>
                     <Link
-                    
+
                     className="w-full"
                     href="#"
                     size="lg"
