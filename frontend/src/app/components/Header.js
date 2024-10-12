@@ -11,10 +11,9 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems = [
-      "Home",
-      "Blog",
-      "About Us",
-      "More Information",
+        {name: "Home", path: ""},
+        {name: "Contact Us", path: "contact"},
+        {name: "Blog", path: "blog"},
     ];
     return(
 
@@ -63,14 +62,14 @@ const Header = () => {
             </NavbarContent>
             <NavbarMenu className="ppp-mega-menu ">
                 {menuItems.map((item, index) => (
-                <NavbarMenuItem key={`${item}-${index}`}>
+                <NavbarMenuItem key={`${item.name}-${index}`}>
                     <Link
 
                     className="w-full"
-                    href="#"
+                    href={`/${item.path}`}
                     size="lg"
                     >
-                    {item}
+                    {item.name}
                     </Link>
                 </NavbarMenuItem>
                 ))}
