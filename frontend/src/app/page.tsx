@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {Button} from "@nextui-org/react";
-import ContactForm from './components/Form';
+import ModalForm from "./components/ModalForm";
 
 import type { Metadata } from 'next'
 import * as React from "react";
@@ -134,6 +134,7 @@ export default async function Home() {
                       return(
                         <>
                         {l.puppies.map((p : any, i : any) => {
+                          console.log(p);
                             if(i % 2 === 0){
                               return (
                                 <div className="ppp-dog-bio">
@@ -191,6 +192,7 @@ export default async function Home() {
         </section>
         </main>
       </div>
+
     </>
   );
 }

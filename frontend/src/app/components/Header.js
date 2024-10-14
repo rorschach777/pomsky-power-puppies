@@ -4,11 +4,15 @@ import React from 'react'
 import './Header.css';
 
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
+
 import Logo from './Logo';
+import Form from './Form';
 
 const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     const menuItems = [
         {name: "Home", path: ""},
@@ -49,7 +53,7 @@ const Header = () => {
                 <Link href="#">Login</Link>
                 </NavbarItem>
                 <NavbarItem>
-                <Button as={Link} color="primary" href="#" variant="flat">
+                <Button  onPress={onOpen}  color="secondary" variant="bordered" >
                     Request Information
                 </Button>
            
@@ -75,6 +79,38 @@ const Header = () => {
                 ))}
             </NavbarMenu>
             </Navbar>
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="4xl">
+                <ModalContent>
+                {(onClose) => (
+                    <>
+                    <ModalHeader className="flex flex-col gap-1">
+                        <div className="ppp-header-modal-title">
+                            Request More Information
+                        </div>
+                        
+                    </ModalHeader>
+                    <ModalBody>
+                    <div className="ppp-modal-body">
+                        <Form/>
+                        <div>
+                            You may call or text us at <a href="tel:610-800-0012">(610) 800-0012</a>. If we do not answer please leave a message in order to receive a callback.
+                        </div>
+                    
+                    </div>
+                    </ModalBody>
+                    <div className="ppp-header-modal-footer">
+                        <ModalFooter justify="justify-start" >
+                            <Button color="secondary" variant="bordered" onPress={onClose}>
+                            Close
+                            </Button>
+                  
+                        </ModalFooter>
+                    </div>
+        
+                    </>
+                )}
+                </ModalContent>
+            </Modal>
       </div>
       
     )

@@ -21,10 +21,12 @@ header nav li {
     list-style: none;
     padding: 0 .5rem;
 }
+header ul >  li >  button {
+    font-size: 1.3rem !important;
+}
 
-
-.ppp-header > ul > li > a  {
-    font-size: 1.8rem;
+.ppp-header > ul > li   {
+    font-size: 2rem !important;
 
 }
 
@@ -72,3 +74,29 @@ header nav li {
     padding: 1rem;
 }
 
+.ppp-header-modal-title {
+    font-size: 1.8rem;
+}
+
+.ppp-modal-body {
+    font-size: 1.4rem;
+    color: var(--ppp-primary);
+    border-top: 1px solid #ccc;
+    padding: 1.5rem 0; 
+}
+
+.ppp-modal-body > form {
+    margin: 0 auto;
+}
+
+.ppp-header-modal-footer > footer {
+    background-color:  unset !important;
+}
+
+.ppp-header-modal-footer > footer  button {
+    font-size: 1.4rem;
+}
+
+.ppp-header-modal-footer > footer {
+    justify-content: flex-start;
+}
