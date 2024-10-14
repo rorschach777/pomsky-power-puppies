@@ -133,6 +133,7 @@ const Litter = (props ) => {
                                     available={puppy.currentlyAvailable}
                                     image={puppy.image}
                                     backgroundImage={puppy.backgroundImage}
+                                    female={puppy.female}
                                     
                                     />
                                 );

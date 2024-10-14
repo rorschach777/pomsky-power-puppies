@@ -20,10 +20,10 @@ const Header = () => {
         <div class="ppp-header">
             <Navbar onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
-           
                 <NavbarBrand>
-
-                <Logo color="purple" />
+                    <a href="/">
+                        <Logo color="purple" />
+                    </a>
                 </NavbarBrand>
             </NavbarContent>
 

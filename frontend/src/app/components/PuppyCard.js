@@ -18,6 +18,7 @@ const PuppyCard = (props) => {
                     <div>Price: 
                          ${props.price}</div>
                     <div>Location: {props.location}</div>
+                    <div>{props.female ? 'Female' : 'Male'}</div>
                 </div>
             </div>
         </div>

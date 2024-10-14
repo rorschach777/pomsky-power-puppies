@@ -65,4 +65,15 @@ export const formReducer = (state : any, action : any) => {
             }
         }
     }
+    if(action.type === "SUBMISSION"){
+        return {
+            ...state,
+            submission: {
+                ...state.submission,
+                tried: true,
+                successful: action.payload.successful
+            }
+        }
+    }
+
 }

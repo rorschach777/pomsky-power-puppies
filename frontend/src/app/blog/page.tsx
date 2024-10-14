@@ -6,6 +6,7 @@ export default async function Page() {
         <div className={styles.page}>
             <main className={styles.main}>
                 <div>Blog</div>
+                
             </main>
 
         </div>

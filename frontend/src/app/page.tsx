@@ -43,6 +43,7 @@ const PAGE_DATA = `*[_type == "page"]{
       published,
       pomskyName,
       weight,
+      female,
       image{
         asset->
       },
@@ -160,7 +161,7 @@ export default async function Home() {
                       return(
                         <>
                         {l.puppies.map((p : any, i : any) => {
-                          console.log(p)
+                     
                             if(i % 2 === 1){
                               return (
                                 <div className="ppp-dog-bio">

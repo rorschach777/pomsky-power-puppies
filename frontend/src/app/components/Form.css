@@ -1,8 +1,11 @@
 
 .ppp-form {
-    color: var(--ppp-secondary);
-  }
+  color: var(--ppp-secondary);
+}
   
+.form-group > span {
+  font-size: 1.4rem;
+}
   .ppp-form label {
     font-size: 1.5rem;
     margin-bottom: 1rem;;

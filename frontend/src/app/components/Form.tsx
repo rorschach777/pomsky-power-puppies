@@ -7,30 +7,6 @@ interface IProps {
 
 }
 
-const sendEmail = async (event : any, data : any) => {
-    try {
-        event.preventDefault();
-
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        }
-        const response = await fetch('/api/send', options );
-
-        if (response.ok) {
-            // Handle successful submission
-
-        } else {
-            // Handle errors
-            console.error('Form submission failed');
-        }
-    } catch (err){
-        console.log(err, err);
-    }
-}
 
 
 const ContactForm = ( props : PropsWithChildren<IProps>) => {
@@ -38,6 +14,10 @@ const ContactForm = ( props : PropsWithChildren<IProps>) => {
 
     const initialState = {
         formIsValid: false,
+        submission: {
+            tried: false,
+            successful: false
+        },
         firstName: {
             value: '', 
             isValid: false,
@@ -73,6 +53,11 @@ const ContactForm = ( props : PropsWithChildren<IProps>) => {
         formDispatch({type: "FORM_IS_VALID", payload: {value: formIsValid}});
         
     },[formState.firstName, formState.lastName, formState.email, formState.phone, formState.message]);
+
+    useEffect(()=>{
+
+        
+    },[formState.submission.tried]);
 
     const firstNameRef = useRef('null');
     const lastNameRef = useRef('null');
@@ -129,6 +114,37 @@ const ContactForm = ( props : PropsWithChildren<IProps>) => {
         
     }
 
+    const sendEmail = async (event : any, data : any) => {
+        const submssionResponse = { successful : false}
+        try {
+            event.preventDefault();
+    
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }
+            const response = await fetch('/api/send', options );
+
+    
+            if (response.ok) {
+                // Handle successful submission
+                submssionResponse.successful = true;
+    
+            } else {
+                console.error('Form submission failed');
+            }
+
+        } catch (err){
+            console.log(err, err);
+        } finally {
+            formDispatch({type: "SUBMISSION", payload: submssionResponse})
+        }
+    }
+    
+
     const submitHandler = (event : any) => {
         const data={
             firstName : formState.firstName.value,
@@ -178,6 +194,21 @@ const ContactForm = ( props : PropsWithChildren<IProps>) => {
                 <div>
                     <button disabled={!formState.formIsValid} onClick={(e)=>submitHandler(e)}>Send</button>
                 </div>
+                { formState.submission.tried && (
+                    <div className="ppp-form-submission-feedback">
+                       { formState.submission.successful && (
+                            <div className="success-message">
+                                Thank you! Your message was successfully sent. We will get back to you shortly. 
+                            </div>
+                       )} 
+                        { formState.submission.successful === false && (
+                            <div className="failure-message">
+                                Sorry. There was a problem with your submission. Please try again later. 
+                            </div>
+                        )}
+                   </div>
+                )}
+        
             </form>
         </div>
     );
