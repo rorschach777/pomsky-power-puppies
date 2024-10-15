@@ -1,0 +1,33 @@
+.ppp-inclusions {
+    color: var(--ppp-primary);
+    padding: 2.5rem 1.5rem;
+    border-top: 1px var(--ppp-primary) solid;
+}
+
+
+.ppp-inclusions h2 {
+    font-size: 2.7rem;
+    font-family: 'BigCaslon';
+    text-align: center;
+    letter-spacing: -.2rem;
+}
+.ppp-inclusion {
+
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+
+.ppp-inclusion img {
+    max-width: 12rem;
+    display: block; 
+    margin: 0 auto;
+}
+.ppp-inclusion a {
+    color: var(--ppp-primary);
+    display: block;
+
+}
+.ppp-inclusion button {
+    margin: 1.5rem 0;
+}

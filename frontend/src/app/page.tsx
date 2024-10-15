@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {Button} from "@nextui-org/react";
-import ModalForm from "./components/ModalForm";
+
 
 import type { Metadata } from 'next'
 import * as React from "react";
@@ -15,6 +15,7 @@ import Gallery from './components/Gallery'
 
 import "./components/FilterList";
 import Litter from "./components/Litter";
+import Inclusions from "./components/Inclusions";
 
 const options = { next: { revalidate: 30 } };
 
@@ -190,6 +191,7 @@ export default async function Home() {
           </div>
         </div>
         </section>
+        <Inclusions/>
         </main>
       </div>
 

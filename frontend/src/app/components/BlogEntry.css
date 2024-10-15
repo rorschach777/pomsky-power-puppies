@@ -1,0 +1,23 @@
+.ppp-blog-entry {
+    color: var(--ppp-primary);
+    margin-top: 2rem 0  0 0;
+    width: 50rem;
+}
+.ppp-blog-entry img {
+    margin: 1.5rem 0;
+    display: block;
+}
+.ppp-blog-entry-body {
+    padding: 0.5rem 0 0 0;
+    box-sizing: border-box;
+    
+}
+.ppp-blog-entry header {
+    padding: 1.5rem 0 ;
+}
+.ppp-blog-entry span {
+    display: block;
+}
+.ppp-blog-entry button {
+    margin: 1.5rem 0;
+}

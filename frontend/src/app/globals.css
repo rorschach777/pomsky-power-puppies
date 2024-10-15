@@ -67,8 +67,6 @@ a {
   }
 }
 
-
-
 select {
   background-color: #fafafa;
   margin: .5rem;
@@ -426,3 +424,25 @@ iframe {
   padding: 1.5rem;
   border-radius: .5rem;
 }
+
+
+.ppp-blog header {
+  border-bottom: 1px solid var(--ppp-primary);
+  padding: 1.5rem 0;
+
+}
+
+.ppp-blog h1 {
+  font-size: 3.2rem;
+
+}
+
+.ppp-blog h2 {
+  font-size: 2.5rem;
+  line-height: 3.2rem;
+
+}
+.ppp-blog h1, .ppp-blog h2 {
+  color: var(--ppp-primary);
+}
+

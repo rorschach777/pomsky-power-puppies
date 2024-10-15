@@ -1,5 +1,6 @@
 import styles from "../page.module.css";
 import ContactForm from '../components/Form';
+import Inclusions from "../components/Inclusions";
 
 export default async function Page() { 
     return (
@@ -58,6 +59,7 @@ export default async function Page() {
                         </div>
                     </div>
                 </div>
+                <Inclusions />
             </main>
         </div>
 
