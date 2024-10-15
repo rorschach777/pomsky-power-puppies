@@ -1,6 +1,13 @@
 import styles from "../page.module.css";
 import ContactForm from '../components/Form';
 import Inclusions from "../components/Inclusions";
+import {pageMeta, PAGE_META_DATA} from '../utils/page-meta';
+import type { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+    return await pageMeta({query : PAGE_META_DATA, pageName : "Contact"})
+}
+  
 
 export default async function Page() { 
     return (
@@ -62,7 +69,6 @@ export default async function Page() {
                 <Inclusions />
             </main>
         </div>
-
 
     );
 }

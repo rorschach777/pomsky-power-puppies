@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {Button} from "@nextui-org/react";
+import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
 
 
 import type { Metadata } from 'next'
@@ -19,16 +20,12 @@ import Inclusions from "./components/Inclusions";
 
 const options = { next: { revalidate: 30 } };
 
-const PAGE_META_DATA = `*[_type == "page"]{
-  title,
-  description, 
-  pageName,
-  keywords,
- }`
+
 
 const PAGE_DATA = `*[_type == "page"]{
   locations[]->{_id, locationName, published},
   slug->{},
+  title,
   litters[]->{
     _id,
     description, 
@@ -59,19 +56,13 @@ const PAGE_DATA = `*[_type == "page"]{
 }`;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const request = await client.fetch<SanityDocument[]>(PAGE_META_DATA, {}, options);
-  const data = await request[0];
-  return {
-    title: data.title,
-    description: data.description ,
-    keywords: 'Z'
-  }
+  return await pageMeta({query : PAGE_META_DATA, pageName : "Home"})
 }
 
 
 
 export default async function Home() {
-  const request = await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options);
+  const request = (await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options)).filter(p=>p.title==="Home");
   const data = await request[0];
 
   return(
@@ -130,12 +121,12 @@ export default async function Home() {
                 <div className="ppp-flex-container ppp-a-pomsky ">
                   <div className="half-column">
                   { data.litters.map((l : any)=>{
-                    
+             
                     if(l.litterName === "Adult Pomskys" ){
                       return(
                         <>
                         {l.puppies.map((p : any, i : any) => {
-                          console.log(p);
+                
                             if(i % 2 === 0){
                               return (
                                 <div className="ppp-dog-bio">
@@ -159,12 +150,12 @@ export default async function Home() {
                   </div>
                   <div className="half-column">
                   { data.litters.map((l : any, i : any)=>{
-                    if(l.litterName === "Adult Pomskys" && (i % 1 === 0)){
+                    if(l.litterName === "Adult Pomskys" ){
                       return(
                         <>
-                        {l.puppies.map((p : any, i : any) => {
+                        {l.puppies.map((p : any, puppyIndex : any) => {
                      
-                            if(i % 2 === 1){
+                            if(puppyIndex & 1){
                               return (
                                 <div className="ppp-dog-bio">
                                   <div className="ppp-dog-bio-image" style={{background: `url(${p.image !== null ? p.image.asset.url : null})`}}>
