@@ -84,21 +84,27 @@ const Litter = (props ) => {
 
 
     const updateFilterOptions = ({type, inputValue}) => {
-        let updatedFilterOptions = [...litterState.filteredResults];
+        let updatedFilterOptions = [...litterState.allResults];
+        let inputValueReset = false;
         if(type === "location"){
-            updatedFilterOptions = [ ...litterState.allResults.filter(l=> l.location[0].locationName === inputValue)];
+            updatedFilterOptions = [ ...updatedFilterOptions.filter(l=> l.location[0].locationName === inputValue)];
         }
         if(type==="status"){
             const inputValueBool = inputValue === "Available" ? true : false;
-            const filteredResults =  litterState.allResults.map(l=> {
-                let updatedLitter = {
-                    ...l,
-                    puppies : []
-                }
-                updatedLitter.puppies = l.puppies.filter(p=> p.currentlyAvailable  === inputValueBool);
-                return updatedLitter;
-            })
-            updatedFilterOptions = [ ...filteredResults];
+            inputValueReset = inputValue === "All" ? true : false;
+            if(inputValueReset === false) {
+                const filteredResults =  updatedFilterOptions.map(l=> {
+                    let updatedLitter = {
+                        ...l,
+                        puppies : []
+                    }
+                    updatedLitter.puppies = l.puppies.filter(p=> p.currentlyAvailable  === inputValueBool);
+             
+                    return updatedLitter;
+                })
+                updatedFilterOptions = [ ...filteredResults];   
+            }  
+            
         }
         litterDispatch({type: "UPDATE_FILTERS", payload: { filteredResults : updatedFilterOptions }});
     }
