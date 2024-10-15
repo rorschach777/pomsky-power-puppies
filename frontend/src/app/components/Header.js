@@ -17,7 +17,7 @@ const Header = () => {
     const menuItems = [
         {name: "Home", path: ""},
         {name: "Contact Us", path: "contact"},
-        {name: "Blog", path: "blog"},
+        {name: "News", path: "blog"},
     ];
     return(
 

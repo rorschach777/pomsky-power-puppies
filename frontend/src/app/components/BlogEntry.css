@@ -17,7 +17,25 @@
 }
 .ppp-blog-entry span {
     display: block;
+    font-size: 1.8rem;
 }
 .ppp-blog-entry button {
     margin: 1.5rem 0;
+}
+
+
+.ppp-blog-entry header h3 {
+    font-size: 1.8rem;
+}
+.ppp-blog-entry header span {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    font-size: #333333;
+}
+.ppp-blog-entry header span:last-child {
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+.ppp-blog-entry p {
+    margin-bottom: 1.5rem;
 }

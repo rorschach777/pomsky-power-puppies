@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export const postType = defineType({
   name: 'post',
-  title: 'Post',
+  title: 'Posts',
   type: 'document',
   fields: [
     defineField({
@@ -13,7 +13,6 @@ export const postType = defineType({
     defineField({
       name: 'slug',
       type: 'slug',
-      options: {source: 'title'},
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -21,6 +20,24 @@ export const postType = defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
+    {
+      name: 'youtube',
+      type: 'object',
+      title: 'You Tube',
+      fields: [
+        {
+          name: 'isYoutube',
+          type: 'boolean',
+          validation: (rule) => rule.required(),
+        },
+        {
+          name: 'external',
+          type: 'url',
+          title: 'URL',
+          hidden: ({ parent, value }) => !value && !parent?.isYoutube
+        }
+      ]
+    },
     defineField({
       name: 'link',
       type: 'string',

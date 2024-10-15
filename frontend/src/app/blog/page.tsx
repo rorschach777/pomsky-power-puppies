@@ -17,6 +17,7 @@ const PAGE_DATA = `*[_type == "post"]{
   link,
   author,
   publishedAt,
+  youtube,
   image{
     asset->{
       url
@@ -36,32 +37,44 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() { 
     const data = await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options);
+    console.log(data)
     return (
         <div className={styles.page}>
             <main className={styles.main}>
                 <div className="ppp-container ppp-blog">
                     <header>
-                        <h1>Pomsky News</h1>
-                        <h2>Lorem Ipsum Dolor</h2>
+                        <h1>Recent News</h1>
+                        <h2>Recent Updates</h2>
                     </header>
                     {/* {data.map(c=>{return <div>X</div>})} */}
-                    { data.map((c : any,i : number)=>{
-                        console.log(c.body[0].children)
-                        return(
-                            <BlogEntry 
-                            src={c.image.asset.url}
-                            heading={c.heading}
-                            author={c.author}
-                            date={c.publishedAt}
-                            link={c.link}
-                            body={c.body[0].children[0].text}
-                        />
-                        );
-                    })}
-         
-                
-            
-                </div>
+
+
+                    <div className="ppp-flex-container">
+                        <div className="left">
+                            { data.map((c : any,i : number)=>{
+                                console.log(c.body.children);
+                                let date = new Date(c.publishedAt);
+                                let youtube = c.youtube === null ? false : c.youtube;  
+                                return(
+                                    <BlogEntry 
+                                    src={c.image != undefined ? c.image.asset.url : ''}
+                                    heading={c.heading}
+                                    author={c.author}
+                                    date={date.toLocaleString('en-US', { dateStyle: 'short', timeStyle: 'short' })}
+                                    link={c.link}
+                                    body={c.body}
+                                    youtube={youtube}
+                                />
+                                );
+                            })}
+                        </div>
+                        <div className="right">
+                            
+                        </div>
+
+                    </div>
+
+                  </div>
             </main>
 
         </div>
