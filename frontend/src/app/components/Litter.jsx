@@ -119,9 +119,9 @@ const Litter = (props ) => {
         if(litterState.filteredResults.length > 0){
             
 
-            return litterState.filteredResults.map(litter=> {
+            return litterState.filteredResults.map((litter, i)=> {
                 return(
-                    <div className="ppp-container">
+                    <div className="ppp-container" key={`${litter.litterName}-${i}`}>
                         {litter.litterParents !== null && ( 
                             <div className="litter-title">
                                 <div className="litter-parents">{litter.litterParents}</div>

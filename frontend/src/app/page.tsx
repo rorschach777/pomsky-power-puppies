@@ -127,7 +127,7 @@ export default async function Home() {
                     if(l.litterName  === "Adult Pomskys" ){
                       return(
                         <>
-                        {l.puppies.map((p : IPuppy , i ) => {
+                        {l.puppies.map((p : IPuppy , i : number ) => {
                 
                             if(i % 2 === 0){
                               return (

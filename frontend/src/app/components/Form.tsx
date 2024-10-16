@@ -63,7 +63,7 @@ const ContactForm = ( ) => {
     const formValid = () => {
         let output = true;
         const copyOfState = {...formState};
-        let key: keyof typeof copyOfState;
+        let key : keyof typeof copyOfState;
         for (key in copyOfState) {
             if(key !== "formIsValid"){
                 const input = copyOfState[key] as FormGroup;
