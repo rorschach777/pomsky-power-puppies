@@ -1,13 +1,15 @@
-import { defineConfig } from "sanity";
+import {Config, defineConfig} from 'sanity'
 import { deskTool } from "sanity/desk";
 import { schemaTypes } from './src/app/schemas'
+import {dataId} from './src/environment';
 
-export default defineConfig({
+export default defineConfig<Config>({
+  basePath: "/studio",
   name: "sanity-nextjs-site",
   title: "Sanity Next.js Site",
-  projectId: "ga8lllhf",
+  projectId: "awsvxwrz",
   dataset: "production",
-  basePath: "/studio",
+
   plugins: [deskTool()],
   schema: { types: schemaTypes },
 });
