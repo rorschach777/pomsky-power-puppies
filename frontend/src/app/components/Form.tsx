@@ -110,7 +110,7 @@ const ContactForm = ( ) => {
         
     }
 
-    const sendEmail = async (event : React.FormEvent<HTMLFormElement> , data : object) => {
+    const sendEmail = async (event : React.FormEvent , data : object) => {
         const submssionResponse = { successful : false}
         try {
             event.preventDefault();
@@ -141,7 +141,7 @@ const ContactForm = ( ) => {
     }
     
 
-    const submitHandler = (event : React.FormEvent<HTMLFormElement>) => {
+    const submitHandler = (event : React.FormEvent) => {
         const data={
             firstName : formState.firstName.value,
             lastName : formState.lastName.value,
