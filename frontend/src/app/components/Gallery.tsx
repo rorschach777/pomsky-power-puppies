@@ -13,14 +13,14 @@ const Gallery =  (props : PropsWithChildren<IProps>) => {
              {props.images.map((c, i)=>{
                 if(i === imgIndex){
                     return (
-                        <div className="gallery-image" style={{backgroundImage: `url('/images/gallery/${c}.jpg')`}}>
+                        <div key={`gallery-image-${i}`} className="gallery-image" style={{backgroundImage: `url('/images/gallery/${c}.jpg')`}}>
 
                         </div>
                      
                     );
                 } else {
                     return (
-                        <div className="gallery-image hidden" style={{backgroundImage: `url('/images/gallery/${c}.jpg')`}}>
+                        <div key={`gallery-image-${i}`} className="gallery-image hidden" style={{backgroundImage: `url('/images/gallery/${c}.jpg')`}}>
 
                         </div>
                     ); 
@@ -29,7 +29,7 @@ const Gallery =  (props : PropsWithChildren<IProps>) => {
              <div className="thumbnails-container">
                 {props.images.map((c,i)=>{
                     return (
-                        <div className="thumbnail">
+                        <div className="thumbnail" key={`thumbnail-${i}`}>
                               <img onClick={()=>setImgIndex(i)} src={`./images/gallery/${c}.jpg`}/>
                         </div>
                     )

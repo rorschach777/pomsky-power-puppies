@@ -1,7 +1,22 @@
 
 
+type action = { 
+    type : string,
+    payload: Object
+}
+type state = {
+    formIsValid : boolean,
+    isValid: boolean,
+    email: Object, 
+    firstName : Object,
+    lastName : Object,
+    phone: Object,
+    submission : Object
+    message: Object
+    
+}
 
-export const formReducer = (state : any, action : any) => {
+export const formReducer = (state : state , action : action) => {
     if(action.type === "FORM_IS_VALID"){
         return {
             ...state,

@@ -25,8 +25,8 @@ const BlogEntry = ( props ) => {
             <img src={props.src}/>
             <div className="ppp-blog-entry-body">
                 { props.body.length > 0 && (
-                    props.body.map(b=>{
-                        return <p>{b.children[0].text}</p>
+                    props.body.map((b,i)=>{
+                        return <p key={`${props.key}-body-${i}`}>{b.children[0].text}</p>
                     })
                 )}
             </div>

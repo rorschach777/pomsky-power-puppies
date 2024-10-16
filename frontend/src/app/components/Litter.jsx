@@ -4,7 +4,6 @@ import PuppyCard from './PuppyCard';
 import FilterList from "./FilterList";
 import {useReducer, useEffect} from "react";
 import './Litter.css'
-import { filter } from 'framer-motion/client';
 import {removeDuplicates} from '../utils/arrayMethods'
 
 
@@ -128,8 +127,8 @@ const Litter = (props ) => {
                                 <div className="litter-parents">{litter.litterParents}</div>
                                 <div>
                                     {litter.description.length > 0 && (
-                                        litter.description.map((d=>{
-                                            return <p>{d.children[0].text}</p>;
+                                        litter.description.map(((d,i)=>{
+                                            return <p key={`description-${i}`}>{d.children[0].text}</p>;
                                         }))
                                     )}
                                 </div>
@@ -138,11 +137,12 @@ const Litter = (props ) => {
 
                         <div className="ppp-flex-container ">
                         
-                            { litter.puppies.map((puppy)=>{
+                            { litter.puppies.map((puppy, index)=>{
                                 if(puppy.isPuppy){
                                     puppiesToDisplay = true;
                                     return (
                                         <PuppyCard 
+                                        key={`puppy-${index}`}
                                         description={puppy.description}
                                         name={puppy.pomskyName} 
                                         weight={puppy.weight} 

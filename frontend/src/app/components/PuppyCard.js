@@ -1,6 +1,6 @@
 import './PuppyCard.css';
 import Image from 'next/image';
-import {Badge, Avatar} from "@nextui-org/react";
+import {Badge} from "@nextui-org/react";
 
 const PuppyCard = (props) => {
     return(

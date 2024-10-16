@@ -1,13 +1,10 @@
 "use client";
 import "./Form.css"
-import { useReducer, PropsWithChildren, useRef, useEffect } from "react";
+import { useReducer, useRef, useEffect } from "react";
 import { formReducer } from "../reducers/form-reducer";
 
-interface IProps {
 
-}
-
-const ContactForm = ( props : PropsWithChildren<IProps>) => {
+const ContactForm = ( ) => {
 
 
     const initialState = {
@@ -65,8 +62,8 @@ const ContactForm = ( props : PropsWithChildren<IProps>) => {
 
     const formValid = () => {
         let output = true;
-        let copyOfState = formState;
-        for (var key of Object.keys(copyOfState)) {
+        const copyOfState = formState;
+        for (let key of Object.keys(copyOfState)) {
             if(key !== "formIsValid"){
                 if(copyOfState[key].isValid === false ){
                     output = false;
@@ -112,7 +109,7 @@ const ContactForm = ( props : PropsWithChildren<IProps>) => {
         
     }
 
-    const sendEmail = async (event : any, data : any) => {
+    const sendEmail = async (event : React.FormEvent<HTMLFormElement> , data : Object) => {
         const submssionResponse = { successful : false}
         try {
             event.preventDefault();
@@ -143,7 +140,7 @@ const ContactForm = ( props : PropsWithChildren<IProps>) => {
     }
     
 
-    const submitHandler = (event : any) => {
+    const submitHandler = (event :  React.FormEvent<HTMLFormElement>) => {
         const data={
             firstName : formState.firstName.value,
             lastName : formState.lastName.value,

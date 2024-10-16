@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, PropsWithChildren} from 'react';
+import {PropsWithChildren} from 'react';
 import './FilterList.css';
 
 
@@ -17,7 +17,7 @@ const FilterList =  (props : PropsWithChildren<Props> ) => {
                     <label>{props.label}</label>
                     <select onChange={(e)=>props.change(e.target.value)} >
                         {props.options.map((c, i)=>{
-                            return <option selected={i === 0 ? true : false}>{c}</option>
+                            return <option key={`${props.label}-option-${i}`} selected={i === 0 ? true : false}>{c}</option>
                         })}
                     </select>
                 </div>

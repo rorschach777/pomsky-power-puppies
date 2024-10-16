@@ -49,10 +49,10 @@ export default async function Page() {
 
                     <div className="ppp-flex-container">
                         <div className="left">
-                            { data.map((c : any,i : number)=>{
+                            { data.map((c, i)=>{
                                 console.log(c.body.children);
-                                let date = new Date(c.publishedAt);
-                                let youtube = c.youtube === null ? false : c.youtube;  
+                                const date = new Date(c.publishedAt);
+                                const youtube = c.youtube === null ? false : c.youtube;  
                                 return(
                                     <BlogEntry 
                                     src={c.image != undefined ? c.image.asset.url : ''}
@@ -62,6 +62,7 @@ export default async function Page() {
                                     link={c.link}
                                     body={c.body}
                                     youtube={youtube}
+                                    key={`blog-entry-${i+1}`}
                                 />
                                 );
                             })}
