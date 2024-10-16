@@ -6,7 +6,7 @@ import {dataId} from './src/environment';
 export default defineConfig<Config>({
   basePath: "/studio",
   name: "sanity-nextjs-site",
-  title: "Sanity Next.js Site",
+  title: "Pomsky Power Puppies",
   projectId: "awsvxwrz",
   dataset: "production",
 

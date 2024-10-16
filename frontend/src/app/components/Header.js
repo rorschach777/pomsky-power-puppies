@@ -85,7 +85,7 @@ const Header = () => {
                     <>
                     <ModalHeader className="flex flex-col gap-1">
                         <div className="ppp-header-modal-title">
-                            Request More Information
+                            Request more information and added to our waitlist.
                         </div>
                         
                     </ModalHeader>

@@ -99,7 +99,7 @@ const ContactForm = ( ) => {
     const phoneValidation = () => {
         const pattern = /^[1-9]\d{2}-\d{3}-\d{4}/;    
         const inputIsValid = pattern.test(phoneRef.current!.value);
-        formDispatch({type: ActionType.EMAIL_UPDATE, payload: {value : phoneRef.current!.value, isValid: inputIsValid}})
+        formDispatch({type: ActionType.PHONE_UPDATE, payload: {value : phoneRef.current!.value, isValid: inputIsValid}})
         
     }
 

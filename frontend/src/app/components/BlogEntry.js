@@ -19,7 +19,7 @@ const BlogEntry = ( props ) => {
             
             <header>
                 <h3>{props.heading}</h3>
-                <span>{props.author}</span>
+                {/* <span>{props.author}</span> */}
                 <span>Published on: {props.date}</span>
             </header>
             <img src={props.src}/>

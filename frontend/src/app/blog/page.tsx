@@ -42,7 +42,7 @@ export default async function Page() {
                 <div className="ppp-container ppp-blog">
                     <header>
                         <h1>Recent News</h1>
-                        <h2>Recent Updates</h2>
+                        <h2>Recent Updates on All Things Pomsky</h2>
                     </header>
                     {/* {data.map(c=>{return <div>X</div>})} */}
 
