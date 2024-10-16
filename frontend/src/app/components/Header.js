@@ -54,7 +54,7 @@ const Header = () => {
                 </NavbarItem>
                 <NavbarItem>
                 <Button  onPress={onOpen}  color="secondary" variant="bordered" >
-                    Request Information
+                    Join Waitlist
                 </Button>
            
                 </NavbarItem>

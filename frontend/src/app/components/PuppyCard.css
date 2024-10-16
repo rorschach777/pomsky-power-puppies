@@ -2,9 +2,11 @@
     padding: 1.5rem;
     color: #333;
     background-size: cover;
-    min-height: 30rem;
+    min-height: 45rem;
     border-radius: .5rem;
     background-repeat: none;
+    flex-basis: 25% ;
+
     
 }
 
@@ -47,3 +49,10 @@
     margin: 4px 7px;
 }
 
+@media only screen and (max-width: 48rem) {
+    .puppy-card {
+
+        flex-basis: 45% ;
+    }
+
+}

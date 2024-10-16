@@ -1,18 +1,12 @@
 
-.litter {
-    display: flex;
-    justify-content: center;
+  
+  .litter .ppp-flex-container {
     flex-wrap: wrap;
-    padding: 2.5rem;
-    box-sizing: border-box;
-    width: 108rem;
-    max-width: 100%;
-    margin: 0 auto;
+    justify-content: center;
   }
   
-  .litter > div {
-    margin: .5rem;
-    flex-basis: 25rem;
+  .litter .ppp-flex-container > div {
+    margin: .5rem;  
   }
 
 
@@ -37,12 +31,12 @@
     position: relative;
     margin-top: -3.5rem;
   }
-  .ppp-litter-title h2,   .ppp-litter-title span {
+  .ppp-litter-title h2,   .ppp-litter-title span, .litter-parents {
     font-family: 'BigCaslon';
     text-align: center;
   }
 
-  .ppp-litter-title span {
+  .ppp-litter-title span, .litter-parents {
     font-style: italic;
     font-size: 2.5rem;
     color: var(--ppp-secondary);
@@ -62,4 +56,23 @@
   .filters-list-selects {
     display: flex;
     justify-content: flex-end;
+  }
+
+  .ppp-no-puppies-message {
+    font-style: italic;
+    color: #3e3e3e;
+  }
+
+  .litter-title p {
+    font-size: 1.5rem;
+    color: var(--ppp-primary);
+    width: 76.8rem;
+    max-width: 100%;
+    margin: 2.5rem auto;
+  }
+
+  @media only screen and (max-width: 48rem) {
+      .litter .ppp-flex-container {
+        flex-direction: row !important;
+      }
   }

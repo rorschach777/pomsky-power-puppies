@@ -12,6 +12,10 @@ export const litterType = defineType({
         validation: (rule) => rule.required(),
       }),
       defineField({
+        name: 'litterParents',
+        type: 'string'
+      }),
+      defineField({
         name: 'slug',
         type: 'slug',
         options: {source: 'litter name'},
@@ -60,7 +64,8 @@ export const litterType = defineType({
       }),
       defineField({
         name: 'description',
-        type: 'string',
+        type: 'array',
+        of: [{type: 'block'}],
         validation: (rule) => rule.required(),
       }),
 

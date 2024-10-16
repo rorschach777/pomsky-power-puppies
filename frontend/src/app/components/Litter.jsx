@@ -5,6 +5,7 @@ import FilterList from "./FilterList";
 import {useReducer, useEffect} from "react";
 import './Litter.css'
 import { filter } from 'framer-motion/client';
+import {removeDuplicates} from '../utils/arrayMethods'
 
 
 
@@ -69,12 +70,8 @@ const litterReducer = (state, action) => {
 
 const Litter = (props ) => {
     const [litterState, litterDispatch] = useReducer(litterReducer, initialState);
-  
-
-
     useEffect(()=>{
         const defaultPuppies = props.data.litters.map(l=>{return l});
-        console.log(defaultPuppies);
         litterDispatch({type: "DEFAULT_SETUP", payload : { value : defaultPuppies}});
     },[])
 
@@ -121,35 +118,51 @@ const Litter = (props ) => {
     const createPuppies = () => {
         let puppiesToDisplay = false;
         if(litterState.filteredResults.length > 0){
-         
+            
 
             return litterState.filteredResults.map(litter=> {
                 return(
-                    <>
-                        { litter.puppies.map((puppy)=>{
-                            if(puppy.isPuppy){
-                                puppiesToDisplay = true;
-                                return (
-                                    <PuppyCard 
-                                    description={puppy.description}
-                                    name={puppy.pomskyName} 
-                                    weight={puppy.weight} 
-                                    price={puppy.price}
-                                    location={litter.location[0].locationName} 
-                                    available={puppy.currentlyAvailable}
-                                    image={puppy.image}
-                                    backgroundImage={puppy.backgroundImage}
-                                    female={puppy.female}
-                                    
-                                    />
-                                );
-                            }
-                         
-                        })}
-                        { puppiesToDisplay === false && (
-                            <div className="ppp-no-puppies-message">No Results Available.</div>
+                    <div className="ppp-container">
+                        {litter.litterParents !== null && ( 
+                            <div className="litter-title">
+                                <div className="litter-parents">{litter.litterParents}</div>
+                                <div>
+                                    {litter.description.length > 0 && (
+                                        litter.description.map((d=>{
+                                            return <p>{d.children[0].text}</p>;
+                                        }))
+                                    )}
+                                </div>
+                            </div>
                         )}
-                    </>
+
+                        <div className="ppp-flex-container ">
+                        
+                            { litter.puppies.map((puppy)=>{
+                                if(puppy.isPuppy){
+                                    puppiesToDisplay = true;
+                                    return (
+                                        <PuppyCard 
+                                        description={puppy.description}
+                                        name={puppy.pomskyName} 
+                                        weight={puppy.weight} 
+                                        price={puppy.price}
+                                        location={litter.location[0].locationName} 
+                                        available={puppy.currentlyAvailable}
+                                        image={puppy.image}
+                                        backgroundImage={puppy.backgroundImage}
+                                        female={puppy.female}
+                                        
+                                        />
+                                    );
+                                }
+                            
+                            })}
+                            { puppiesToDisplay === false && (
+                                <div className="ppp-no-puppies-message">Sorry. There were no matches.</div>
+                            )}
+                        </div>
+                    </div>
                 )
             })
         } 
@@ -162,13 +175,12 @@ const Litter = (props ) => {
         <>
         <div className="ppp-container filters">
             <div className="ppp-litter-title">
-                <h2>Most Recent Litter</h2>
-                <span>Esther & Judas</span>
+                <h2>Most Recent Litters</h2>
             </div>
             <div className="filters-list" >
                 <span>Filters:</span>
                 <div className="filters-list-selects">
-                    <FilterList change={locationHandler} options={ props.data.litters.map(l=>l.location[0].locationName)} label="Location:" />
+                    <FilterList change={locationHandler} options={ removeDuplicates(props.data.litters.map(l=>l.location[0].locationName))} label="Location:" />
                     <FilterList change={statusHandler} options={ ["All", "Sold", "Available"] } label="Availability:"  />
                 </div>
                

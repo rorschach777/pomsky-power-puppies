@@ -13,14 +13,18 @@ const Gallery =  (props : PropsWithChildren<IProps>) => {
              {props.images.map((c, i)=>{
                 if(i === imgIndex){
                     return (
-                        <img src={`/images/gallery/${c}.jpg`}/>
+                        <div className="gallery-image" style={{backgroundImage: `url('/images/gallery/${c}.jpg')`}}>
+
+                        </div>
+                     
                     );
                 } else {
                     return (
-                        <img src={`/images/gallery/${c}.jpg`} className='hidden' />
+                        <div className="gallery-image hidden" style={{backgroundImage: `url('/images/gallery/${c}.jpg')`}}>
+
+                        </div>
                     ); 
                 }
-     
              })}
              <div className="thumbnails-container">
                 {props.images.map((c,i)=>{

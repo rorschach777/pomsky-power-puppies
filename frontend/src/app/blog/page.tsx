@@ -8,8 +8,6 @@ import { client } from "@/sanity/client";
 import {pageMeta, PAGE_META_DATA} from '../utils/page-meta';
 import type { Metadata } from 'next';
 
-
-
 const PAGE_DATA = `*[_type == "post"]{
   title,
   slug,

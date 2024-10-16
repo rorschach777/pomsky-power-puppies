@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
-import {Button} from "@nextui-org/react";
+import {Button, Link} from "@nextui-org/react";
 import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
 
 
@@ -29,6 +29,7 @@ const PAGE_DATA = `*[_type == "page"]{
   litters[]->{
     _id,
     description, 
+    litterParents,
     location[]->{
       locationName
     },
@@ -72,31 +73,33 @@ export default async function Home() {
         <div className="hero">
           <div className="hero-container">
             <h1>Ethical Dog Breeders</h1>
+            <p>
+            We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
+            </p>
             <div className="established">
               <span></span>
               <span> Since 2017 </span>
               <span></span>
             </div>
             <p>
-            We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies. 
+            
             </p>
             <div className="cta">
               <h2>Waitlist Currently Open</h2>
               <p>Make your home a puppies home by going through our process!</p>
               <Button size="lg"  color="primary" >
-                Join Waitlist
+                <Link  href="/contact"> Join Waitlist </Link>
               </Button> 
             </div>
           </div>
         </div>
         <Litter data={data}/>
-        <Gallery images={["ppp-1", "ppp-2"]}/>
+        <Gallery images={["ppp-1", "ppp-2", "ppp-3"]}/>
         <div className="adult-pomsky">
         <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">
               <div className="adult-pomsky-image">
                 <img src="./images/ppp-adult.png" />
-                
               </div>
               <div className="adult-pomsky-text">
                 <span>
@@ -114,7 +117,7 @@ export default async function Home() {
         <div className="ppp-adult-list">
           <div className="ppp-container ppp-container-md">
             <div className="ppp-headline">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore  volutpat. 
+             Healthy, Happy, Confident Pomskies!
             </div>
             <div className="ppp-flex-container u-pad">
               <div>

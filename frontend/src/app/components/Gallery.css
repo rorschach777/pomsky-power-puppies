@@ -1,7 +1,7 @@
 .gallery {
     overflow: hidden;
     background-color: var(--ppp-secondary);
-    aspect-ratio: .95;
+    aspect-ratio: 1 / 1;
 }
 .thumbnails-container {
     overflow: visible;
@@ -10,14 +10,17 @@
 
 .gallery, .gallery > * {
     position: relative;
-
+    transition: all 2s ease;
 }
 
-.gallery > img {
+.gallery-image {
     position: absolute;
     display: block;
     transition: all 2s ease;
-    top: -20%;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    
 }
 
 .thumbnails-container {
