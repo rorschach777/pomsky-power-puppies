@@ -6,7 +6,7 @@ import './FilterList.css';
 
 type Props = {
     options : string[],
-    change: (value : string)=>{},
+    change:  (value : string)  => void,
     label: string
 }
 const FilterList =  (props : PropsWithChildren<Props> ) => {

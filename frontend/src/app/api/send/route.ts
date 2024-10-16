@@ -9,12 +9,11 @@ type Payload = {
   lastName: string
 }
 
-
 export  async function POST(req : NextRequest) {
   const formData: Payload = await req.json();;
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
+      from: `${process.env.RESEND_API_FROM_EMAIL}`,
       to: [`${process.env.RESEND_API_DELIVERY_EMAIL}`],
       subject: "Contact Submission",
       react: EmailTemplate({ firstName: formData.firstName, lastName : formData.lastName

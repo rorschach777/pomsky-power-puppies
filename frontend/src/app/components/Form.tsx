@@ -2,12 +2,13 @@
 import "./Form.css"
 import { useReducer, useRef, useEffect } from "react";
 import { formReducer } from "../reducers/form-reducer";
-
+import { ActionType } from "../reducers/action-types"
+import {Action, FormState, InputParams, FormGroup} from '../types/index';
 
 const ContactForm = ( ) => {
 
 
-    const initialState = {
+    const initialState : FormState= {
         formIsValid: false,
         submission: {
             tried: false,
@@ -40,12 +41,11 @@ const ContactForm = ( ) => {
         }
     }
 
-  
-    const [formState, formDispatch] =  useReducer(formReducer, initialState);
+    const [formState, formDispatch] = useReducer(formReducer, initialState);
 
     useEffect(()=>{
         const formIsValid = formValid();
-        formDispatch({type: "FORM_IS_VALID", payload: {value: formIsValid}});
+        formDispatch({type: ActionType.FORM_IS_VALID, payload: {value: formIsValid}});
         
     },[formState.firstName, formState.lastName, formState.email, formState.phone, formState.message]);
 
@@ -54,58 +54,59 @@ const ContactForm = ( ) => {
         
     },[formState.submission.tried]);
 
-    const firstNameRef = useRef('null');
-    const lastNameRef = useRef('null');
-    const emailRef = useRef('null');
-    const phoneRef = useRef('null');
-    const messageRef = useRef('null');
+    const firstNameRef = useRef<HTMLInputElement | null>(null);
+    const lastNameRef = useRef<HTMLInputElement | null>(null);
+    const emailRef = useRef<HTMLInputElement | null>(null);
+    const phoneRef = useRef<HTMLInputElement | null>(null);
+    const messageRef = useRef<HTMLTextAreaElement | null>(null);
 
     const formValid = () => {
         let output = true;
-        const copyOfState = formState;
-        for (let key of Object.keys(copyOfState)) {
+        const copyOfState = {...formState};
+        let key: keyof typeof copyOfState;
+        for (key in copyOfState) {
             if(key !== "formIsValid"){
-                if(copyOfState[key].isValid === false ){
+                const input = copyOfState[key] as FormGroup;
+                if(input.isValid === false){
                     output = false;
                 }
-            }
+            } 
         }
         return output;
     }
 
     const firstNameValidation = () => {
         const pattern = /^[A-Za-z]{1,9}$/;    
-        const inputIsValid = pattern.test(firstNameRef.current.value);
-        formDispatch({type: "FIRST_NAME_UPDATE", payload: {value : firstNameRef.current.value, isValid: inputIsValid}})
-        
-
+        const inputIsValid = pattern.test(firstNameRef.current!.value);
+        formDispatch({type: ActionType.FIRST_NAME_UPDATE, payload: {value : firstNameRef.current!.value, isValid: inputIsValid}})
+    
     }
 
     const lastNameValidation = () => {
         const pattern = /^[A-Za-z]{1,12}$/;    
-        const inputIsValid = pattern.test(lastNameRef.current.value);
-        formDispatch({type: "LAST_NAME_UPDATE", payload: {value : lastNameRef.current.value, isValid: inputIsValid}})
+        const inputIsValid = pattern.test(lastNameRef.current!.value);
+        formDispatch({type: ActionType.LAST_NAME_UPDATE, payload: {value : lastNameRef.current!.value, isValid: inputIsValid}})
         
     }
 
     const emailValidation = () => {
         const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;    
-        const inputIsValid = pattern.test(emailRef.current.value);
-        formDispatch({type: "EMAIL_UPDATE", payload: {value : emailRef.current.value, isValid: inputIsValid}})
+        const inputIsValid = pattern.test(emailRef.current!.value);
+        formDispatch({type:  ActionType.EMAIL_UPDATE , payload: {value : emailRef.current!.value, isValid: inputIsValid}})
         
     }
 
     const phoneValidation = () => {
         const pattern = /^[1-9]\d{2}-\d{3}-\d{4}/;    
-        const inputIsValid = pattern.test(phoneRef.current.value);
-        formDispatch({type: "PHONE_UPDATE", payload: {value : phoneRef.current.value, isValid: inputIsValid}})
+        const inputIsValid = pattern.test(phoneRef.current!.value);
+        formDispatch({type: ActionType.EMAIL_UPDATE, payload: {value : phoneRef.current!.value, isValid: inputIsValid}})
         
     }
 
     const messageValidation = () => {
         const pattern =  /^[a-zA-Z ]{5,140} [a-zA-Z ]{5,140}$/
-        const inputIsValid = pattern.test(messageRef.current.value);
-        formDispatch({type: "MESSAGE_UPDATE", payload: {value : messageRef.current.value, isValid: inputIsValid}})
+        const inputIsValid = pattern.test(messageRef.current!.value);
+        formDispatch({type: ActionType.MESSAGE_UPDATE, payload: {value : messageRef.current!.value, isValid: inputIsValid}})
         
     }
 
@@ -135,12 +136,12 @@ const ContactForm = ( ) => {
         } catch (err){
             console.log(err, err);
         } finally {
-            formDispatch({type: "SUBMISSION", payload: submssionResponse})
+            formDispatch({type: ActionType.SUBMISSION, payload: submssionResponse})
         }
     }
     
 
-    const submitHandler = (event :  React.FormEvent<HTMLFormElement>) => {
+    const submitHandler = (event : any) => {
         const data={
             firstName : formState.firstName.value,
             lastName : formState.lastName.value,

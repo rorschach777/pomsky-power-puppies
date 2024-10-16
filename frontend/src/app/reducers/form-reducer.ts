@@ -1,79 +1,65 @@
+import { Action, FormState, IssueAction } from '../types/index'
+import { ActionType } from './action-types'
+import {Reducer} from 'react';
 
 
-type action = { 
-    type : string,
-    payload: Object
-}
-type state = {
-    formIsValid : boolean,
-    isValid: boolean,
-    email: Object, 
-    firstName : Object,
-    lastName : Object,
-    phone: Object,
-    submission : Object
-    message: Object
-    
-}
-
-export const formReducer = (state : state , action : action) => {
-    if(action.type === "FORM_IS_VALID"){
+export const formReducer : Reducer<FormState, Action>= (prevState, action) => {
+    if(action.type === ActionType.FORM_IS_VALID){
         return {
-            ...state,
+            ...prevState,
             formIsValid : action.payload.value
         }
     }
 
-    if(action.type === "FIRST_NAME_UPDATE"){
+    if(action.type === ActionType.FIRST_NAME_UPDATE){
         return {
-            ...state,
+            ...prevState,
             firstName: {
-                ...state.firstName,
+                ...prevState.firstName,
                 value: action.payload.value,
                 isValid: action.payload.isValid,
                 updated: true
             }
         }
     }
-    if(action.type === "LAST_NAME_UPDATE"){
+    if(action.type === ActionType.LAST_NAME_UPDATE ){
         return {
-            ...state,
+            ...prevState,
             lastName: {
-                ...state.lastName,
+                ...prevState.lastName,
                 value: action.payload.value,
                 isValid: action.payload.isValid,
                 updated: true
             }
         }
     }
-    if(action.type === "EMAIL_UPDATE"){
+    if(action.type === ActionType.EMAIL_UPDATE){
         return {
-            ...state,
+            ...prevState,
             email : {
-                ...state.email,
+                ...prevState.email,
                 value: action.payload.value,
                 isValid: action.payload.isValid,
                 updated: true
             }
         }
     }
-    if(action.type === "PHONE_UPDATE"){
+    if(action.type === ActionType.PHONE_UPDATE){
         return {
-            ...state,
+            ...prevState,
             phone : {
-                ...state.phone,
+                ...prevState.phone,
                 value: action.payload.value,
                 isValid: action.payload.isValid,
                 updated: true
             }
         }
     }
-    if(action.type === "MESSAGE_UPDATE"){
+    if(action.type === ActionType.MESSAGE_UPDATE){
         return {
-            ...state,
-            formIsValid: action.payload.formIsValid,
+            ...prevState,
             message : {
-                ...state.message,
+                ...prevState.message,
                 value: action.payload.value,
                 isValid: action.payload.isValid,
                 updated: true
@@ -82,13 +68,13 @@ export const formReducer = (state : state , action : action) => {
     }
     if(action.type === "SUBMISSION"){
         return {
-            ...state,
+            ...prevState,
             submission: {
-                ...state.submission,
+                ...prevState.submission,
                 tried: true,
                 successful: action.payload.successful
             }
         }
     }
-
+    return prevState;
 }

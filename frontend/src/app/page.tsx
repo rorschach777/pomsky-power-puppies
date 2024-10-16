@@ -6,12 +6,11 @@ import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {Button, Link} from "@nextui-org/react";
 import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
+import { Metadata } from "next";
 
-
-import type { Metadata } from 'next'
 import * as React from "react";
 import Gallery from './components/Gallery'
-
+import { ILitter, IPuppy } from './types/index'
 
 
 import "./components/FilterList";
@@ -123,16 +122,16 @@ export default async function Home() {
               <div>
                 <div className="ppp-flex-container ppp-a-pomsky ">
                   <div className="half-column">
-                  { data.litters.map((l : any)=>{
+                  { data.litters.map((l : ILitter )=>{
              
-                    if(l.litterName === "Adult Pomskys" ){
+                    if(l.litterName  === "Adult Pomskys" ){
                       return(
                         <>
-                        {l.puppies.map((p : any, i : any) => {
+                        {l.puppies.map((p : IPuppy , i ) => {
                 
                             if(i % 2 === 0){
                               return (
-                                <div className="ppp-dog-bio">
+                                <div className="ppp-dog-bio" key={`${l.litterName}-dog-bio-${i}`}>
                                   <div className="ppp-dog-bio-image" style={{background: `url(${p.image !== null ? p.image.asset.url : null})`}}>
                                   </div>
                                   <div className="ppp-dog-bio-text">
@@ -152,15 +151,15 @@ export default async function Home() {
                   })}
                   </div>
                   <div className="half-column">
-                  { data.litters.map((l : any, i : any)=>{
+                  { data.litters.map((l : ILitter)=>{
                     if(l.litterName === "Adult Pomskys" ){
                       return(
                         <>
-                        {l.puppies.map((p : any, puppyIndex : any) => {
+                        {l.puppies.map((p : IPuppy, puppyIndex) => {
                      
                             if(puppyIndex & 1){
                               return (
-                                <div className="ppp-dog-bio">
+                                <div className="ppp-dog-bio" key={`${l.litterName}-dog-bio-${puppyIndex}`} >
                                   <div className="ppp-dog-bio-image" style={{background: `url(${p.image !== null ? p.image.asset.url : null})`}}>
                                   </div>
                                   <div className="ppp-dog-bio-text">
