@@ -1,4 +1,4 @@
-import { Action, FormState, IssueAction } from '../types/index'
+import { Action, FormState } from '../types/index'
 import { ActionType } from './action-types'
 import {Reducer} from 'react';
 

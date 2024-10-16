@@ -3,7 +3,7 @@ import "./Form.css"
 import { useReducer, useRef, useEffect } from "react";
 import { formReducer } from "../reducers/form-reducer";
 import { ActionType } from "../reducers/action-types"
-import {Action, FormState, InputParams, FormGroup} from '../types/index';
+import {FormState,  FormGroup} from '../types/index';
 
 const ContactForm = ( ) => {
 
@@ -110,7 +110,7 @@ const ContactForm = ( ) => {
         
     }
 
-    const sendEmail = async (event : React.FormEvent<HTMLFormElement> , data : Object) => {
+    const sendEmail = async (event : React.FormEvent<HTMLFormElement> , data : object) => {
         const submssionResponse = { successful : false}
         try {
             event.preventDefault();
@@ -141,7 +141,7 @@ const ContactForm = ( ) => {
     }
     
 
-    const submitHandler = (event : any) => {
+    const submitHandler = (event : React.FormEvent<HTMLFormElement>) => {
         const data={
             firstName : formState.firstName.value,
             lastName : formState.lastName.value,
