@@ -6,7 +6,10 @@ import { NextRequest } from 'next/server';
 const resend = new Resend(process.env.RESEND_API_KEY);
 type Payload = {
   firstName: string,
-  lastName: string
+  lastName: string,
+  email : string,
+  phoneNumber : string,
+  message: string
 }
 
 export  async function POST(req : NextRequest) {
@@ -16,15 +19,17 @@ export  async function POST(req : NextRequest) {
       from: `${process.env.RESEND_API_FROM_EMAIL}`,
       to: [`${process.env.RESEND_API_DELIVERY_EMAIL}`],
       subject: "Contact Submission",
-      react: EmailTemplate({ firstName: formData.firstName, lastName : formData.lastName
+      react: EmailTemplate({ firstName: formData.firstName,
+         lastName : formData.lastName, 
+         email : formData.email, 
+         phoneNumber : formData.phoneNumber,
+         message : formData.message
       }) as React.ReactElement,
     });
 
     if (error) {
-      console.log(error.message);
       return Response.json({ error }, { status: 500 });
     }
-
     return Response.json({ data });
   } catch (error) {
     return Response.json({ error }, { status: 500 });
