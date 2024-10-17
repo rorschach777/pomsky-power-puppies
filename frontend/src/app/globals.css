@@ -123,7 +123,7 @@ select {
 }
 
 .hero {
-  background-image: url('/images/ppp-hero.jpg');
+  background-image: url('/images/ppp-hero.webp');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -403,6 +403,16 @@ iframe {
 
 }
 
+.ppp-blog header  {
+  display: flex;
+  align-items: center;
+}
+.ppp-blog header > * {
+  padding: 0 0.5rem;
+}
+
+
+
 .ppp-blog h1 {
   font-size: 3.2rem;
 
@@ -424,6 +434,23 @@ p {
 
 #sanity input {
   font-size: 1.4rem;
-  padding: .8rem;
+  padding: 0rem 3.5rem;
   box-sizing: border-box;
+}
+
+div[data-ui="Container"]{
+  max-width: 90%;
+}
+
+[data-sanity-icon] {
+  margin: unset !important;
+  font-size: 2.3rem !important;
+}
+
+[data-as="input"]{
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+[data-ui="Box"] {
+  top: .5rem !important;
 }

@@ -35,18 +35,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() { 
     const data = await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options);
-    console.log(data)
     return (
         <div className={styles.page}>
             <main className={styles.main}>
                 <div className="ppp-container ppp-blog">
                     <header>
-                        <h1>Recent News</h1>
-                        <h2>Recent Updates on All Things Pomsky</h2>
+                        <h1>Recent News</h1> <span> | </span> <h2>On All Things Pomsky</h2>
                     </header>
-                    {/* {data.map(c=>{return <div>X</div>})} */}
-
-
                     <div className="ppp-flex-container">
                         <div className="left">
                             { data.map((c, i)=>{

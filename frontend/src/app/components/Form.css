@@ -17,6 +17,7 @@
   
   .ppp-form, .ppp-form input, .ppp-form textarea {
     width: 45rem;
+    max-width: 100%;
   }
   .ppp-form input, .ppp-form textarea {
     background-color: #e7e7e7;

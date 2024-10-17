@@ -159,7 +159,7 @@ const Litter = (props ) => {
                             
                             })}
                             { puppiesToDisplay === false && (
-                                <div className="ppp-no-puppies-message">Sorry. There were no matches.</div>
+                                <div className="ppp-no-puppies-message">Sorry, there were no matching results.</div>
                             )}
                         </div>
                     </div>
