@@ -93,7 +93,7 @@ export default async function Home() {
           </div>
         </div>
         <Litter data={data}/>
-        <Gallery images={["ppp-1", "ppp-2", "ppp-3"]}/>
+        {/* <Gallery images={["ppp-1", "ppp-2", "ppp-3"]}/> */}
         <div className="adult-pomsky">
         <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">

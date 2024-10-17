@@ -28,10 +28,12 @@ export  async function POST(req : NextRequest) {
     });
 
     if (error) {
+      console.log(error.message)
       return Response.json({ error }, { status: 500 });
     }
     return Response.json({ data });
   } catch (error) {
+    console.log(error)
     return Response.json({ error }, { status: 500 });
   }
 }

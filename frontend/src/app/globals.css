@@ -154,7 +154,7 @@ select {
   content: "";
   position: absolute;
   top: 0;
-  background: linear-gradient(94deg, rgba(92, 187, 255, 0.75) 0%, rgba(0, 144, 231,0) 100%);
+  background: linear-gradient(94deg, rgb(174 221 255 / 80%), rgb(146 129 253 / 41%));
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -331,29 +331,6 @@ section {
   font-size: 1.5rem;
 }
 
-.contact-hero {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  min-height: 75rem;
-  background-image: url('/images/ppp-hero.jpg');
-  background-size: cover;
-  z-index: 1;
-}
-.contact-hero > div {
-  z-index: 2;
-}
-
-
-.contact-form-container {
-  background-color: white;
-  border-radius: .5rem;
-  padding: 1.5rem;
-  box-sizing: border-box;
-  opacity: .85;
-}
 
 h1 {
   font-family: 'BigCaslon';
