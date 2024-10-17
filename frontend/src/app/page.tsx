@@ -9,7 +9,7 @@ import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
 import { Metadata } from "next";
 
 import * as React from "react";
-import Gallery from './components/Gallery'
+// import Gallery from './components/Gallery'
 import { ILitter, IPuppy } from './types/index'
 
 
