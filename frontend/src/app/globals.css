@@ -388,7 +388,7 @@ iframe {
 
 }
 
-.ppp-blog header  {
+.ppp-blog > header  {
   display: flex;
   align-items: center;
 }
