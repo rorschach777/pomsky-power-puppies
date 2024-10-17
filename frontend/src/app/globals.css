@@ -384,6 +384,7 @@ iframe {
 .ppp-blog > header {
   border-bottom: 1px solid var(--ppp-primary);
   padding: 1.5rem 0;
+  flex-wrap: wrap;
 
 }
 
@@ -437,4 +438,13 @@ div[data-ui="Container"]{
 }
 [data-ui="Box"] {
   top: .5rem !important;
+}
+
+
+@media only screen and (max-width: 46.8rem){
+  .hero-container {
+    margin: 0 auto; 
+  
+  }
+  
 }

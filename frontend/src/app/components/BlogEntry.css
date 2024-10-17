@@ -1,7 +1,8 @@
 .ppp-blog-entry {
     color: var(--ppp-primary);
-    margin-top: 2rem 0  0 0;
+    margin-top: 2rem;
     width: 50rem;
+    max-width: 100%;
 }
 .ppp-blog-entry img {
     margin: 1.5rem 0;
@@ -38,4 +39,8 @@
 }
 .ppp-blog-entry p {
     margin-bottom: 1.5rem;
+}
+
+.ppp-blog .ppp-flex-container > div {
+    max-width: 100%;
 }

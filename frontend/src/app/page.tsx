@@ -98,7 +98,7 @@ export default async function Home() {
         <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">
               <div className="adult-pomsky-image">
-                <img src="./images/ppp-adult.png" />
+                <img alt="Full Grown Pomsky Dogs" loading="lazy" src="./images/ppp-adult.png" />
               </div>
               <div className="adult-pomsky-text">
                 <span>
@@ -132,8 +132,7 @@ export default async function Home() {
                             if(i % 2 === 0){
                               return (
                                 <div className="ppp-dog-bio" key={`${l.litterName}-dog-bio-${i}`}>
-                                  <div className="ppp-dog-bio-image" style={{background: `url(${p.image !== null ? p.image.asset.url : null})`}}>
-                                  </div>
+                                  <img className="ppp-dog-bio-image"  src={`${p.image !== null ? p.image.asset.url : null}`} loading="lazy" />
                                   <div className="ppp-dog-bio-text">
                                     <span>{p.pomskyName}</span>
                                     <p>
@@ -160,8 +159,8 @@ export default async function Home() {
                             if(puppyIndex & 1){
                               return (
                                 <div className="ppp-dog-bio" key={`${l.litterName}-dog-bio-${puppyIndex}`} >
-                                  <div className="ppp-dog-bio-image" style={{background: `url(${p.image !== null ? p.image.asset.url : null})`}}>
-                                  </div>
+                                  <img className="ppp-dog-bio-image"  src={`${p.image !== null ? p.image.asset.url : null}`} loading="lazy" />
+                       
                                   <div className="ppp-dog-bio-text">
                                     <span>{p.pomskyName}</span>
                                     <p>
@@ -179,7 +178,6 @@ export default async function Home() {
                   </div>
                 </div>
               </div>
-              <div>Y</div>
             </div>
           </div>
         </div>
