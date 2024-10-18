@@ -8,7 +8,7 @@ type Payload = {
   firstName: string,
   lastName: string,
   email : string,
-  phoneNumber : string,
+  phone : string,
   message: string
 }
 
@@ -22,7 +22,7 @@ export  async function POST(req : NextRequest) {
       react: EmailTemplate({ firstName: formData.firstName,
          lastName : formData.lastName, 
          email : formData.email, 
-         phoneNumber : formData.phoneNumber,
+         phone : formData.phone,
          message : formData.message
       }) as React.ReactElement,
     });

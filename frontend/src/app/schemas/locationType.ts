@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 
 export const locationType = defineType({
     name: 'location',
-    title: 'Location',
+    title: 'Locations',
     type: 'document',
     fields: [
       defineField({

@@ -122,8 +122,9 @@ export default async function Home() {
               <div>
                 <div className="ppp-flex-container ppp-a-pomsky ">
                   <div className="half-column">
+              
                   { data.litters.map((l : ILitter )=>{
-             
+                    <div>{l.litterName}</div>
                     if(l.litterName  === "Adult Pomskys" ){
                       return(
                         <>
@@ -151,6 +152,7 @@ export default async function Home() {
                   </div>
                   <div className="half-column">
                   { data.litters.map((l : ILitter)=>{
+                 
                     if(l.litterName === "Adult Pomskys" ){
                       return(
                         <>

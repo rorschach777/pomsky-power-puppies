@@ -33,7 +33,7 @@ const Inclusions = () => {
                         Properly done ENS provides the puppies with improved growth and development in their immune and cardiovascular systems, stress tolerance, and so much more. 
                         </p>
                         <Button variant="bordered" color="secondary">
-                            <Link href="https://www.trupanion.com/" >Learn More</Link>
+                            <Link rel="" href="https://www.trupanion.com/" >Learn More</Link>
                         </Button>
                     </div>
                     <div className="ppp-inclusion">

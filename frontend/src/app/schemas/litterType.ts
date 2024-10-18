@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 
 export const litterType = defineType({
     name: 'litter',
-    title: 'Litter',
+    title: 'Litters',
     type: 'document',
     fields: [
       defineField({

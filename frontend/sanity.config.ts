@@ -1,15 +1,18 @@
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 import {Config, defineConfig} from 'sanity'
 import { deskTool } from "sanity/desk";
 import { schemaTypes } from './src/app/schemas'
-import {dataId} from './src/environment';
+import { projectId, dataset } from '@/environment';
 
 export default defineConfig<Config>({
   basePath: "/studio",
   name: "sanity-nextjs-site",
   title: "Pomsky Power Puppies",
-  projectId: "awsvxwrz",
-  dataset: "production",
-
+  projectId: projectId,
+  dataset: dataset,
   plugins: [deskTool()],
   schema: { types: schemaTypes },
 });

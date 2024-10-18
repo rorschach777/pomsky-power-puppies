@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 
 export const pomskyType = defineType({
     name: 'pomsky',
-    title: 'Pomsky',
+    title: 'Pomskies',
     type: 'document',
     fields: [
       defineField({
