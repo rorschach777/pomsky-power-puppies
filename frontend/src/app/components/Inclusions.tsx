@@ -23,12 +23,12 @@ const Inclusions = () => {
                         Once our puppies begin to romp and play, they are introduced to puppy manners, a form of training using positive reinforcement and behavior redirecting. 
                         </p>
                         <Button variant="bordered" color="secondary">
-                            <Link href="https://www.trupanion.com/" >Learn More</Link>
+                            <Link href="https://youtu.be/uQ99n2kSdhs?si=itmTMoDXELLHobyP" rel="">Learn More</Link>
                         </Button>
                     </div>
                     <div className="ppp-inclusion">
                         <img src="/images/icons/icon-3.svg"  /> 
-                        <h4>30 Day Pet Insurance</h4>
+                        <h4>30-Day Pet Insurance</h4>
                         <p>
                         Properly done ENS provides the puppies with improved growth and development in their immune and cardiovascular systems, stress tolerance, and so much more. 
                         </p>
@@ -43,7 +43,7 @@ const Inclusions = () => {
                         Trupanian sponsors each puppy by providing each puppy with 30 days free pet insurance, excluding California and NY, as their state laws forbid this.
                         </p>
                         <Button variant="bordered" color="secondary">
-                            <Link href="https://www.trupanion.com/" >Learn More</Link>
+                            <Link href="tel:6108000012" >Text or Call Today</Link>
                         </Button>
                     </div>
                 </div>
