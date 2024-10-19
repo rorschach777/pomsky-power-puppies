@@ -29,6 +29,7 @@ const PAGE_DATA = `*[_type == "page"]{
     _id,
     description, 
     litterParents,
+    publishedAt,
     published,
     location[]->{
       locationName
