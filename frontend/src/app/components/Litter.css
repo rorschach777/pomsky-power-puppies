@@ -3,6 +3,7 @@
   .litter .ppp-flex-container {
     flex-wrap: wrap;
     justify-content: center;
+    align-items: start;
   }
   
   .litter .ppp-flex-container > div {

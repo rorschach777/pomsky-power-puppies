@@ -29,6 +29,7 @@ const PAGE_DATA = `*[_type == "page"]{
     _id,
     description, 
     litterParents,
+    published,
     location[]->{
       locationName
     },
@@ -122,7 +123,7 @@ export default async function Home() {
               <div>
                 <div className="ppp-flex-container ppp-a-pomsky ">
                   <div className="half-column">
-              
+                  
                   { data.litters.map((l : ILitter )=>{
                     <div>{l.litterName}</div>
                     if(l.litterName  === "Adult Pomskys" ){

@@ -118,52 +118,55 @@ const Litter = (props ) => {
         let puppiesToDisplay = false;
         if(litterState.filteredResults.length > 0){
             
-
+      
             return litterState.filteredResults.map((litter, i)=> {
-                return(
-                    <div className="ppp-container" key={`${litter.litterName}-${i}`}>
-                        {litter.litterParents !== null && ( 
-                            <div className="litter-title">
-                                <div className="litter-parents">{litter.litterParents}</div>
-                                <div>
-                                    {litter.description.length > 0 && (
-                                        litter.description.map(((d,i)=>{
-                                            return <p key={`description-${i}`}>{d.children[0].text}</p>;
-                                        }))
-                                    )}
+                if(litter.published){
+                    return(
+                        <div className="ppp-container" key={`${litter.litterName}-${i}`}>
+                            {litter.litterParents !== null && ( 
+                                <div className="litter-title">
+                                    <div className="litter-parents">{litter.litterParents}</div>
+                                    <div>
+                                        {litter.description.length > 0 && (
+                                            litter.description.map(((d,i)=>{
+                                                return <p key={`description-${i}`}>{d.children[0].text}</p>;
+                                            }))
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-
-                        <div className="ppp-flex-container ">
-                        
-                            { litter.puppies.map((puppy, index)=>{
-                                if(puppy.isPuppy){
-                                    puppiesToDisplay = true;
-                                    return (
-                                        <PuppyCard 
-                                        key={`puppy-${index}`}
-                                        description={puppy.description}
-                                        name={puppy.pomskyName} 
-                                        weight={puppy.weight} 
-                                        price={puppy.price}
-                                        location={litter.location[0].locationName} 
-                                        available={puppy.currentlyAvailable}
-                                        image={puppy.image}
-                                        backgroundImage={puppy.backgroundImage}
-                                        female={puppy.female}
-                                        
-                                        />
-                                    );
-                                }
-                            
-                            })}
-                            { puppiesToDisplay === false && (
-                                <div className="ppp-no-puppies-message">Sorry, there were no matching results.</div>
                             )}
+    
+                            <div className="ppp-flex-container ">
+                            
+                                { litter.puppies.map((puppy, index)=>{
+                                    if(puppy.isPuppy && puppy.published ){
+                                        puppiesToDisplay = true;
+                                        return (
+                                            <PuppyCard 
+                                            key={`puppy-${index}`}
+                                            description={puppy.description}
+                                            name={puppy.pomskyName} 
+                                            weight={puppy.weight} 
+                                            price={puppy.price}
+                                            location={litter.location[0].locationName} 
+                                            available={puppy.currentlyAvailable}
+                                            image={puppy.image}
+                                            backgroundImage={puppy.backgroundImage}
+                                            female={puppy.female}
+                                            
+                                            />
+                                        );
+                                    }
+                                
+                                })}
+                                { puppiesToDisplay === false && (
+                                    <div className="ppp-no-puppies-message">Sorry, there were no matching results.</div>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                )
+                    )
+                }
+          
             })
         } 
 
