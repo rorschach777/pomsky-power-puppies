@@ -70,7 +70,8 @@ const litterReducer = (state, action) => {
 const Litter = (props ) => {
     const [litterState, litterDispatch] = useReducer(litterReducer, initialState);
     useEffect(()=>{
-        const defaultPuppies = props.data.litters.map(l=>{return l});
+        const sortedLitters = props.data.litters.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt) );
+        const defaultPuppies = sortedLitters.map(l=>{return l});
         litterDispatch({type: "DEFAULT_SETUP", payload : { value : defaultPuppies}});
     },[])
 
@@ -125,7 +126,7 @@ const Litter = (props ) => {
                         <div className="ppp-container" key={`${litter.litterName}-${i}`}>
                             {litter.litterParents !== null && ( 
                                 <div className="litter-title">
-                                    <div className="litter-parents">{litter.litterParents}</div>
+                                    <div className="litter-parents">{litter.litterParents} | {litter.publishedAt}</div>
                                     <div>
                                         {litter.description.length > 0 && (
                                             litter.description.map(((d,i)=>{
