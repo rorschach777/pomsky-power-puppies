@@ -51,6 +51,7 @@ const PAGE_DATA = `*[_type == "page"]{
       },
       eyeColor,
       isPuppy,
+      showPrice,
       price
     }
   }

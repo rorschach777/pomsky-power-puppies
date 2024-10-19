@@ -58,6 +58,11 @@ export const pomskyType = defineType({
         validation: (rule) => rule.required(),
       }),
       defineField({
+        name: 'showPrice',
+        type: 'boolean',
+        validation: (rule) => rule.required(),
+      }),
+      defineField({
         name: 'weight',
         type: 'number'
       }),

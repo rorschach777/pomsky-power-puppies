@@ -148,6 +148,7 @@ const Litter = (props ) => {
                                             name={puppy.pomskyName} 
                                             weight={puppy.weight} 
                                             price={puppy.price}
+                                            showPrice={puppy.showPrice}
                                             location={litter.location[0].locationName} 
                                             available={puppy.currentlyAvailable}
                                             image={puppy.image}
@@ -169,9 +170,6 @@ const Litter = (props ) => {
           
             })
         } 
-
-        
-
     }
     
     return(

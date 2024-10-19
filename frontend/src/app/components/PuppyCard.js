@@ -15,8 +15,11 @@ const PuppyCard = (props) => {
                     <div className="puppy-card-bottom-status">Status: 
                         <Badge content="" color={props.available ? "success" : "danger"} shape="circle" placement="bottom-right"></Badge>
                         {props.available ? 'Available' : 'Sold'}</div>
-                    <div>Price: 
-                         ${props.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                    { props.showPrice && (
+                        <div>
+                            Price: ${props.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        </div>
+                    )}
                     <div>Location: {props.location}</div>
                     <div>{props.female ? 'Female' : 'Male'}</div>
                 </div>
