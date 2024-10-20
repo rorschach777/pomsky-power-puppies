@@ -123,8 +123,6 @@ select {
 }
 
 .hero {
-  background-image: url('/images/ppp-hero.webp');
-
   transform: scaleY(1);
   background-size: cover;
   background-position: center;
@@ -133,7 +131,9 @@ select {
   line-height: 8.2rem;
   padding: 3.5rem 0;
   box-sizing: border-box;
+  transition: all .2s ease;
 }
+
 
 
 
@@ -147,7 +147,7 @@ select {
   color: var(--ppp-primary);
   background-color: rgba(255,255,255,.4);
   border-radius: .5rem;
-  
+  overflow: hidden;
 
 }
 
@@ -441,10 +441,17 @@ div[data-ui="Container"]{
 }
 
 
-@media only screen and (max-width: 46.8rem){
+@media only screen and (max-width: 76.8rem){
   .hero-container {
     margin: 0 auto; 
   
   }
   
+}
+
+.hide {
+  opacity: 0;
+}
+.show {
+  opacity: 1 !important;
 }
