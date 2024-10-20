@@ -6,8 +6,6 @@ import {useReducer, useEffect} from "react";
 import './Litter.css'
 import {removeDuplicates} from '../utils/arrayMethods'
 
-import {RadioGroup, Radio} from "@nextui-org/react";
-
 const initialState = {
     allResults: [],
     filteredResults: [],
