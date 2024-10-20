@@ -187,28 +187,7 @@ const Litter = (props ) => {
             </div>
         </div>
         <div className="litter">
-            <div className="ppp-flex-container">
-                <div>
-                    <RadioGroup
-                        label="Show by location"
-                        color="secondary"
-                        >
-                        { 
-                            
-                            uniqueLocations.map(l=>{
-                                return (
-                                    <Radio value={l} description={`Litters that are located in ${l}`} >
-                                       { l}
-                                    </Radio> 
-                                    );
-                            })
-                        }
-           
-                    </RadioGroup>
-                </div>
-                { createPuppies() }
-            </div>
-   
+            { createPuppies() }
         </div>
         </>
        
