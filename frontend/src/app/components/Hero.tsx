@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, PropsWithChildren } from "react";
+import { useLayoutEffect, PropsWithChildren } from "react";
 import {Button, Link} from "@nextui-org/react";
 
 
@@ -11,7 +11,6 @@ const loadBackground = () => {
         c.setAttribute("style", `background-image:url('${imageSrc}')`);
         c.classList.add('show');
     });
-    
 }
 
 
@@ -20,7 +19,7 @@ type Props = {
 }
 
 const Hero = (props: PropsWithChildren<Props> ) => {
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         loadBackground();
     },[]);
     return(
