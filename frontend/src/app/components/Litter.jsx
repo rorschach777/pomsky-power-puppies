@@ -168,7 +168,6 @@ const Litter = (props ) => {
             })
         } 
     }
-    const uniqueLocations = removeDuplicates(props.data.litters.map(l=>l.location[0].locationName));
     return(
         <>
         <div className="ppp-container filters">
