@@ -4,13 +4,13 @@ import styles from "./page.module.css";
 
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
-import {Button, Link} from "@nextui-org/react";
 import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
 import { Metadata } from "next";
 
 import * as React from "react";
 // import Gallery from './components/Gallery'
 import { ILitter, IPuppy } from './types/index'
+import Hero from "./components/Hero";
 
 
 import "./components/FilterList";
@@ -64,6 +64,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 
 
+
+
 export default async function Home() {
   const request = (await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options)).filter(p=>p.title==="Home");
   const data = await request[0];
@@ -72,29 +74,7 @@ export default async function Home() {
     <>
       <div className={styles.page}>
         <main className={styles.main}>
-        <div className="hero">
-          <div className="hero-container">
-            <h1>Ethical Dog Breeders</h1>
-            <p>
-            We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
-            </p>
-            <div className="established">
-              <span></span>
-              <span> Since 2017 </span>
-              <span></span>
-            </div>
-            <p>
-            
-            </p>
-            <div className="cta">
-              <h2>Waitlist Currently Open</h2>
-              <p>Make your home a puppies home by going through our process!</p>
-              <Button size="lg"  color="primary" >
-                <Link  href="/contact"> Join Waitlist </Link>
-              </Button> 
-            </div>
-          </div>
-        </div>
+        <Hero   dataImageSrc="/images/ppp-hero.webp" />
         <Litter data={data}/>
         {/* <Gallery images={["ppp-1", "ppp-2", "ppp-3"]}/> */}
         <div className="adult-pomsky">
