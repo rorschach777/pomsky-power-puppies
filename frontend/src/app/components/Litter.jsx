@@ -6,7 +6,7 @@ import {useReducer, useEffect} from "react";
 import './Litter.css'
 import {removeDuplicates} from '../utils/arrayMethods'
 
-
+import {RadioGroup, Radio} from "@nextui-org/react";
 
 const initialState = {
     allResults: [],
@@ -118,9 +118,8 @@ const Litter = (props ) => {
     const createPuppies = () => {
         let puppiesToDisplay = false;
         if(litterState.filteredResults.length > 0){
-            
-      
             return litterState.filteredResults.map((litter, i)=> {
+     
                 if(litter.published){
                     return(
                         <div className="ppp-container" key={`${litter.litterName}-${i}`}>
@@ -138,7 +137,6 @@ const Litter = (props ) => {
                             )}
     
                             <div className="ppp-flex-container ">
-                            
                                 { litter.puppies.map((puppy, index)=>{
                                     if(puppy.isPuppy && puppy.published ){
                                         puppiesToDisplay = true;
@@ -172,7 +170,7 @@ const Litter = (props ) => {
             })
         } 
     }
-    
+    const uniqueLocations = removeDuplicates(props.data.litters.map(l=>l.location[0].locationName));
     return(
         <>
         <div className="ppp-container filters">
@@ -189,7 +187,28 @@ const Litter = (props ) => {
             </div>
         </div>
         <div className="litter">
-            { createPuppies() }
+            <div className="ppp-flex-container">
+                <div>
+                    <RadioGroup
+                        label="Show by location"
+                        color="secondary"
+                        >
+                        { 
+                            
+                            uniqueLocations.map(l=>{
+                                return (
+                                    <Radio value={l} description={`Litters that are located in ${l}`} >
+                                       { l}
+                                    </Radio> 
+                                    );
+                            })
+                        }
+           
+                    </RadioGroup>
+                </div>
+                { createPuppies() }
+            </div>
+   
         </div>
         </>
        
