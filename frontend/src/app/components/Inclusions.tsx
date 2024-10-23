@@ -37,7 +37,7 @@ const Inclusions = () => {
                         </Button>
                     </div>
                     <div className="ppp-inclusion">
-                        <img  alt="We go above and beyond to keep our puppy's healthy" src="/images/icons/icon-4.svg"  /> 
+                        <img  alt="We go above and beyond to keep our puppy&apos;s healthy" src="/images/icons/icon-4.svg"  /> 
                         <h4>Health</h4>
                         <p>
                         Each puppy's contract includes our health guarantee. Still, we go above and beyond with our puppy's health by providing each puppy with a thorough vet health certificate. Any puppy traveling with our flight nanny receives a flight certificate. We raise our puppies in a clean, healthy home! Their health reflects this.
