@@ -40,7 +40,7 @@ const Inclusions = () => {
                         <Image  alt="We go above and beyond to keep your puppy healthy" src="/images/icons/icon-4.svg"  /> 
                         <h4>Health</h4>
                         <p>
-                        Each puppy's contract includes our health guarantee. Still, we go above and beyond with our puppy's health by providing each puppy with a thorough vet health certificate. Any puppy traveling with our flight nanny receives a flight certificate. We raise our puppies in a clean, healthy home! Their health reflects this.
+                        Each puppy&apos;s contract includes our health guarantee. Still, we go above and beyond with our puppy&apos;s health by providing each puppy with a thorough vet health certificate. Any puppy traveling with our flight nanny receives a flight certificate. We raise our puppies in a clean, healthy home! Their health reflects this.
                         </p>
                         <Button variant="bordered" color="secondary">
                             <Link href="tel:6108000012" aria-description="Get in touch with us today by calling or texting" >Text or Call Today</Link>
