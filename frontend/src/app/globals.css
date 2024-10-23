@@ -132,6 +132,8 @@ select {
   padding: 3.5rem 0;
   box-sizing: border-box;
   transition: all .2s ease;
+  background-color: var(--ppp-secondary);
+  min-height: 4.5rem;
 }
 
 
@@ -454,4 +456,16 @@ div[data-ui="Container"]{
 }
 .show {
   opacity: 1 !important;
+}
+
+
+.ppp-spinner-container {
+  background: linear-gradient(94deg, rgb(174 221 255 / 80%), rgb(146 129 253 / 41%));
+  min-height: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ppp-spinner-container > .ppp-spinner-container-inner {
+  width: 5rem;
 }

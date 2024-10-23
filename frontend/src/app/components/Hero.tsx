@@ -1,7 +1,8 @@
 "use client";
 
-import { useLayoutEffect, PropsWithChildren } from "react";
-import {Button, Link} from "@nextui-org/react";
+import { PropsWithChildren, useEffect, useState } from "react";
+import {Button, Link, Spinner} from "@nextui-org/react";
+
 
 
 const loadBackground = () => {
@@ -18,35 +19,57 @@ type Props = {
     dataImageSrc: string
 }
 
+
+
 const Hero = (props: PropsWithChildren<Props> ) => {
-    useLayoutEffect(()=>{
+
+  const [loaded, setLoaded] = useState(false);
+  useEffect(()=>{
+    setLoaded(true)
+  },[])  
+  useEffect(()=>{
         loadBackground();
-    },[]);
+  },[loaded]);
+
+
     return(
-        <div className="hero ppp-lazy-load hide" data-image-src={props.dataImageSrc} style={{backgroundImage: 'url()'}}>
-          <div className="hero-container" >
-            <h1>Ethical Dog Breeders</h1>
-            <p>
-            We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
-            </p>
-            <div className="established">
-              <span></span>
-              <span> Since 2017 </span>
-              <span></span>
-            </div>
-            <p>
-            
-            </p>
-            <div className="cta">
-              <h2>Waitlist Currently Open</h2>
-              <p>Make your home a puppies home by going through our process!</p>
-              <Button size="lg"  color="primary" >
-                <Link  href="/contact"> Join Waitlist </Link>
-              </Button> 
+      <>
+        {loaded === true  && (
+                <div className="hero ppp-lazy-load hide" data-image-src={props.dataImageSrc} style={{backgroundImage: 'url()'}}>
+                <div className="hero-container" >
+                  <h1>Ethical Dog Breeders</h1>
+                  <p>
+                  We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
+                  </p>
+                  <div className="established">
+                    <span></span>
+                    <span> Since 2017 </span>
+                    <span></span>
+                  </div>
+                  <p>
+                  
+                  </p>
+                  <div className="cta">
+                    <h2>Waitlist Currently Open</h2>
+                    <p>Make your home a puppies home by going through our process!</p>
+                    <Button size="lg"  color="primary" >
+                      <Link  href="/contact"> Join Waitlist </Link>
+                    </Button> 
+                  </div>
+                </div>
+             
+              </div>
+        )}
+        {loaded === false && (
+          <div className="ppp-spinner-container">
+            <div className="ppp-spinner-container-inner">
+              <Spinner color="secondary"/>
             </div>
           </div>
-       
-        </div>
+  
+        )}
+      </>
+  
     );
 }
 

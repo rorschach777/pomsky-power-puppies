@@ -1,6 +1,6 @@
 import './Footer.css';
 import Logo from './Logo';
-import Image from 'next/image';
+
 const Footer = () => {
     return (
         <footer>
@@ -16,12 +16,12 @@ const Footer = () => {
                         <ul>
                             <li>
                                 <a  href="https://www.instagram.com/pomskypowerpuppies/" target="_blank" >
-                                    <Image alt="Check us out on our instagram page" src="./images/icons/instagram.svg" loading="lazy"/>
+                                    <img alt="Check us out on our instagram page" src="./images/icons/instagram.svg" loading="lazy"/>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.facebook.com/PomskyPowerPuppies/" target="_blank" >
-                                    <Image alt="Check us out on facebook" src="./images/icons/facebook.svg" loading="lazy"/>
+                                    <img alt="Check us out on facebook" src="./images/icons/facebook.svg" loading="lazy"/>
                                 </a>
                              </li>
                         </ul>
