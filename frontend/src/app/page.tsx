@@ -144,7 +144,7 @@ export default async function Home() {
                             if(puppyIndex & 1){
                               return (
                                 <div className="ppp-dog-bio" key={`${l.litterName}-dog-bio-${puppyIndex}`} >
-                                  <img className="ppp-dog-bio-image"  src={`${p.image !== null ? p.image.asset.url : null}`} loading="lazy" />
+                                  <img className="ppp-dog-bio-image"  alt={`Hi my name is ${p.pomskyName}`} src={`${p.image !== null ? p.image.asset.url : null}`} loading="lazy" />
                        
                                   <div className="ppp-dog-bio-text">
                                     <span>{p.pomskyName}</span>

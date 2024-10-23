@@ -7,8 +7,6 @@ import {RadioGroup, Radio} from "@nextui-org/react";
 import './Litter.css'
 import {removeDuplicates} from '../utils/arrayMethods'
 
-
-
 const initialState = {
     allResults: [],
     filteredResults: [],
@@ -124,9 +122,8 @@ const Litter = (props ) => {
       
 
         if(litterState.filteredResults.length > 0){
-            
-      
             return litterState.filteredResults.map((litter, i)=> {
+     
                 if(litter.published){
                     return(
                         <div className="ppp-container" key={`${litter.litterName}-${i}`}>
@@ -144,6 +141,7 @@ const Litter = (props ) => {
                             )}
     
                             <div className="ppp-flex-container ">
+<<<<<<< HEAD
                          
                                 {/* <div className="ppp-puppy-list">
                                     { litter.puppies.map((puppy, index)=>{
@@ -172,6 +170,33 @@ const Litter = (props ) => {
                                         <div className="ppp-no-puppies-message"></div>
                                     )}
                                 </div> */}
+=======
+                                { litter.puppies.map((puppy, index)=>{
+                                    if(puppy.isPuppy && puppy.published ){
+                                        puppiesToDisplay = true;
+                                        return (
+                                            <PuppyCard 
+                                            key={`puppy-${index}`}
+                                            description={puppy.description}
+                                            name={puppy.pomskyName} 
+                                            weight={puppy.weight} 
+                                            price={puppy.price}
+                                            showPrice={puppy.showPrice}
+                                            location={litter.location[0].locationName} 
+                                            available={puppy.currentlyAvailable}
+                                            image={puppy.image}
+                                            backgroundImage={puppy.backgroundImage}
+                                            female={puppy.female}
+                                            
+                                            />
+                                        );
+                                    }
+                                
+                                })}
+                                { puppiesToDisplay === false && (
+                                    <div className="ppp-no-puppies-message"></div>
+                                )}
+>>>>>>> master
                             </div>
                         </div>
                     )
@@ -180,7 +205,6 @@ const Litter = (props ) => {
             })
         } 
     }
-    
     return(
         <>
         <div className="ppp-container filters">
