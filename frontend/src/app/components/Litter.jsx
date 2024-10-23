@@ -3,6 +3,7 @@
 import PuppyCard from './PuppyCard';
 import FilterList from "./FilterList";
 import {useReducer, useEffect} from "react";
+import {RadioGroup, Radio} from "@nextui-org/react";
 import './Litter.css'
 import {removeDuplicates} from '../utils/arrayMethods'
 
@@ -68,6 +69,7 @@ const litterReducer = (state, action) => {
 
 
 const Litter = (props ) => {
+    const locations = removeDuplicates(props.data.litters.map((l,i)=>l.location[0].locationName));
     const [litterState, litterDispatch] = useReducer(litterReducer, initialState);
     useEffect(()=>{
         const sortedLitters = props.data.litters.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
@@ -116,7 +118,9 @@ const Litter = (props ) => {
 
 
     const createPuppies = () => {
-        let puppiesToDisplay = false;
+        
+      
+
         if(litterState.filteredResults.length > 0){
             
       
@@ -138,32 +142,34 @@ const Litter = (props ) => {
                             )}
     
                             <div className="ppp-flex-container ">
-                            
-                                { litter.puppies.map((puppy, index)=>{
-                                    if(puppy.isPuppy && puppy.published ){
-                                        puppiesToDisplay = true;
-                                        return (
-                                            <PuppyCard 
-                                            key={`puppy-${index}`}
-                                            description={puppy.description}
-                                            name={puppy.pomskyName} 
-                                            weight={puppy.weight} 
-                                            price={puppy.price}
-                                            showPrice={puppy.showPrice}
-                                            location={litter.location[0].locationName} 
-                                            available={puppy.currentlyAvailable}
-                                            image={puppy.image}
-                                            backgroundImage={puppy.backgroundImage}
-                                            female={puppy.female}
-                                            
-                                            />
-                                        );
-                                    }
-                                
-                                })}
-                                { puppiesToDisplay === false && (
-                                    <div className="ppp-no-puppies-message"></div>
-                                )}
+                         
+                                {/* <div className="ppp-puppy-list">
+                                    { litter.puppies.map((puppy, index)=>{
+                                        if(puppy.isPuppy && puppy.published ){
+                                            puppiesToDisplay = true;
+                                            return (
+                                                <PuppyCard 
+                                                key={`puppy-${index}`}
+                                                description={puppy.description}
+                                                name={puppy.pomskyName} 
+                                                weight={puppy.weight} 
+                                                price={puppy.price}
+                                                showPrice={puppy.showPrice}
+                                                location={litter.location[0].locationName} 
+                                                available={puppy.currentlyAvailable}
+                                                image={puppy.image}
+                                                backgroundImage={puppy.backgroundImage}
+                                                female={puppy.female}
+                                                
+                                                />
+                                            );
+                                        }
+                                    
+                                    })}
+                                    { puppiesToDisplay === false && (
+                                        <div className="ppp-no-puppies-message"></div>
+                                    )}
+                                </div> */}
                             </div>
                         </div>
                     )
@@ -189,7 +195,33 @@ const Litter = (props ) => {
             </div>
         </div>
         <div className="litter">
-            { createPuppies() }
+            <div className="ppp-flex-container">
+                <div className="ppp-filter-options">
+                    <RadioGroup
+                        label="Show by location"
+                        color="secondary"
+                        defaultValue="london"
+                        >
+                            {locations.map((l,i)=>{
+                                return(
+                                    <Radio key={`location-name-${i + 1}`} value={l}>{l}</Radio>
+                                );
+                            })} 
+                    </RadioGroup>
+                    <RadioGroup
+                        label="Show by availability"
+                        color="secondary"
+                        defaultValue="london"
+                        >
+                            <Radio value="buenos-aires">All</Radio>
+                            <Radio value="sydney">Available</Radio>
+                            <Radio value="san-francisco">Sold</Radio>
+                    </RadioGroup>
+                </div>
+            
+                { createPuppies() }
+            </div>
+     
         </div>
         </>
        
