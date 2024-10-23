@@ -13,7 +13,7 @@ const Inclusions = () => {
                         Properly done ENS provides the puppies with improved growth and development in their immune and cardiovascular systems, stress tolerance, and so much more. 
                         </p>
                         <Button variant="bordered" color="secondary">
-                            <Link href="https://www.youtube.com/watch?v=WN93AiCx9Rc" >Learn More</Link>
+                            <Link href="https://www.youtube.com/watch?v=WN93AiCx9Rc" aria-description="Watch a video that shows in detail some of the benefits of ENS" >Learn More</Link>
                         </Button>
                     </div>
                     <div className="ppp-inclusion">
@@ -23,17 +23,17 @@ const Inclusions = () => {
                         Once our puppies begin to romp and play, they are introduced to puppy manners, a form of training using positive reinforcement and behavior redirecting. 
                         </p>
                         <Button variant="bordered" color="secondary">
-                            <Link href="https://youtu.be/uQ99n2kSdhs?si=itmTMoDXELLHobyP" rel="">Learn More</Link>
+                            <Link href="https://youtu.be/uQ99n2kSdhs?si=itmTMoDXELLHobyP" aria-description="We help give our puppies basic manners from their very first days" >Learn More</Link>
                         </Button>
                     </div>
                     <div className="ppp-inclusion">
                         <img src="/images/icons/icon-3.svg"  /> 
                         <h4>30-Day Pet Insurance</h4>
                         <p>
-                        Properly done ENS provides the puppies with improved growth and development in their immune and cardiovascular systems, stress tolerance, and so much more. 
+                            Trupanian sponsors each puppy by providing each puppy with 30 days free pet insurance, excluding California and NY, as their state laws forbid this.
                         </p>
                         <Button variant="bordered" color="secondary">
-                            <Link rel="" href="https://www.trupanion.com/" >Learn More</Link>
+                            <Link rel="" href="https://www.trupanion.com/" aria-description="Trupanian sponsors each puppy for 30-day free pet insurance - click here to learn more.">Learn More</Link>
                         </Button>
                     </div>
                     <div className="ppp-inclusion">
@@ -43,7 +43,7 @@ const Inclusions = () => {
                         Trupanian sponsors each puppy by providing each puppy with 30 days free pet insurance, excluding California and NY, as their state laws forbid this.
                         </p>
                         <Button variant="bordered" color="secondary">
-                            <Link href="tel:6108000012" >Text or Call Today</Link>
+                            <Link href="tel:6108000012" aria-description="Get in touch with us today by calling or texting" >Text or Call Today</Link>
                         </Button>
                     </div>
                 </div>
