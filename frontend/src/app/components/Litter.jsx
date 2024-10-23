@@ -109,10 +109,12 @@ const Litter = (props ) => {
     }
 
     const locationHandler = (inputValue) => {
+        alert("LOCATION CHANGED");
         updateFilterOptions({type: "location", inputValue : inputValue})
     }
     
     const statusHandler = (inputValue) => {
+        alert("STATUS CHANGED");
         updateFilterOptions({type: "status", inputValue : inputValue})
     }
 
