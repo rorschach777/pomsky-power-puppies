@@ -6,7 +6,7 @@ import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
 import { Metadata } from "next";
-import Image from "next/image";
+
 import * as React from "react";
 // import Gallery from './components/Gallery'
 import { ILitter, IPuppy } from './types/index'
@@ -144,10 +144,8 @@ export default async function Home() {
                             if(puppyIndex & 1){
                               return (
                                 <div className="ppp-dog-bio" key={`${l.litterName}-dog-bio-${puppyIndex}`} >
-                                  <Image className="ppp-dog-bio-image"  
-                                  alt={`Hi my name is ${p.pomskyName}`}
-                                  src={`${p.image !== null ? p.image.asset.url : null}`}
-                                  loading="lazy" />
+                                  <img className="ppp-dog-bio-image"  alt={`Hi my name is ${p.pomskyName}`} src={`${p.image !== null ? p.image.asset.url : null}`} loading="lazy" />
+                       
                                   <div className="ppp-dog-bio-text">
                                     <span>{p.pomskyName}</span>
                                     <p>
