@@ -81,7 +81,7 @@ export default async function Home() {
         <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">
               <div className="adult-pomsky-image">
-                <Image alt="Happy, Healthy, Pomsky Companions" loading="lazy" src="./images/ppp-adult.png"/>
+                <img alt="Happy, Healthy, Pomsky Companions" loading="lazy" src="./images/ppp-adult.png"/>
               </div>
               <div className="adult-pomsky-text">
                 <span>
