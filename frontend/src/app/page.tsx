@@ -119,7 +119,10 @@ export default async function Home() {
                                     alt={`Hi my name is ${p.pomskyName}`}
                                     className="ppp-dog-bio-image"  
                                     src={`${p.image !== null ? p.image.asset.url : null}`} 
-                                    loading="lazy" />
+                                    loading="lazy" 
+                                    width="55"
+                                    height="55"
+                                    />
                                   <div className="ppp-dog-bio-text">
                                     <span>{p.pomskyName}</span>
                                     <p>
@@ -150,7 +153,10 @@ export default async function Home() {
                                   <img className="ppp-dog-bio-image"  
                                   alt={`Hi my name is ${p.pomskyName}`}
                                   src={`${p.image !== null ? p.image.asset.url : null}`}
-                                  loading="lazy" />
+                                  loading="lazy"
+                                     width="55"
+                                    height="55"
+                                  />
                                   <div className="ppp-dog-bio-text">
                                     <span>{p.pomskyName}</span>
                                     <p>
