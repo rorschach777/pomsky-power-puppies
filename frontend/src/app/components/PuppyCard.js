@@ -26,6 +26,7 @@ const PuppyCard = (props) => {
                         </div>
                     )}
                     <div>Location: {props.location}</div>
+                    <div>Eye Color: {props.eyeColor}</div>
                     <div>{props.female ? 'Female' : 'Male'}</div>
                 </div>
             </div>
