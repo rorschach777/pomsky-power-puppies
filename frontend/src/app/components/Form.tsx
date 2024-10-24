@@ -104,7 +104,7 @@ const ContactForm = ( ) => {
     }
 
     const messageValidation = () => {
-        const pattern =  /^[a-zA-Z ]{5,140} [a-zA-Z ]{5,140}$/
+        const pattern =  /^[a-zA-Z,. ]{1,140} [a-zA-Z,. ]{1,140}$/
         const inputIsValid = pattern.test(messageRef.current!.value);
         formDispatch({type: ActionType.MESSAGE_UPDATE, payload: {value : messageRef.current!.value, isValid: inputIsValid}})
         
@@ -157,39 +157,42 @@ const ContactForm = ( ) => {
     return (
         <div className="ppp-form">
             <form>
-                <div className="form-group">
-         
-                    <label>First Name:</label>
-                    <input type="text" placeholder="John" ref={firstNameRef} onChange={firstNameValidation} className={ !formState.firstName.isValid && formState.firstName.updated  ? 'invalid-field' : ''}/>
-                    {!formState.firstName.isValid && formState.firstName.updated ? <span className="danger">Your First Name is too long or contains spaces.</span> : null}
-              
-                </div>
-                <div className="form-group">
-                    <label>Last Name:</label>
-                    <input type="text" placeholder="Doe"  ref={lastNameRef}  onChange={lastNameValidation} className={ !formState.lastName.isValid && formState.lastName.updated ? 'invalid-field' : ''}/>
-                    {!formState.lastName.isValid && formState.lastName.updated ?   <span className="danger">Your Last Name is too long or contains spaces.</span>  : null}
-                 
-                </div>
-                <div className="form-group">
-                    <label>Email:</label>
-                    <input type="email" ref={emailRef}  onBlur={emailValidation}  placeholder="example.email@gmail.com"  className={ !formState.email.isValid && formState.email.updated ? 'invalid-field' : ''}/>
-                    {!formState.email.isValid && formState.email.updated ?   <span className="danger">Your email address is in the incorrect format.</span> : null}
-                  
-                </div>
-                <div className="form-group">
-                    <label>Phone Number:</label>
-                    <input  type="phone" ref={phoneRef}  onBlur={phoneValidation} placeholder="999-999-9999" className={ !formState.phone.isValid && formState.phone.updated ? 'invalid-field' : ''}/>
-                    {!formState.phone.isValid && formState.phone.updated ?  <span className="danger">Your phone number is in the incorrect format. Please use the following format: 999-999-9999</span> : null}
-                   
-                </div>
-                <div className="form-group">
-                    <label>Message:</label>
-                    <textarea  ref={messageRef}  onBlur={messageValidation} placeholder="I wanted to inquire to see the status of..."  className={ !formState.message.isValid && formState.message.updated ? 'invalid-field' : ''}/>
-                    {!formState.message.isValid && formState.message.updated ? <span className="danger">Your message was in the incorrect format.</span>: null}
-                </div>
-                <div>
-                    <button disabled={!formState.formIsValid} onClick={(e)=>submitHandler(e)}>Send</button>
-                </div>
+                {(formState.submission.successful === false) && (
+                    <>
+                        <div className="form-group">
+                            <label>First Name:</label>
+                            <input type="text" placeholder="John" ref={firstNameRef} onChange={firstNameValidation} className={ !formState.firstName.isValid && formState.firstName.updated  ? 'invalid-field' : ''}/>
+                            {!formState.firstName.isValid && formState.firstName.updated ? <span className="danger">Your First Name is too long or contains spaces.</span> : null}
+                        </div>
+                        <div className="form-group">
+                            <label>Last Name:</label>
+                            <input type="text" placeholder="Doe"  ref={lastNameRef}  onChange={lastNameValidation} className={ !formState.lastName.isValid && formState.lastName.updated ? 'invalid-field' : ''}/>
+                            {!formState.lastName.isValid && formState.lastName.updated ?   <span className="danger">Your Last Name is too long or contains spaces.</span>  : null}
+                        
+                        </div>
+                        <div className="form-group">
+                            <label>Email:</label>
+                            <input type="email" ref={emailRef}  onBlur={emailValidation}  placeholder="example.email@gmail.com"  className={ !formState.email.isValid && formState.email.updated ? 'invalid-field' : ''}/>
+                            {!formState.email.isValid && formState.email.updated ?   <span className="danger">Your email address is in the incorrect format.</span> : null}
+                        
+                        </div>
+                        <div className="form-group">
+                            <label>Phone Number:</label>
+                            <input  type="phone" ref={phoneRef}  onBlur={phoneValidation} placeholder="999-999-9999" className={ !formState.phone.isValid && formState.phone.updated ? 'invalid-field' : ''}/>
+                            {!formState.phone.isValid && formState.phone.updated ?  <span className="danger">Your phone number is in the incorrect format. Please use the following format: 999-999-9999</span> : null}
+                            
+                        </div>
+                        <div className="form-group">
+                            <label>Message:</label>
+                            <textarea  ref={messageRef}  onChange={messageValidation} placeholder="I wanted to inquire to see the status of..."  className={ !formState.message.isValid && formState.message.updated ? 'invalid-field' : ''}/>
+                            {!formState.message.isValid && formState.message.updated ? <span className="danger">Your message was in the incorrect format.</span>: null}
+                        </div>
+                        <div>
+                            <button disabled={!formState.formIsValid} onClick={(e)=>submitHandler(e)}>Send</button>
+                        </div>
+                    </>
+                )}
+                
                 { formState.submission.tried && (
                     <div className="ppp-form-submission-feedback">
                        { formState.submission.successful && (
