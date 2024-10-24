@@ -1,5 +1,6 @@
 import './Footer.css';
 import Logo from './Logo';
+import { Image } from '@nextui-org/image';
 const Footer = () => {
     return (
         <footer>

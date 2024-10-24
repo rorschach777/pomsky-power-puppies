@@ -23,7 +23,8 @@ export const pageMeta = async ( params : IParams ) => {
     const data : IData = {
         title : page.metaTitle,
         description: page.description,
-        keywords: page.keywords
+        keywords: page.keywords,
+        
 
     }
     return data;

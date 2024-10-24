@@ -141,36 +141,6 @@ const Litter = (props ) => {
                             )}
     
                             <div className="ppp-flex-container ">
-<<<<<<< HEAD
-                         
-                                {/* <div className="ppp-puppy-list">
-                                    { litter.puppies.map((puppy, index)=>{
-                                        if(puppy.isPuppy && puppy.published ){
-                                            puppiesToDisplay = true;
-                                            return (
-                                                <PuppyCard 
-                                                key={`puppy-${index}`}
-                                                description={puppy.description}
-                                                name={puppy.pomskyName} 
-                                                weight={puppy.weight} 
-                                                price={puppy.price}
-                                                showPrice={puppy.showPrice}
-                                                location={litter.location[0].locationName} 
-                                                available={puppy.currentlyAvailable}
-                                                image={puppy.image}
-                                                backgroundImage={puppy.backgroundImage}
-                                                female={puppy.female}
-                                                
-                                                />
-                                            );
-                                        }
-                                    
-                                    })}
-                                    { puppiesToDisplay === false && (
-                                        <div className="ppp-no-puppies-message"></div>
-                                    )}
-                                </div> */}
-=======
                                 { litter.puppies.map((puppy, index)=>{
                                     if(puppy.isPuppy && puppy.published ){
                                         puppiesToDisplay = true;
@@ -196,7 +166,6 @@ const Litter = (props ) => {
                                 { puppiesToDisplay === false && (
                                     <div className="ppp-no-puppies-message"></div>
                                 )}
->>>>>>> master
                             </div>
                         </div>
                     )

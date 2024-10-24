@@ -6,7 +6,7 @@ import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
 import { Metadata } from "next";
-
+import Image from "next/image";
 import * as React from "react";
 // import Gallery from './components/Gallery'
 import { ILitter, IPuppy } from './types/index'
@@ -81,7 +81,12 @@ export default async function Home() {
         <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">
               <div className="adult-pomsky-image">
-                <Image alt="Happy, Healthy, Pomsky Companions" loading="lazy" src="./images/ppp-adult.png"/>
+                <Image 
+                alt="Happy, Healthy, Pomsky Companions" 
+                loading="lazy" 
+                src="/images/ppp-adult.png" 
+                width="200" 
+                height="307" />
               </div>
               <div className="adult-pomsky-text">
                 <span>
