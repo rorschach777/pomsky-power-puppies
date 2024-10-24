@@ -16,7 +16,8 @@ const loadBackground = () => {
 
 
 type Props = {
-    dataImageSrc: string
+    dataImageSrc: string,
+    dataMobileImageSrc: string
 }
 
 
@@ -24,9 +25,20 @@ type Props = {
 const Hero = (props: PropsWithChildren<Props> ) => {
 
   const [loaded, setLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const detectMobile = () => {
+    const screenWidth = window.screen.availWidth;
+    const mobile = screenWidth <= 480 ? true : false;
+    setIsMobile(mobile);
+  }
+
+
   useEffect(()=>{
-    setLoaded(true)
+    detectMobile();
+    setLoaded(true);
   },[])  
+
   useEffect(()=>{
         loadBackground();
   },[loaded]);
@@ -35,11 +47,15 @@ const Hero = (props: PropsWithChildren<Props> ) => {
     return(
       <>
         {loaded === true  && (
-                <div className="hero ppp-lazy-load hide" data-image-src={props.dataImageSrc} style={{backgroundImage: 'url()'}}>
+                <div 
+                 className="hero ppp-lazy-load hide"
+                 data-image-src={isMobile ? props.dataMobileImageSrc : props.dataImageSrc}
+                 style={{backgroundImage: 'url()'}}
+                >
                 <div className="hero-container" >
                   <h1>Ethical Dog Breeders</h1>
                   <p>
-                  We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
+                    We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
                   </p>
                   <div className="established">
                     <span></span>
