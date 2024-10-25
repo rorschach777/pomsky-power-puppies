@@ -1,13 +1,13 @@
 
 import {defineField, defineType} from 'sanity'
 
-export const eyeType = defineType({
-    name: 'eye',
-    title: 'Eye Colors',
+export const coatType = defineType({
+    name: 'coat',
+    title: 'Coats',
     type: 'document',
     fields: [
       defineField({
-        name: 'color',
+        name: 'coatDescription',
         type: 'string',
         validation: (rule) => rule.required(),
       }),

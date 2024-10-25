@@ -66,9 +66,14 @@ export const pomskyType = defineType({
         name: 'weight',
         type: 'number'
       }),
+      // defineField({
+      //   name: 'eyeColor',
+      //   type: 'string'
+      // }),
       defineField({
         name: 'eyeColor',
-        type: 'string'
+        type: 'reference',
+        to:  {type: 'eye'}
       }),
       defineField({
         name: 'description',

@@ -25,9 +25,10 @@ const PuppyCard = (props) => {
                             Price: ${props.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                         </div>
                     )}
+                    {/* <div>Coat:</div> */}
                     <div>Location: {props.location}</div>
                     <div>Eye Color: {props.eyeColor}</div>
-                    <div>{props.female ? 'Female' : 'Male'}</div>
+                    <div>Gender: {props.female ? 'Female' : 'Male'}</div>
                 </div>
             </div>
         </div>

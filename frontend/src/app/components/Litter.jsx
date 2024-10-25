@@ -145,7 +145,7 @@ const Litter = (props ) => {
                                             name={puppy.pomskyName} 
                                             weight={puppy.weight} 
                                             price={puppy.price}
-                                            eyeColor={puppy.eyeColor}
+                                            eyeColor={puppy.eyeColor != null ? puppy.eyeColor.color : "TBD "}
                                             showPrice={puppy.showPrice}
                                             location={litter.location[0].locationName} 
                                             available={puppy.currentlyAvailable}
