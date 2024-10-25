@@ -138,7 +138,6 @@ const Litter = (props ) => {
                                 { litter.puppies.map((puppy, index)=>{
                                     if(puppy.isPuppy && puppy.published ){
                                         puppiesToDisplay = true;
-                                        console.log(puppy);
                                         return (
                                             <PuppyCard 
                                             key={`puppy-${index}`}
