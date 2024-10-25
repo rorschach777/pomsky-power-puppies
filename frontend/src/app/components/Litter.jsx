@@ -138,6 +138,7 @@ const Litter = (props ) => {
                                 { litter.puppies.map((puppy, index)=>{
                                     if(puppy.isPuppy && puppy.published ){
                                         puppiesToDisplay = true;
+                                        console.log(puppy);
                                         return (
                                             <PuppyCard 
                                             key={`puppy-${index}`}
@@ -145,7 +146,7 @@ const Litter = (props ) => {
                                             name={puppy.pomskyName} 
                                             weight={puppy.weight} 
                                             price={puppy.price}
-                                            eyeColor={puppy.eyeColor}
+                                            eyeColor={puppy.eyeColor != null ? puppy.eyeColor.color : "TBD "}
                                             showPrice={puppy.showPrice}
                                             location={litter.location[0].locationName} 
                                             available={puppy.currentlyAvailable}

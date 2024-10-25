@@ -49,7 +49,9 @@ const PAGE_DATA = `*[_type == "page"]{
       backgroundImage{
         asset->
       },
-      eyeColor,
+      eyeColor-> {
+      color
+      },
       isPuppy,
       showPrice,
       price
