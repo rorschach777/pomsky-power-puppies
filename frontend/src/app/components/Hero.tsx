@@ -4,11 +4,6 @@ import {Button, Link} from "@nextui-org/react";
 import { lazy } from 'react';
 
 
-type Props = {
-    dataImageSrc: string,
-    dataMobileImageSrc: string
-}
-
 const LazyBackground = lazy(()=> import('./LazyBackground.jsx'));
 
 
