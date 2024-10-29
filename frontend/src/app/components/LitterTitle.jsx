@@ -1,7 +1,6 @@
 "use-client"
-import {useState} from 'react';
-import {Accordion, AccordionItem} from "@nextui-org/react";
 
+import {Accordion, AccordionItem} from "@nextui-org/react";
 
 const litterContent = (litterDescription) => {
     return (
@@ -12,11 +11,7 @@ const litterContent = (litterDescription) => {
 }
 
 const LitterTitle = (props) => {
-    const [showText, setShowText] = useState(false);
 
-    const clickHandler =  () => {
-        setShowText(!showText);
-    }
     return (
         <div className="litter-title">
             <div className="litter-parents">{props.litter.litterParents}</div>

@@ -2,7 +2,7 @@
 
 import PuppyCard from './PuppyCard';
 import {useReducer, useEffect} from "react";
-import {RadioGroup, Radio, input} from "@nextui-org/react";
+import {RadioGroup, Radio} from "@nextui-org/react";
 import {removeDuplicates} from '../utils/arrayMethods'
 import LitterTitle from "./LitterTitle";
 
@@ -89,7 +89,7 @@ const litterReducer = (state, action) => {
 
 
 const Litter = (props ) => {
-    const locations = removeDuplicates(props.data.litters.map((l,i)=>l.location[0].locationName));
+    const locations = removeDuplicates(props.data.litters.map((l)=>l.location[0].locationName));
     const [litterState, litterDispatch] = useReducer(litterReducer, initialState);
 
 
