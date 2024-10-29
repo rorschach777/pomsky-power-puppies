@@ -31,3 +31,17 @@ footer ul li:last-child {
 footer .logo {
     margin-left: -1.5rem;
 }
+
+.ppp-footer-inner-container {
+    display: flex;
+}
+
+@media only screen  and (max-width: 48rem) {
+    .ppp-footer-inner-container {
+        flex-direction: column;
+    } 
+    .ppp-footer-inner-container ul {
+        display: flex;
+        justify-content: center;
+    }
+}

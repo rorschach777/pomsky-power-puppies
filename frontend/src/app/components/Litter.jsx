@@ -1,23 +1,25 @@
 "use client";
 
 import PuppyCard from './PuppyCard';
-import FilterList from "./FilterList";
 import {useReducer, useEffect} from "react";
-import './Litter.css'
+import {RadioGroup, Radio} from "@nextui-org/react";
 import {removeDuplicates} from '../utils/arrayMethods'
+import LitterTitle from "./LitterTitle";
 
 const initialState = {
     allResults: [],
     filteredResults: [],
     filters: {
-
         useFilter : false,
+        description: {
+            value: ''
+        },
         location : {     
-            name : '',
+            value : '',
             use : false
         },
         status : {
-            available : '',
+            value : '',
             use: false
         }
     }
@@ -26,10 +28,18 @@ const litterReducer = (state, action) => {
     if (action.type === "DEFAULT_SETUP"){
         return {
             ...state,
-            allResults : action.payload.value,
-            filteredResults : action.payload.value,
+            allResults : action.payload.defaultPuppies,
+            filteredResults : action.payload.filteredResults,
             filters : {
-                ...state.filters
+                ...state.filters,
+                location : {
+                    ...state.filters.location,
+                    value : action.payload.location
+                },
+                status: {
+                    ...state.filters.status,
+                    value : action.payload.status
+                }
             
             }
         }
@@ -40,25 +50,38 @@ const litterReducer = (state, action) => {
             filteredResults : action.payload.filteredResults 
         }
     }
-    if (action.type === "DEFAULT_SETUP"){
+    if (action.type === "UPDATE_LOCATION"){
         return {
             ...state,
-            allResults : action.payload.value,
-            filteredResults : action.payload.value,
-            filters : {
-                ...state.filters
-            
+            filteredResults : action.payload.filteredResults,
+            filters: {
+                ...state.filters,
+                location: {
+                    ...state.filters.location,
+                    value: action.payload.location
+                }
             }
+         
+        }
+    }
+    if (action.type === "UPDATE_STATUS"){
+        return {
+            ...state,
+            filteredResults : action.payload.filteredResults,
+            filters: {
+                ...state.filters,
+                status: {
+                    ...state.filters.status,
+                    value: action.payload.status
+                }
+            }
+         
         }
     }
     if (action.type === "REMOVE_FILTER"){
         return {
             ...state,
             filteredResults : action.payload.value,
-            filters: {
-                ...state.filters,
-                useFilter: false, 
-            }
         }
     }
  
@@ -66,44 +89,74 @@ const litterReducer = (state, action) => {
 
 
 const Litter = (props ) => {
+    const locations = removeDuplicates(props.data.litters.map((l)=>l.location[0].locationName));
     const [litterState, litterDispatch] = useReducer(litterReducer, initialState);
+
+
     useEffect(()=>{
         const sortedLitters = props.data.litters.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
         const defaultPuppies = sortedLitters.map(l=>{return l});
-        litterDispatch({type: "DEFAULT_SETUP", payload : { value : defaultPuppies}});
+        const activeLitterLocation = "Edmeston, NY";
+        const filteredResults = defaultPuppies.filter(l=> { return l.location[0].locationName === activeLitterLocation}) 
+        litterDispatch({type: "DEFAULT_SETUP", payload : { defaultPuppies : defaultPuppies, filteredResults : filteredResults, location: 'Edmeston, NY', status : 'Available'}});
     },[])
 
     useEffect(()=>{
-        createPuppies() 
+        createPuppies();
     }, [litterState.filteredResults])
+
+    useEffect(()=>{
+
+    }, [litterState])
+
+
+
+
+
+    const filterLitters = ( params ) => {
+
+        let output = [];
+        // If it's location get the current status value... 
+        if(params.type === "location") {
+            output = [ ...litterState.allResults.filter(l=> l.location[0].locationName === params.inputValue)];
+  
+        } 
+        // If its status get the current location and add it in 
+        if (params.type === "status") {
+            let available = params.inputValue === "Available" ? true : false;
+            let resetFilters = params.inputValue === "All" ? true : false;
+         
+            // Filter for location first... 
+            let littersByLocation = litterState.allResults.filter(l => l.location[0].locationName === litterState.filters.location.value);
+            // Loop over the litters... Modify the litter so they only include the puppy's that are either available or not available... 
+            if(resetFilters === false){
+                littersByLocation.forEach(l=>{
+                    let updatedLitter = {
+                        ...l,
+                        puppies: l.puppies.filter(p=>p.currentlyAvailable === available)
+                    };
+                    output.push(updatedLitter);
+                })
+            } else {
+                output = [...littersByLocation]
+            }
+        }
+        return output;
+    }
 
 
     const updateFilterOptions = ({type, inputValue}) => {
-        let updatedFilterOptions = [...litterState.allResults];
-        let inputValueReset = false;
-        if(type === "location"){
-            updatedFilterOptions = [ ...updatedFilterOptions.filter(l=> l.location[0].locationName === inputValue)];
+        let updatedFilterOptions =  filterLitters({type : type, inputValue : inputValue})
+        if (type === "location") {
+           litterDispatch({type: "UPDATE_LOCATION", payload: { filteredResults : updatedFilterOptions, location : inputValue}});
         }
-        if(type==="status"){
-            const inputValueBool = inputValue === "Available" ? true : false;
-            inputValueReset = inputValue === "All" ? true : false;
-            if(inputValueReset === false) {
-                const filteredResults =  updatedFilterOptions.map(l=> {
-                    let updatedLitter = {
-                        ...l,
-                        puppies : []
-                    }
-                    updatedLitter.puppies = l.puppies.filter(p=> p.currentlyAvailable  === inputValueBool);
-             
-                    return updatedLitter;
-                })
-                updatedFilterOptions = [ ...filteredResults];   
-            }  
-            
+        if (type === "status") {
+            litterDispatch({type: "UPDATE_STATUS", payload: { filteredResults : updatedFilterOptions, status : inputValue }});
         }
-        litterDispatch({type: "UPDATE_FILTERS", payload: { filteredResults : updatedFilterOptions }});
     }
 
+
+ 
     const locationHandler = (inputValue) => {
         updateFilterOptions({type: "location", inputValue : inputValue})
     }
@@ -112,32 +165,18 @@ const Litter = (props ) => {
         updateFilterOptions({type: "status", inputValue : inputValue})
     }
 
-
     const createPuppies = () => {
-        let puppiesToDisplay = false;
         if(litterState.filteredResults.length > 0){
             return litterState.filteredResults.map((litter, i)=> {
      
-                if(litter.published){
+                if(litter.published && litter.litterName != "Adult Pomskys"){
                     return(
-                        <div className="ppp-container" key={`${litter.litterName}-${i}`}>
-                            {litter.litterParents !== null && ( 
-                                <div className="litter-title">
-                                    <div className="litter-parents">{litter.litterParents}</div>
-                                    <div>
-                                        {litter.description.length > 0 && (
-                                            litter.description.map(((d,i)=>{
-                                                return <p key={`description-${i}`}>{d.children[0].text}</p>;
-                                            }))
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-    
-                            <div className="ppp-flex-container ">
+                        <div  key={`${litter.litterName}-${i}`} className=" ppp-puppies ">
+                            <LitterTitle litter={litter}  />
+                            <div className="ppp-flex-container">
                                 { litter.puppies.map((puppy, index)=>{
                                     if(puppy.isPuppy && puppy.published ){
-                                        puppiesToDisplay = true;
+                               
                                         return (
                                             <PuppyCard 
                                             key={`puppy-${index}`}
@@ -158,9 +197,9 @@ const Litter = (props ) => {
                                     }
                                 
                                 })}
-                                { puppiesToDisplay === false && (
-                                    <div className="ppp-no-puppies-message"></div>
-                                )}
+                                {/* {
+                                     <div className="ppp-no-puppies-message"></div>
+                                } */}
                             </div>
                         </div>
                     )
@@ -169,23 +208,59 @@ const Litter = (props ) => {
             })
         } 
     }
+
+    const generateFilterList = () => {
+        return (
+            <>
+                <RadioGroup
+                    label="Show by Location"
+                    color="secondary"
+                    value={litterState.filters.location.value}
+                    onValueChange={locationHandler}
+                    >
+                        {locations.map((l,i)=>{
+                            return(
+                                <Radio key={`location-name-${i + 1}`} value={l}>{l}</Radio>
+                            );
+                        })} 
+                </RadioGroup>
+                <RadioGroup
+                    label="Show by Availability"
+                    color="secondary"
+                    value={litterState.filters.status.value}
+                    onValueChange={statusHandler}
+                    >
+                        <Radio value="All">All</Radio>
+                        <Radio value="Available">Available</Radio>
+                        <Radio value="Sold">Sold</Radio>
+                </RadioGroup>
+            </>
+        );
+    }
+
+ 
+
     return(
         <>
-        <div className="ppp-container filters">
-            <div className="ppp-litter-title">
-                <h2>Most Recent Litters</h2>
-            </div>
-            <div className="filters-list" >
-                <span>Filters:</span>
-                <div className="filters-list-selects">
-                    <FilterList change={locationHandler} options={ removeDuplicates(props.data.litters.map(l=>l.location[0].locationName))} label="Location:" />
-                    <FilterList change={statusHandler} options={ ["All", "Sold", "Available"] } label="Availability:"  />
-                </div>
-               
-            </div>
-        </div>
         <div className="litter">
-            { createPuppies() }
+            {/* <div className="ppp-container">
+                
+            </div> */}
+            <div className="ppp-flex-container">
+        
+                    <div className="ppp-litter-info">
+                        <div className="ppp-litter-title">
+                            <h2>Most Recent Litters</h2>
+                        </div>
+                        <div className="ppp-filter-options">
+                            { generateFilterList() }
+                        </div>
+                        <div className="ppp-flex-container ">
+                            { createPuppies() }
+                        </div>
+                   
+                    </div>
+                </div>
         </div>
         </>
        

@@ -1,11 +1,9 @@
-import './Footer.css';
 import Logo from './Logo';
-
 const Footer = () => {
     return (
         <footer>
             <div className="ppp-container">
-                <div >
+                <div className="ppp-footer-inner-container">
                     <div>
                         <Logo color="white"/>
                         <div>&copy; Pomsky Power Puppies 2024</div>

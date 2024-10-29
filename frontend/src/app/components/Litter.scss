@@ -1,15 +1,9 @@
 
-  
-  .litter .ppp-flex-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: start;
+  .litter {
+    padding: 2.5rem;
+    box-sizing: border-box;
   }
   
-  .litter .ppp-flex-container > div {
-    margin: .5rem;  
-  }
-
 
   .litter .filters  {
    color: #333; 
@@ -67,8 +61,6 @@
   .litter-title p {
     font-size: 1.5rem;
     color: var(--ppp-primary);
-    width: 76.8rem;
-    max-width: 100%;
     margin: 2.5rem auto;
   }
 
@@ -76,4 +68,49 @@
       .litter .ppp-flex-container {
         flex-direction: row !important;
       }
+  }
+
+  .litter .ppp-filter-options {
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+  }
+
+
+  .ppp-filter-options > div {
+    margin:1.5rem 1.5rem;
+  }
+
+  .ppp-filter-options span {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: #333;
+  } 
+  .ppp-filter-options > div > span {
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+  }
+
+  .litter  .ppp-flex-container {
+    justify-content: center;
+    align-items: start;
+  }
+
+  .ppp-litter-info .ppp-flex-container {
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-basis: 50rem;
+    max-width: 100%;
+  }
+
+
+  .ppp-puppies, .ppp-all-litters{
+    flex-wrap: wrap;
+
+  }
+  .ppp-all-litters > div {
+    flex-basis: 100%;
+    max-width: 100%;
   }

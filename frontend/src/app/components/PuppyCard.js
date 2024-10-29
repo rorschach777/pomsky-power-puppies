@@ -1,4 +1,3 @@
-import './PuppyCard.css';
 import Image from 'next/image';
 import {Badge} from "@nextui-org/react";
 

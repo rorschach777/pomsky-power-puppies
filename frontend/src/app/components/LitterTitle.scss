@@ -1,0 +1,28 @@
+.ppp-info-toggle {
+    color: #333;
+    text-align: center;
+    display: block;
+    font-size: 1.5rem;
+    max-width: 100%;
+}
+.ppp-info-toggle:hover {
+  color: var(--ppp-secondary);
+  cursor: pointer;
+}
+
+.ppp-description-toggle {
+  margin: 0 auto;
+  max-width: 108rem;
+}
+
+.ppp-description-toggle  h2 {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid;
+
+
+}
+.ppp-description-toggle h2 > button div span {
+  font-size: 1.5rem !important;
+  line-height: 2rem;
+  text-align: center;
+}

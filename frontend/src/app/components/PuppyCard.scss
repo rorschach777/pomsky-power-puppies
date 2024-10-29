@@ -5,9 +5,8 @@
     min-height: 45rem;
     border-radius: .5rem;
     background-repeat: none;
-    flex-basis: 25% ;
-
-    
+    flex-basis: 30rem;
+    margin: 2.5rem;
 }
 
 
@@ -52,7 +51,7 @@
 @media only screen and (max-width: 48rem) {
     .puppy-card {
 
-        flex-basis: 45% ;
+        flex-basis: 75% ;
     }
 
 }
