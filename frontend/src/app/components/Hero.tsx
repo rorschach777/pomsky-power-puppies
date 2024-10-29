@@ -1,7 +1,8 @@
 "use client";
 
-import { useLayoutEffect, PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import {Button, Link} from "@nextui-org/react";
+
 
 
 const loadBackground = () => {
@@ -15,19 +16,43 @@ const loadBackground = () => {
 
 
 type Props = {
-    dataImageSrc: string
+    dataImageSrc: string,
+    dataMobileImageSrc: string
 }
 
+
+
 const Hero = (props: PropsWithChildren<Props> ) => {
-    useLayoutEffect(()=>{
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  const detectMobile = () => {
+    const screenWidth = window.screen.availWidth;
+    const mobile = screenWidth <= 480 ? true : false;
+    setIsMobile(mobile);
+  }
+
+
+  useEffect(()=>{
+    detectMobile();
+  },[])  
+
+  useEffect(()=>{
         loadBackground();
-    },[]);
+  },[isMobile]);
+
+
     return(
-        <div className="hero ppp-lazy-load hide" data-image-src={props.dataImageSrc} style={{backgroundImage: 'url()'}}>
+      <>
+          <div 
+            className="hero ppp-lazy-load hide"
+            data-image-src={isMobile ? props.dataMobileImageSrc : props.dataImageSrc}
+            style={{backgroundImage: 'url()'}}
+          >
           <div className="hero-container" >
             <h1>Ethical Dog Breeders</h1>
             <p>
-            We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
+              We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
             </p>
             <div className="established">
               <span></span>
@@ -45,8 +70,10 @@ const Hero = (props: PropsWithChildren<Props> ) => {
               </Button> 
             </div>
           </div>
-       
+        
         </div>
+      </>
+  
     );
 }
 

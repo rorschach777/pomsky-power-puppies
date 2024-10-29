@@ -1,4 +1,3 @@
-import './PuppyCard.css';
 import Image from 'next/image';
 import {Badge} from "@nextui-org/react";
 
@@ -25,8 +24,10 @@ const PuppyCard = (props) => {
                             Price: ${props.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                         </div>
                     )}
+                    {/* <div>Coat:</div> */}
                     <div>Location: {props.location}</div>
-                    <div>{props.female ? 'Female' : 'Male'}</div>
+                    <div>Eye Color: {props.eyeColor}</div>
+                    <div>Gender: {props.female ? 'Female' : 'Male'}</div>
                 </div>
             </div>
         </div>

@@ -6,7 +6,6 @@ import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
 import { Metadata } from "next";
-import Image from "next/image";
 import * as React from "react";
 // import Gallery from './components/Gallery'
 import { ILitter, IPuppy } from './types/index'
@@ -50,7 +49,9 @@ const PAGE_DATA = `*[_type == "page"]{
       backgroundImage{
         asset->
       },
-      eyeColor,
+      eyeColor-> {
+      color
+      },
       isPuppy,
       showPrice,
       price
@@ -74,19 +75,14 @@ export default async function Home() {
     <>
       <div className={styles.page}>
         <main className={styles.main}>
-        <Hero   dataImageSrc="/images/ppp-hero.webp" />
+        <Hero  dataImageSrc="/images/ppp-hero.webp" dataMobileImageSrc="/images/ppp-hero-mobile.webp"  />
         <Litter data={data}/>
         {/* <Gallery images={["ppp-1", "ppp-2", "ppp-3"]}/> */}
         <div className="adult-pomsky">
         <div className="ppp-container ppp-container-md ">
           <div className="ppp-flex-container">
               <div className="adult-pomsky-image">
-                <Image 
-                alt="Happy, Healthy, Pomsky Companions" 
-                loading="lazy" 
-                src="/images/ppp-adult.png" 
-                width="200" 
-                height="307" />
+                <img alt="Happy, Healthy, Pomsky Companions" loading="lazy" src="./images/ppp-adult.png"/>
               </div>
               <div className="adult-pomsky-text">
                 <span>
@@ -121,11 +117,14 @@ export default async function Home() {
                             if(i % 2 === 0){
                               return (
                                 <div className="ppp-dog-bio" key={`${l.litterName}-dog-bio-${i}`}>
-                                  <Image 
+                                  <img 
                                     alt={`Hi my name is ${p.pomskyName}`}
                                     className="ppp-dog-bio-image"  
                                     src={`${p.image !== null ? p.image.asset.url : null}`} 
-                                    loading="lazy" />
+                                    loading="lazy" 
+                                    width="55"
+                                    height="55"
+                                    />
                                   <div className="ppp-dog-bio-text">
                                     <span>{p.pomskyName}</span>
                                     <p>
@@ -153,8 +152,13 @@ export default async function Home() {
                             if(puppyIndex & 1){
                               return (
                                 <div className="ppp-dog-bio" key={`${l.litterName}-dog-bio-${puppyIndex}`} >
-                                  <img className="ppp-dog-bio-image"  alt={`Hi my name is ${p.pomskyName}`} src={`${p.image !== null ? p.image.asset.url : null}`} loading="lazy" />
-                       
+                                  <img className="ppp-dog-bio-image"  
+                                  alt={`Hi my name is ${p.pomskyName}`}
+                                  src={`${p.image !== null ? p.image.asset.url : null}`}
+                                  loading="lazy"
+                                     width="55"
+                                    height="55"
+                                  />
                                   <div className="ppp-dog-bio-text">
                                     <span>{p.pomskyName}</span>
                                     <p>

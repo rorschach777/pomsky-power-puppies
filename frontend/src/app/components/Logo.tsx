@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import './Logo.css';
-import { Image } from '@nextui-org/image';
+
+
 interface IProps {
     color: string
 }
@@ -8,7 +9,7 @@ interface IProps {
 const Logo = ( props : PropsWithChildren<IProps>) => {
     return (
         <div className="logo">
-            <Image 
+            <img 
                 alt="Pomsky Puppies | Philadelphia, Pennsylvaina | Edmeston, New York" 
                 width="200"
                 height="30"

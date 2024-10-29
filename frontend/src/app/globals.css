@@ -118,54 +118,6 @@ select {
   color: #333;
 }
 
-.hero {
-  min-height: 50rem;
-}
-
-.hero {
-  transform: scaleY(1);
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  font-size: 7.5rem;
-  line-height: 8.2rem;
-  padding: 3.5rem 0;
-  box-sizing: border-box;
-  transition: all .2s ease;
-}
-
-
-
-
-.hero-container {
-  position: relative;
-  width: 50rem;
-  margin: 0 auto 0 20rem; 
-  max-width: 100%;
-  z-index: 2;
-  padding: 3.5rem 1.5rem;
-  color: var(--ppp-primary);
-  background-color: rgba(255,255,255,.4);
-  border-radius: .5rem;
-  overflow: hidden;
-
-}
-
-.hero-container .cta  a {
-  color: white;
-  font-size: 1.6rem;
-}
-
-
-.hero:after, .contact-hero:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  background: linear-gradient(94deg, rgb(174 221 255 / 80%), rgb(146 129 253 / 41%));
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
 
 
 /* ORGANIZE THIS */
@@ -441,17 +393,23 @@ div[data-ui="Container"]{
 }
 
 
-@media only screen and (max-width: 76.8rem){
-  .hero-container {
-    margin: 0 auto; 
-  
-  }
-  
-}
+
 
 .hide {
   opacity: 0;
 }
 .show {
   opacity: 1 !important;
+}
+
+
+.ppp-spinner-container {
+  background: linear-gradient(94deg, rgb(174 221 255 / 80%), rgb(146 129 253 / 41%));
+  min-height: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ppp-spinner-container > .ppp-spinner-container-inner {
+  width: 5rem;
 }
