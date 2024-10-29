@@ -1,4 +1,3 @@
-import './BlogEntry.css';
 import {Button, Link} from "@nextui-org/react";
 
 const BlogEntry = ( props ) => {
