@@ -1,10 +1,10 @@
 "use client";
 
 import {Button, Link} from "@nextui-org/react";
-import { lazy } from 'react';
+import LazyBackground from './LazyBackground';
 
 
-const LazyBackground = lazy(()=> import('./LazyBackground.jsx'));
+
 
 
 const Hero = () => {
