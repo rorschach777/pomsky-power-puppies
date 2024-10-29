@@ -14,7 +14,7 @@ const Logo = ( props : PropsWithChildren<IProps>) => {
                 width="200"
                 height="30"
                 loading='lazy'
-                src={`/images/ppp-logo-${props.color}.png`} />
+                src={`/images/ppp-logo-${props.color}.webp`} />
         </div>
     );
 }

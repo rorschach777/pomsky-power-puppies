@@ -207,27 +207,7 @@ section {
   box-sizing: border-box;
 }
 
-.cta p, .hero-container p {
-  font-size: 1.7rem;
-  line-height: 2.5rem;
-}
 
-.hero-container p {
-
-  width: 55rem;
-  max-width: 100%;
-}
-.hero-container h2 {
-  font-size: 2.5rem;
-  line-height: 2.5rem;
-
-}
-
-.cta {
-  width: 55rem;
-  max-width: 100%;
-  text-align: center;
-}
 
 /* COMMON */
 
@@ -235,14 +215,6 @@ section {
   font-family: 'BigCaslon';
 }
 
-.cta button {
-  font-size: 1.7rem; 
-  color: white;
-  background-color: var(--ppp-secondary);
-  border-color: var(--ppp-secondary);
-  position: relative;
-  top: -2rem;
-}
 
 .established {
   display: flex;
@@ -412,4 +384,9 @@ div[data-ui="Container"]{
 }
 .ppp-spinner-container > .ppp-spinner-container-inner {
   width: 5rem;
+}
+
+button {
+  font-size: 1.5rem !important;
+  padding: 1.5rem !important; 
 }

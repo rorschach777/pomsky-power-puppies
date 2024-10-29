@@ -82,6 +82,18 @@
   }
 
 
+.hero-container > .cta > button {
+  font-size: 1.7rem; 
+  color: white;
+  background-color: var(--ppp-secondary);
+  border-color: var(--ppp-secondary);
+  position: relative;
+  top: -2rem;
+  width: 27rem !important;
+
+}
+
+
 @media only screen and (max-width: 108rem) {
         
   .cta {
