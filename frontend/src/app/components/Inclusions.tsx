@@ -1,5 +1,5 @@
 import {Button, Link} from "@nextui-org/react";
-import './Inclusion.css';
+
 const Inclusions = () => {
     return (
         <section className="ppp-inclusions">

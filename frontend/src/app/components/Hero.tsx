@@ -1,18 +1,8 @@
 "use client";
 
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren } from "react";
 import {Button, Link} from "@nextui-org/react";
-
-
-
-const loadBackground = () => {
-    const divs = document.querySelectorAll(".ppp-lazy-load");
-    divs.forEach(c=>{
-        const imageSrc = c.getAttribute("data-image-src");
-        c.setAttribute("style", `background-image:url('${imageSrc}')`);
-        c.classList.add('show');
-    });
-}
+import { lazy } from 'react';
 
 
 type Props = {
@@ -21,34 +11,18 @@ type Props = {
 }
 
 
+const LazyBackground = lazy(()=> import('./LazyBackground.jsx'));
+
 
 const Hero = (props: PropsWithChildren<Props> ) => {
-
-  const [isMobile, setIsMobile] = useState(false);
-
-  const detectMobile = () => {
-    const screenWidth = window.screen.availWidth;
-    const mobile = screenWidth <= 480 ? true : false;
-    setIsMobile(mobile);
-  }
-
-
-  useEffect(()=>{
-    detectMobile();
-  },[])  
-
-  useEffect(()=>{
-        loadBackground();
-  },[isMobile]);
-
-
     return(
       <>
           <div 
-            className="hero ppp-lazy-load hide"
-            data-image-src={isMobile ? props.dataMobileImageSrc : props.dataImageSrc}
-            style={{backgroundImage: 'url()'}}
+            className="hero"
+    
           >
+          <LazyBackground/>
+  
           <div className="hero-container" >
             <h1>Ethical Dog Breeders</h1>
             <p>

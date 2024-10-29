@@ -1,7 +1,6 @@
 "use client";
 
 import {PropsWithChildren} from 'react';
-import './FilterList.css';
 
 
 type Props = {
