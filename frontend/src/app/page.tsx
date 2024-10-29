@@ -75,7 +75,7 @@ export default async function Home() {
     <>
       <div className={styles.page}>
         <main className={styles.main}>
-        <Hero  dataImageSrc="/images/ppp-hero.webp" dataMobileImageSrc="/images/ppp-hero-mobile.webp"  />
+        <Hero />
         <Litter data={data}/>
         {/* <Gallery images={["ppp-1", "ppp-2", "ppp-3"]}/> */}
         <div className="adult-pomsky">

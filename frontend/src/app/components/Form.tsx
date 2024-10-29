@@ -1,5 +1,5 @@
 "use client";
-import "./Form.css"
+
 import { useReducer, useRef, useEffect } from "react";
 import { formReducer } from "../reducers/form-reducer";
 import { ActionType } from "../reducers/action-types"

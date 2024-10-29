@@ -1,6 +1,5 @@
 "use client";
 import {PropsWithChildren, useState} from 'react';
-import './Gallery.css';
 interface IProps {
     images: string[]
 }

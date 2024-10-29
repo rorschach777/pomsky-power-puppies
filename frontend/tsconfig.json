@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/FilterList.jsx", "src/app/components/ModalForm.jsx", "src/app/blog/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/FilterList.jsx", "src/app/components/ModalForm.jsx", "src/app/blog/page.jsx", "src/app/components/Litter.jsx", "src/app/components/LitterTitle.jsx"],
   "exclude": ["node_modules"]
 }

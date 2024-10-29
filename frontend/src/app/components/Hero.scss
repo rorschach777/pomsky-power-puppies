@@ -1,7 +1,16 @@
 
 .hero {
     min-height: 50rem;
+    position: relative;
+    overflow: hidden;
 }
+.hero img {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+
   
   .hero {
     transform: scaleY(1);
@@ -48,9 +57,61 @@
     z-index: 1;
   }
 
+
+
+  .cta p, .hero-container p {
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+  }
+  
+  .hero-container p {
+  
+    width: 55rem;
+    max-width: 100%;
+  }
+  .hero-container h2 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  
+  }
+  
+  .cta {
+    width: 55rem;
+    max-width: 100%;
+    text-align: center;
+  }
+
+
+@media only screen and (max-width: 108rem) {
+        
+  .cta {
+    width: 100%;
+  }
+}
+
   @media only screen and (max-width: 76.8rem){
-    .hero-container {
+    .hero-container, .hero-container * {
       margin: 0 auto; 
       max-width: 98%;
+      width: 98%;
+      text-align: center;
+    }
+    .cta > button {
+      width: 27rem;
+    }
+    .cta > button  a {
+      text-align: center !important;
+      margin: 0 auto;
+      width: 100%;
+      justify-content: center;
+
+    }
+    
+  }
+
+  @media only screen and (max-width: 76.8rem) {
+    .hero-container h1 {
+      font-size: 5.5rem;
+      letter-spacing: -.35rem;
     }
   }
