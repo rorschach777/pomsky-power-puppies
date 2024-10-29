@@ -1,6 +1,5 @@
 "use client";
 
-import { PropsWithChildren } from "react";
 import {Button, Link} from "@nextui-org/react";
 import { lazy } from 'react';
 
@@ -10,16 +9,14 @@ type Props = {
     dataMobileImageSrc: string
 }
 
-
 const LazyBackground = lazy(()=> import('./LazyBackground.jsx'));
 
 
-const Hero = (props: PropsWithChildren<Props> ) => {
+const Hero = () => {
     return(
       <>
           <div 
             className="hero"
-    
           >
           <LazyBackground/>
   
