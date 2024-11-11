@@ -4,6 +4,7 @@ import "./main.css";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Provider from './Provider'
+import GoogleAnalytics from './components/GoogleAnalytics'
 
 
 const geistSans = localFont({
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <>
     <html lang="en">
+    <GoogleAnalytics />
      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider>
           <Header/>

@@ -15,12 +15,15 @@ import Hero from "./components/Hero";
 import "./components/FilterList";
 import Litter from "./components/Litter";
 import Inclusions from "./components/Inclusions";
-
-const options = { next: { revalidate: 30 } };
-
+import {QUERY_OPTIONS} from './queries/index'
 
 
-const PAGE_DATA = `*[_type == "page"]{
+export async function generateMetadata(): Promise<Metadata> {
+  return await pageMeta({query : PAGE_META_DATA, pageName : "Home"})
+}
+
+
+const PAGE_DATA_QUERY = `*[_type == "page"]{
   locations[]->{_id, locationName, published},
   slug->{},
   title,
@@ -57,18 +60,10 @@ const PAGE_DATA = `*[_type == "page"]{
       price
     }
   }
-}`;
-
-export async function generateMetadata(): Promise<Metadata> {
-  return await pageMeta({query : PAGE_META_DATA, pageName : "Home"})
-}
-
-
-
-
+}`
 
 export default async function Home() {
-  const request = (await client.fetch<SanityDocument[]>(PAGE_DATA, {}, options)).filter(p=>p.title==="Home");
+  const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
   const data = await request[0];
 
   return(
