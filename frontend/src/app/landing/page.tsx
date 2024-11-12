@@ -1,7 +1,7 @@
 import styles from "../page.module.css";
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
-import {QUERY_OPTIONS} from '../queries/index';
+
 import ContactHero from "../components/ContactHero";
 import Litter from "../components/Litter";
 import Inclusions from "../components/Inclusions";
@@ -47,7 +47,7 @@ const PAGE_DATA_QUERY = `*[_type == "page"]{
       }
     }
   }`
-
+const QUERY_OPTIONS = { next: { revalidate: 30 } };
 
 export async function generateMetadata(): Promise<Metadata> {
     return await pageMeta({query : PAGE_META_DATA, pageName : "Home"})

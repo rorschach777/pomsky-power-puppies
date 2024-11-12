@@ -4,9 +4,6 @@ import {Button, Link} from "@nextui-org/react";
 import LazyBackground from './LazyBackground';
 
 
-
-
-
 const Hero = () => {
     return(
       <>
@@ -36,7 +33,6 @@ const Hero = () => {
               </Button> 
             </div>
           </div>
-        
         </div>
       </>
   

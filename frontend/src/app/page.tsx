@@ -15,13 +15,13 @@ import Hero from "./components/Hero";
 import "./components/FilterList";
 import Litter from "./components/Litter";
 import Inclusions from "./components/Inclusions";
-import {QUERY_OPTIONS} from './queries/index'
+
 
 
 export async function generateMetadata(): Promise<Metadata> {
   return await pageMeta({query : PAGE_META_DATA, pageName : "Home"})
 }
-
+const QUERY_OPTIONS = { next: { revalidate: 30 } };
 
 const PAGE_DATA_QUERY = `*[_type == "page"]{
   locations[]->{_id, locationName, published},
