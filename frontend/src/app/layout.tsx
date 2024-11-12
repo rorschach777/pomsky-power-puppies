@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <>
     <html lang="en">
-    <GoogleAnalytics />
+     <GoogleAnalytics />
      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider>
           <Header/>

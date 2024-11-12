@@ -6,7 +6,7 @@ const ContactHero = () => {
                 <div className="ppp-flex-container">
                     <div className="contact-hero-cta">
                         <h1>Contact Us</h1>
-                        <h2>Let&apos;s start by getting some basic information to become a Pomsky Parent</h2>
+                        <h2>Let&apos;s start by getting some basic information.</h2>
                         <div className="ppp-contact-methods">
                         <div>
                             <h3>
@@ -40,7 +40,7 @@ const ContactHero = () => {
                     <div className="contact-form-container">
                         <div>
                             <header>
-                                <h1>Become a Pomsky Parent Today</h1>
+                                <h1>Start here to become a Pomsky Owner</h1>
                                 <span>Start the process by providing us with some basic information and if there is a specific puppy that your are interested in.</span>
                             </header>
                         </div>

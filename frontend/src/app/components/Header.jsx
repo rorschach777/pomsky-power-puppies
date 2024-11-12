@@ -31,36 +31,20 @@ const Header = () => {
                 </NavbarBrand>
             </NavbarContent>
 
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarItem>
-                <Link color="foreground" href="#">
-                    Features
-                </Link>
-                </NavbarItem>
-                <NavbarItem isActive>
-                <Link href="#" aria-current="page">
-                    Customers
-                </Link>
-                </NavbarItem>
-                <NavbarItem>
-                <Link color="foreground" href="#">
-                    Integrations
-                </Link>
-                </NavbarItem>
-            </NavbarContent>
+  
             <NavbarContent justify="end">
                 <NavbarItem className="hidden lg:flex">
                 <Link href="#">Login</Link>
                 </NavbarItem>
                 <NavbarItem>
                 <Button  onPress={onOpen}  color="secondary" variant="bordered" >
-                    Join Waitlist
+                    Become An Owner
                 </Button>
            
                 </NavbarItem>
                 <NavbarMenuToggle
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                className="sm:hidden"
+     
                 />
 
             </NavbarContent>
@@ -85,7 +69,7 @@ const Header = () => {
                     <>
                     <ModalHeader className="flex flex-col gap-1">
                         <div className="ppp-header-modal-title">
-                            Request more information and added to our waitlist.
+                            Start the process of becoming a pomsky owner. 
                         </div>
                         
                     </ModalHeader>

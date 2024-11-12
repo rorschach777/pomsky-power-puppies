@@ -102,3 +102,10 @@ header ul >  li >  button {
 .ppp-header-modal-footer > footer {
     justify-content: flex-start;
 }
+
+header button > span:nth-child(even) {
+
+    width: 1.5rem !important;
+    margin: 1.5rem !important;
+    display: block !important;
+}
