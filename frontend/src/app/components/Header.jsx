@@ -21,7 +21,7 @@ const Header = () => {
     ];
     return(
 
-        <div class="ppp-header">
+        <div className="ppp-header">
             <Navbar onMenuOpenChange={setIsMenuOpen}>
             <NavbarContent>
                 <NavbarBrand>

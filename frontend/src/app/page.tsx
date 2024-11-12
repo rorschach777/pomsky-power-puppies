@@ -70,8 +70,16 @@ export default async function Home() {
     <>
       <div className={styles.page}>
         <main className={styles.main}>
-        <Hero />
-        <Litter data={data}/>
+        <Hero 
+          h1="Ethical Dog Breeders"
+          mainMessage="We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies."
+          contactForm={true}
+          />
+        <Litter 
+        data={data}
+        litterTitle="Recent Pomsky Litters"
+    
+        />
         {/* <Gallery images={["ppp-1", "ppp-2", "ppp-3"]}/> */}
         <div className="adult-pomsky">
         <div className="ppp-container ppp-container-md ">
@@ -102,11 +110,11 @@ export default async function Home() {
                 <div className="ppp-flex-container ppp-a-pomsky ">
                   <div className="half-column">
                   
-                  { data.litters.map((l : ILitter )=>{
-                    <div>{l.litterName}</div>
+                  { data.litters.map((l : ILitter, i : number)=>{
+                
                     if(l.litterName  === "Adult Pomskys" ){
                       return(
-                        <>
+                      <div key={`left-col-${i}`}>
                         {l.puppies.map((p : IPuppy , i : number ) => {
                 
                             if(i % 2 === 0){
@@ -130,18 +138,18 @@ export default async function Home() {
                               );
                             }
                         })}
-                      </>
+                      </div>
                       )
                     }
                     
                   })}
                   </div>
                   <div className="half-column">
-                  { data.litters.map((l : ILitter)=>{
+                  { data.litters.map((l : ILitter, i : number)=>{
                  
                     if(l.litterName === "Adult Pomskys" ){
                       return(
-                        <>
+                        <div  key={`right-col-${i}`}>
                         {l.puppies.map((p : IPuppy, puppyIndex) => {
                      
                             if(puppyIndex & 1){
@@ -164,7 +172,7 @@ export default async function Home() {
                               );
                             }
                         })}
-                      </>
+                      </div>
                       )
                     }
                    })}

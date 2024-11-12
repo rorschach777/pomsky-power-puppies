@@ -2,9 +2,16 @@
 
 import {Button, Link} from "@nextui-org/react";
 import LazyBackground from "./LazyBackground";
+import {PropsWithChildren} from 'react';
 
 
-const Hero = () => {
+type Props = {
+  h1 : string,
+  mainMessage : string,
+  contactForm: boolean
+}
+
+const Hero = (props : PropsWithChildren<Props>) => {
     return(
       <>
           <div 
@@ -13,9 +20,9 @@ const Hero = () => {
           <LazyBackground/>
   
           <div className="hero-container" >
-            <h1>Ethical Dog Breeders</h1>
+            <h1>{props.h1}</h1>
             <p>
-              We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies.
+                {props.mainMessage}
             </p>
             <div className="established">
               <span></span>
@@ -23,7 +30,6 @@ const Hero = () => {
               <span></span>
             </div>
             <p>
-            
             </p>
             <div className="cta">
               <h2>Puppies Currently Available </h2>

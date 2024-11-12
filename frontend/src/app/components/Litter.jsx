@@ -2,7 +2,7 @@
 
 import PuppyCard from './PuppyCard';
 import {useReducer, useEffect} from "react";
-import {RadioGroup, Radio} from "@nextui-org/react";
+import {RadioGroup, Radio, Button, Link} from "@nextui-org/react";
 import {removeDuplicates} from '../utils/arrayMethods'
 import LitterTitle from "./LitterTitle";
 
@@ -250,7 +250,15 @@ const Litter = (props ) => {
         
                     <div className="ppp-litter-info">
                         <div className="ppp-litter-title">
-                            <h2>Most Recent Litters</h2>
+                            <h2>{props.litterTitle}</h2>
+                            { props.showCta === true && (
+                                <div className="cta-button-container">
+                                   <Link href={"#contact-us"}>
+                                       <Button id="cta-button" size="lg" href="#contact-us"  color="secondary" variant='bordered'>Inquire About a Pomsky</Button>
+                                   </Link>
+                               </div>
+                            )}
+                         
                         </div>
                         <div className="ppp-filter-options">
                             { generateFilterList() }

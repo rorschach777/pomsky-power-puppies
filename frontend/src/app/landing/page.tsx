@@ -62,8 +62,13 @@ export default async function Page() {
 
         <div className={styles.page}>
             <main className={styles.main}>
+                <Litter 
+                data={data} 
+                litterTitle="Available Pomsky Puppies"
+                showCta
+                
+                />
                 <ContactHero />
-                <Litter data={data}/>
                 <Inclusions/>
             </main>
         </div>

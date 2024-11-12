@@ -1,7 +1,7 @@
 import ContactForm from '../components/Form';
-const ContactHero = () => {
+const ContactHero = (props) => {
     return(
-        <div className="contact-hero">
+        <div className="contact-hero" id="contact-us">
             <div className="ppp-container">
                 <div className="ppp-flex-container">
                     <div className="contact-hero-cta">
@@ -29,7 +29,7 @@ const ContactHero = () => {
                                 Phone:
                             </h3>
                             <span>
-                            You may call us during our business hours, or text us anytime at (610) 800-0012. If we do not answer please leave a message and we will respond to you as soon as possible.
+                                You may call us during our business hours, or text us anytime at (610) 800-0012. If we do not answer please leave a message and we will respond to you as soon as possible.
                             </span>
                         </div>
                         </div>
@@ -42,6 +42,7 @@ const ContactHero = () => {
                             <header>
                                 <h1>Start here to become a Pomsky Owner</h1>
                                 <span>Start the process by providing us with some basic information and if there is a specific puppy that your are interested in.</span>
+                                <span>We also offer transport services through Flight Nanny if you live far from your future pup. Exact costs vary based on your location and exact needs.</span>
                             </header>
                         </div>
                         <ContactForm/>

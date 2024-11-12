@@ -156,7 +156,7 @@ const ContactForm = ( ) => {
 
     return (
         <div className="ppp-form">
-            <form className="ppp-conversion-form">
+            <form id="ppp-conversion-form">
                 {(formState.submission.successful === false) && (
                     <>
                         <div className="form-group">
@@ -188,7 +188,7 @@ const ContactForm = ( ) => {
                             {!formState.message.isValid && formState.message.updated ? <span className="danger">Your message was in the incorrect format.</span>: null}
                         </div>
                         <div>
-                            <button className="ppp-conversion-button" disabled={!formState.formIsValid} onClick={(e)=>submitHandler(e)}>Send</button>
+                            <button id="conversion-button" disabled={!formState.formIsValid} onClick={(e)=>submitHandler(e)}>Send</button>
                         </div>
                     </>
                 )}

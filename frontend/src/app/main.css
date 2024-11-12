@@ -332,6 +332,11 @@ header button > span:nth-child(even) {
   display: block !important;
 }
 
+.ppp-header {
+  border-bottom: 1px #ccc solid;
+  padding: 1.5rem 0;
+}
+
 .hero {
   min-height: 50rem;
   position: relative;
@@ -594,6 +599,11 @@ header button > span:nth-child(even) {
 .ppp-all-litters > div {
   flex-basis: 100%;
   max-width: 100%;
+}
+
+.cta-button-container {
+  margin: 2.5rem auto;
+  text-align: center;
 }
 
 .logo {
