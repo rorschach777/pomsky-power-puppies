@@ -24,8 +24,6 @@ export const pageMeta = async ( params : IParams ) => {
         title : page.metaTitle,
         description: page.description,
         keywords: page.keywords,
-        
-
     }
     return data;
 }
