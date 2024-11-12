@@ -1,7 +1,7 @@
 "use client";
 
 import {Button, Link} from "@nextui-org/react";
-import LazyBackground from './LazyBackground';
+import LazyBackground from "./LazyBackground";
 
 
 const Hero = () => {
@@ -27,7 +27,7 @@ const Hero = () => {
             </p>
             <div className="cta">
               <h2>Puppies Currently Available </h2>
-              <p>Make your home a puppy's home by going through our process! Let's start by getting some basic information. </p>
+              <p>Make your home a puppy&apos;s home by going through our process! Let&apos;s start by getting some basic information. </p>
               <Button size="lg"  color="primary" >
                 <Link  href="/contact"> Get Puppy Information </Link>
               </Button> 

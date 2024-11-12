@@ -6,7 +6,7 @@ const ContactHero = () => {
                 <div className="ppp-flex-container">
                     <div className="contact-hero-cta">
                         <h1>Contact Us</h1>
-                        <h2>Let's start by getting some basic information to become a Pomsky Parent</h2>
+                        <h2>Let&apos;s start by getting some basic information to become a Pomsky Parent</h2>
                         <div className="ppp-contact-methods">
                         <div>
                             <h3>
