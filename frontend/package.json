@@ -11,6 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^15.0.3",
     "@nextui-org/button": "^2.0.38",
     "@nextui-org/card": "^2.0.34",
     "@nextui-org/image": "^2.0.32",
@@ -20,7 +21,7 @@
     "@sanity/image-url": "^1.0.2",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.11.1",
-    "next": "14.2.14",
+    "next": "^15.0.3",
     "next-sanity": "^9.5.4",
     "nextui-cli": "^0.3.4",
     "react": "^18",

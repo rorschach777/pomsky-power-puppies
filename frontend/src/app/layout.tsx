@@ -4,8 +4,7 @@ import "./main.css";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Provider from './Provider'
-import GoogleAnalytics from './components/GoogleAnalytics'
-
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,7 +24,7 @@ export default function RootLayout({
   return (
     <>
     <html lang="en">
-     <GoogleAnalytics />
+     <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAGMANAGER}`} />
      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider>
           <Header/>
