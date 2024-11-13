@@ -5,7 +5,7 @@ import { formReducer } from "../reducers/form-reducer";
 import { ActionType } from "../reducers/action-types"
 import {FormState,  FormGroup} from '../types/index';
 
-const ContactForm = ( ) => {
+const ContactForm = () => {
 
 
     const initialState : FormState= {
@@ -34,10 +34,15 @@ const ContactForm = ( ) => {
             isValid: false,
             updated: false
         },
+        pomskyName: {
+            value: 'Any',
+            isValid: true,
+            updated: true,
+        },
         message: {
-            value: '',
-            isValid: false,
-            updated: false
+            value: 'None',
+            isValid: true,
+            updated: true
         }
     }
 
@@ -59,6 +64,7 @@ const ContactForm = ( ) => {
     const emailRef = useRef<HTMLInputElement | null>(null);
     const phoneRef = useRef<HTMLInputElement | null>(null);
     const messageRef = useRef<HTMLTextAreaElement | null>(null);
+    const pomskyNameRef = useRef<HTMLSelectElement | null>(null);
 
     const formValid = () => {
         let output = true;
@@ -103,12 +109,17 @@ const ContactForm = ( ) => {
         
     }
 
-    const messageValidation = () => {
-        const pattern =  /^[a-zA-Z,. ]{1,140} [a-zA-Z,. ]{1,140}$/
-        const inputIsValid = pattern.test(messageRef.current!.value);
-        formDispatch({type: ActionType.MESSAGE_UPDATE, payload: {value : messageRef.current!.value, isValid: inputIsValid}})
-        
+    const pomskyNameValidation = () => {
+        formDispatch({type: ActionType.POMSKY_NAME, payload: { value: pomskyNameRef.current!.value, isValid: true}})
+        console.log(formState)
     }
+
+    // const messageValidation = () => {
+    //     const pattern =  /^[a-zA-Z,. ]{1,140} [a-zA-Z,. ]{1,140}$/
+    //     const inputIsValid = pattern.test(messageRef.current!.value);
+    //     formDispatch({type: ActionType.MESSAGE_UPDATE, payload: {value : messageRef.current!.value, isValid: inputIsValid}})
+        
+    // }
 
     const sendEmail = async (event : React.FormEvent , data : object) => {
         const submssionResponse = { successful : false}
@@ -147,12 +158,14 @@ const ContactForm = ( ) => {
             lastName : formState.lastName.value,
             phone : formState.phone.value,
             email : formState.email.value,
+            pomskyName: formState.pomskyName.value,
             message : formState.message.value,
         }
         sendEmail(event, data)
     }
 
 
+    const selectOptions = ["Any", "Pumpkin", "Aster", "Harvey", "Troy", "Autumn", "Richie", "Esperance", "Cider", "Sloan", "Gourdy"];
 
     return (
         <div className="ppp-form">
@@ -182,10 +195,18 @@ const ContactForm = ( ) => {
                             {!formState.phone.isValid && formState.phone.updated ?  <span className="danger">Your phone number is in the incorrect format. Please use the following format: 999-999-9999</span> : null}
                             
                         </div>
-                        <div className="form-group">
+                        {/* <div className="form-group u-hide">
                             <label>Message:</label>
                             <textarea  ref={messageRef}  onChange={messageValidation} placeholder="I wanted to inquire to see the status of..."  className={ !formState.message.isValid && formState.message.updated ? 'invalid-field' : ''}/>
                             {!formState.message.isValid && formState.message.updated ? <span className="danger">Your message was in the incorrect format.</span>: null}
+                        </div> */}
+                        <div className="form-group">
+                            <label>Preferred Pomsky: </label>
+                            <select ref={pomskyNameRef} onChange={pomskyNameValidation}>
+                                {selectOptions.map((c,i)=>{ return (
+                                    <option key={`select-option-${i}`} value={c}>{c}</option>
+                                )})}
+                            </select>
                         </div>
                         <div>
                             <button id="conversion-button" disabled={!formState.formIsValid} onClick={(e)=>submitHandler(e)}>Send</button>

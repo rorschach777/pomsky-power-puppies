@@ -66,7 +66,18 @@ export const formReducer : Reducer<FormState, Action>= (prevState, action) => {
             }
         }
     }
-    if(action.type === "SUBMISSION"){
+    if(action.type === ActionType.POMSKY_NAME){
+        return {
+            ...prevState,
+            pomskyName : {
+                ...prevState.pomskyName,
+                value: action.payload.value,
+                isValid: action.payload.isValid,
+                updated: true
+            }
+        }
+    }
+    if(action.type === ActionType.SUBMISSION){
         return {
             ...prevState,
             submission: {

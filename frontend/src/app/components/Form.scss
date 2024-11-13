@@ -15,11 +15,11 @@
     font-size: 1.5rem;
   }
   
-  .ppp-form, .ppp-form input, .ppp-form textarea {
+  .ppp-form, .ppp-form input, .ppp-form textarea, .ppp-form select {
     width: 45rem;
     max-width: 100%;
   }
-  .ppp-form input, .ppp-form textarea {
+  .ppp-form input, .ppp-form textarea, .ppp-form select  {
     background-color: #e7e7e7;
     padding: .5rem 1.5rem;
     border-radius: .5rem;

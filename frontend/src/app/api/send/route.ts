@@ -9,7 +9,8 @@ type Payload = {
   lastName: string,
   email : string,
   phone : string,
-  message: string
+  message: string,
+  pomskyName: string
 }
 
 export  async function POST(req : NextRequest) {
@@ -23,7 +24,8 @@ export  async function POST(req : NextRequest) {
          lastName : formData.lastName, 
          email : formData.email, 
          phone : formData.phone,
-         message : formData.message
+         message : formData.message,
+         pomskyName: formData.pomskyName
       }) as React.ReactElement,
     });
 

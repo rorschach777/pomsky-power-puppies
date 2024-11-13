@@ -7,6 +7,7 @@ export type Action =
   | { type: ActionType.PHONE_UPDATE; payload: { value : string, isValid : boolean} }
   | { type: ActionType.EMAIL_UPDATE; payload: { value : string, isValid : boolean} }
   | { type: ActionType.MESSAGE_UPDATE; payload: { value : string, isValid : boolean} }
+  | { type: ActionType.POMSKY_NAME; payload: { value : string, isValid : boolean} }
   | { type: ActionType.SUBMISSION; payload: { successful : boolean} }
 
 
@@ -29,7 +30,8 @@ export type Action =
     lastName : FormGroup,
     email : FormGroup,
     phone: FormGroup,
-    message : FormGroup
+    message : FormGroup,
+    pomskyName: FormGroup
 }
 
 export type IssueAction = {
