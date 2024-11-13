@@ -63,7 +63,7 @@ const ContactForm = () => {
     const lastNameRef = useRef<HTMLInputElement | null>(null);
     const emailRef = useRef<HTMLInputElement | null>(null);
     const phoneRef = useRef<HTMLInputElement | null>(null);
-    const messageRef = useRef<HTMLTextAreaElement | null>(null);
+    // const messageRef = useRef<HTMLTextAreaElement | null>(null);
     const pomskyNameRef = useRef<HTMLSelectElement | null>(null);
 
     const formValid = () => {
