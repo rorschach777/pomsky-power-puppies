@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ContactForm from '../components/Form';
-const ContactHero = (props) => {
+const ContactHero = () => {
     return(
         <div className="contact-hero" id="contact-us">
             <div className="ppp-container">
