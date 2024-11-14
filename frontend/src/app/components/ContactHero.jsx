@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import ContactForm from '../components/Form';
-const ContactHero = () => {
+const ContactHero = (props) => {
     return(
         <div className="contact-hero" id="contact-us">
             <div className="ppp-container">
@@ -29,7 +30,7 @@ const ContactHero = () => {
                                 Phone:
                             </h3>
                             <span>
-                                You may call us during our business hours, or text us anytime at (610) 800-0012. If we do not answer please leave a message and we will respond to you as soon as possible.
+                                You may call us during our business hours, or text us anytime at <Link id="phone-link" href="tel:6108000012" >(610) 800-0012</Link>. If we do not answer please leave a message and we will respond to you as soon as possible.
                             </span>
                         </div>
                         </div>
@@ -45,7 +46,9 @@ const ContactHero = () => {
                                 <span>We also offer transport services through Flight Nanny if you live far from your future pup. Exact costs vary based on your location and exact needs.</span>
                             </header>
                         </div>
-                        <ContactForm/>
+                        <ContactForm 
+                            
+                        />
                     </div>
                 </div>
             </div>
