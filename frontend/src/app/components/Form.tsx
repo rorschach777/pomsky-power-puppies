@@ -185,7 +185,7 @@ const ContactForm = () => {
                         </div>
                         <div className="form-group">
                             <label>Email:</label>
-                            <input tid="ppp-form-element-email" ype="email" ref={emailRef}  onBlur={emailValidation}  placeholder="example.email@gmail.com"  className={ !formState.email.isValid && formState.email.updated ? 'invalid-field' : ''}/>
+                            <input id="ppp-form-element-email" type="email" ref={emailRef}  onBlur={emailValidation}  placeholder="example.email@gmail.com"  className={ !formState.email.isValid && formState.email.updated ? 'invalid-field' : ''}/>
                             {!formState.email.isValid && formState.email.updated ?   <span className="danger">Your email address is in the incorrect format.</span> : null}
                         
                         </div>
