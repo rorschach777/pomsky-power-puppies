@@ -174,24 +174,24 @@ const ContactForm = () => {
                     <>
                         <div className="form-group">
                             <label>First Name:</label>
-                            <input type="text" placeholder="John" ref={firstNameRef} onChange={firstNameValidation} className={ !formState.firstName.isValid && formState.firstName.updated  ? 'invalid-field' : ''}/>
+                            <input id="ppp-form-element-first-name" type="text" placeholder="John" ref={firstNameRef} onChange={firstNameValidation} className={ !formState.firstName.isValid && formState.firstName.updated  ? 'invalid-field' : ''}/>
                             {!formState.firstName.isValid && formState.firstName.updated ? <span className="danger">Your First Name is too long or contains spaces.</span> : null}
                         </div>
                         <div className="form-group">
                             <label>Last Name:</label>
-                            <input type="text" placeholder="Doe"  ref={lastNameRef}  onChange={lastNameValidation} className={ !formState.lastName.isValid && formState.lastName.updated ? 'invalid-field' : ''}/>
+                            <input id="ppp-form-element-last-name" type="text" placeholder="Doe"  ref={lastNameRef}  onChange={lastNameValidation} className={ !formState.lastName.isValid && formState.lastName.updated ? 'invalid-field' : ''}/>
                             {!formState.lastName.isValid && formState.lastName.updated ?   <span className="danger">Your Last Name is too long or contains spaces.</span>  : null}
                         
                         </div>
                         <div className="form-group">
                             <label>Email:</label>
-                            <input type="email" ref={emailRef}  onBlur={emailValidation}  placeholder="example.email@gmail.com"  className={ !formState.email.isValid && formState.email.updated ? 'invalid-field' : ''}/>
+                            <input tid="ppp-form-element-email" ype="email" ref={emailRef}  onBlur={emailValidation}  placeholder="example.email@gmail.com"  className={ !formState.email.isValid && formState.email.updated ? 'invalid-field' : ''}/>
                             {!formState.email.isValid && formState.email.updated ?   <span className="danger">Your email address is in the incorrect format.</span> : null}
                         
                         </div>
                         <div className="form-group">
                             <label>Phone Number:</label>
-                            <input  type="phone" ref={phoneRef}  onBlur={phoneValidation} placeholder="999-999-9999" className={ !formState.phone.isValid && formState.phone.updated ? 'invalid-field' : ''}/>
+                            <input  id="ppp-form-element-phone" type="phone" ref={phoneRef}  onBlur={phoneValidation} placeholder="999-999-9999" className={ !formState.phone.isValid && formState.phone.updated ? 'invalid-field' : ''}/>
                             {!formState.phone.isValid && formState.phone.updated ?  <span className="danger">Your phone number is in the incorrect format. Please use the following format: 999-999-9999</span> : null}
                             
                         </div>
@@ -202,7 +202,7 @@ const ContactForm = () => {
                         </div> */}
                         <div className="form-group">
                             <label>Preferred Pomsky: </label>
-                            <select ref={pomskyNameRef} onChange={pomskyNameValidation}>
+                            <select id="ppp-form-element-pomsky-name" ref={pomskyNameRef} onChange={pomskyNameValidation}>
                                 {selectOptions.map((c,i)=>{ return (
                                     <option key={`select-option-${i}`} value={c}>{c}</option>
                                 )})}
