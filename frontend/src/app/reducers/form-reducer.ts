@@ -82,8 +82,16 @@ export const formReducer : Reducer<FormState, Action>= (prevState, action) => {
             ...prevState,
             submission: {
                 ...prevState.submission,
-                tried: true,
                 successful: action.payload.successful
+            }
+        }
+    }
+    if(action.type === ActionType.SUBMISSION_ATTEMPT){
+        return {
+            ...prevState,
+            submission: {
+                ...prevState.submission,
+                tried: action.payload.tried
             }
         }
     }

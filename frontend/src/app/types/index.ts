@@ -9,6 +9,7 @@ export type Action =
   | { type: ActionType.MESSAGE_UPDATE; payload: { value : string, isValid : boolean} }
   | { type: ActionType.POMSKY_NAME; payload: { value : string, isValid : boolean} }
   | { type: ActionType.SUBMISSION; payload: { successful : boolean} }
+  | { type: ActionType.SUBMISSION_ATTEMPT; payload: { tried : boolean} }
 
 
   export type FormGroup = {

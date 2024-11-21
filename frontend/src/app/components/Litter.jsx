@@ -254,7 +254,7 @@ const Litter = (props ) => {
                             { props.showCta === true && (
                                 <div className="cta-button-container">
                                    <Link href={"#contact-us"}>
-                                       <Button id="cta-button" size="lg" href="#contact-us"  color="secondary" variant='bordered'>Inquire About a Pomsky</Button>
+                                       <Button id="cta-button" size="lg" href="#contact-us"  color="secondary" >Inquire About a Pomsky</Button>
                                    </Link>
                                </div>
                             )}

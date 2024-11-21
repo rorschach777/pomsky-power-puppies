@@ -4,6 +4,7 @@ import { useReducer, useRef, useEffect } from "react";
 import { formReducer } from "../reducers/form-reducer";
 import { ActionType } from "../reducers/action-types"
 import {FormState,  FormGroup} from '../types/index';
+import { Spinner } from "@nextui-org/react";
 
 const ContactForm = () => {
 
@@ -46,11 +47,14 @@ const ContactForm = () => {
         }
     }
 
+  
     const [formState, formDispatch] = useReducer(formReducer, initialState);
 
     useEffect(()=>{
         const formIsValid = formValid();
+    
         formDispatch({type: ActionType.FORM_IS_VALID, payload: {value: formIsValid}});
+     
         
     },[formState.firstName, formState.lastName, formState.email, formState.phone, formState.message]);
 
@@ -82,10 +86,9 @@ const ContactForm = () => {
     }
 
     const firstNameValidation = () => {
-        const pattern = /^[A-Za-z]{1,9}$/;    
+        const pattern = /^[A-Za-z]{1,12}$/;    
         const inputIsValid = pattern.test(firstNameRef.current!.value);
         formDispatch({type: ActionType.FIRST_NAME_UPDATE, payload: {value : firstNameRef.current!.value, isValid: inputIsValid}})
-    
     }
 
     const lastNameValidation = () => {
@@ -122,10 +125,10 @@ const ContactForm = () => {
     // }
 
     const sendEmail = async (event : React.FormEvent , data : object) => {
+        formDispatch({type : ActionType.SUBMISSION_ATTEMPT, payload: {tried : true}});
         const submssionResponse = { successful : false}
         try {
             event.preventDefault();
-    
             const options = {
                 method: 'POST',
                 headers: {
@@ -152,7 +155,8 @@ const ContactForm = () => {
     }
     
 
-    const submitHandler = (event : React.FormEvent) => {
+    const submitHandler = async (event : React.FormEvent) => {
+        event.preventDefault();
         const data={
             firstName : formState.firstName.value,
             lastName : formState.lastName.value,
@@ -161,7 +165,15 @@ const ContactForm = () => {
             pomskyName: formState.pomskyName.value,
             message : formState.message.value,
         }
-        sendEmail(event, data)
+       
+        if(formValid()){
+            sendEmail(event, data);
+        } else {
+            firstNameValidation();
+            lastNameValidation();
+            emailValidation();
+            phoneValidation();
+        }
     }
 
 
@@ -169,13 +181,22 @@ const ContactForm = () => {
 
     return (
         <div className="ppp-form">
-            <form id="ppp-conversion-form">
+            <form id="ppp-conversion-form" autoComplete="off">
                 {(formState.submission.successful === false) && (
                     <>
                         <div className="form-group">
                             <label>First Name:</label>
-                            <input id="ppp-form-element-first-name" type="text" placeholder="John" ref={firstNameRef} onChange={firstNameValidation} className={ !formState.firstName.isValid && formState.firstName.updated  ? 'invalid-field' : ''}/>
-                            {!formState.firstName.isValid && formState.firstName.updated ? <span className="danger">Your First Name is too long or contains spaces.</span> : null}
+                            <input 
+                            id="ppp-form-element-first-name" 
+                            type="text" 
+                            placeholder="John" 
+                            ref={firstNameRef} 
+                            onChange={firstNameValidation} 
+                            className={ !formState.firstName.isValid && formState.firstName.updated  ? 'invalid-field' : ''}
+                            autoComplete="off" autoCorrect="off" autoSave="off"
+                            
+                            />
+                            {!formState.firstName.isValid && formState.firstName.updated ? <span className="danger">Your name cannot contain empty spaces and less than 12 characters.</span> : null}
                         </div>
                         <div className="form-group">
                             <label>Last Name:</label>
@@ -209,14 +230,16 @@ const ContactForm = () => {
                             </select>
                         </div>
                         <div>
-                            <button id="conversion-button" disabled={!formState.formIsValid} onClick={(e)=>submitHandler(e)}>Send</button>
+                            <button id="conversion-button"  onClick={(e)=>submitHandler(e)}>
+                                { formState.submission.tried && !formState.submission.successful ?  <Spinner  color="default" labelColor="foreground"/> : "Send"}
+                            </button>
                         </div>
                     </>
                 )}
                 
                 { formState.submission.tried && (
                     <div className="ppp-form-submission-feedback">
-                       { formState.submission.successful && (
+                       {  formState.submission.successful && (
                             <div className="success-message">
                                 Thank you! Your message was successfully sent. We will get back to you shortly. 
                             </div>
