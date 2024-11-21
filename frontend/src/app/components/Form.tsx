@@ -181,7 +181,7 @@ const ContactForm = () => {
 
     return (
         <div className="ppp-form">
-            <form id="ppp-conversion-form" autoComplete="off">
+            <form id="ppp-conversion-form" >
                 {(formState.submission.successful === false) && (
                     <>
                         <div className="form-group">
@@ -193,7 +193,7 @@ const ContactForm = () => {
                             ref={firstNameRef} 
                             onChange={firstNameValidation} 
                             className={ !formState.firstName.isValid && formState.firstName.updated  ? 'invalid-field' : ''}
-                            autoComplete="off" autoCorrect="off" autoSave="off"
+                           
                             
                             />
                             {!formState.firstName.isValid && formState.firstName.updated ? <span className="danger">Your name cannot contain empty spaces and less than 12 characters.</span> : null}
