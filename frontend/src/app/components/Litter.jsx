@@ -96,9 +96,9 @@ const Litter = (props ) => {
     useEffect(()=>{
         const sortedLitters = props.data.litters.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
         const defaultPuppies = sortedLitters.map(l=>{return l});
-        const activeLitterLocation = "Edmeston, NY";
+        const activeLitterLocation = sortedLitters[0].location[0].locationName;
         const filteredResults = defaultPuppies.filter(l=> { return l.location[0].locationName === activeLitterLocation}) 
-        litterDispatch({type: "DEFAULT_SETUP", payload : { defaultPuppies : defaultPuppies, filteredResults : filteredResults, location: 'Edmeston, NY', status : 'Available'}});
+        litterDispatch({type: "DEFAULT_SETUP", payload : { defaultPuppies : defaultPuppies, filteredResults : filteredResults, location: activeLitterLocation, status : 'Available'}});
     },[])
 
     useEffect(()=>{

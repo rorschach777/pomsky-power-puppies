@@ -66,6 +66,7 @@ export default async function Home() {
   const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
   const data = await request[0];
 
+
   return(
     <>
       <div className={styles.page}>
