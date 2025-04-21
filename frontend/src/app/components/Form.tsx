@@ -1,12 +1,17 @@
 "use client";
 
-import { useReducer, useRef, useEffect } from "react";
+import { useReducer, useRef, useEffect, PropsWithChildren } from "react";
 import { formReducer } from "../reducers/form-reducer";
 import { ActionType } from "../reducers/action-types"
 import {FormState,  FormGroup} from '../types/index';
 import { Spinner } from "@nextui-org/react";
 
-const ContactForm = () => {
+
+interface Iprops {
+    dropDownOptions : string[]
+}
+
+const ContactForm = (props : PropsWithChildren<Iprops>) => {
 
 
     const initialState : FormState= {
@@ -177,7 +182,7 @@ const ContactForm = () => {
     }
 
 
-    const selectOptions = ["Any", "Pumpkin", "Aster", "Harvey", "Troy", "Autumn", "Richie", "Esperance", "Cider", "Sloan", "Gourdy"];
+    const selectOptions = props.dropDownOptions;
 
     return (
         <div className="ppp-form">
@@ -224,7 +229,7 @@ const ContactForm = () => {
                         <div className="form-group">
                             <label>Preferred Pomsky: </label>
                             <select id="ppp-form-element-pomsky-name" ref={pomskyNameRef} onChange={pomskyNameValidation}>
-                                {selectOptions.map((c,i)=>{ return (
+                                {selectOptions != undefined && selectOptions.map((c,i)=>{ return (
                                     <option key={`select-option-${i}`} value={c}>{c}</option>
                                 )})}
                             </select>

@@ -4,7 +4,13 @@ import "./main.css";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Provider from './Provider'
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager } from '@next/third-parties/google';
+// import PomskyContext from './store/pomsky-context';
+
+// import { client } from "@/sanity/client";
+// import { type SanityDocument } from "next-sanity";
+// import { IData } from "./interfaces/interfaces";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,22 +23,70 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export default function RootLayout({
+// const QUERY_OPTIONS = { next: { revalidate: 30 } };
+
+// const PAGE_DATA_QUERY = `*[_type == "page"]{
+//   locations[]->{_id, locationName, published},
+//   slug->{},
+//   title,
+//   litters[]->{
+//     _id,
+//     description, 
+//     litterParents,
+//     publishedAt,
+//     published,
+//     location[]->{
+//       locationName
+//     },
+//     soldOut,
+//     published,
+//     litterName,
+//     puppies[]->{
+//       description,
+//       currentlyAvailable,
+//       published,
+//       pomskyName,
+//       weight,
+//       female,
+//       image{
+//         asset->
+//       },
+//       backgroundImage{
+//         asset->
+//       },
+//       eyeColor-> {
+//       color
+//       },
+//       isPuppy,
+//       showPrice,
+//       price
+//     }
+//   }
+// }`
+
+
+
+export default async function RootLayout({
   children}: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
+  // const data : any = await request[0];
   return (
     <>
-    <html lang="en">
-     <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAGMANAGER}`} />
-     <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Provider>
-          <Header/>
-          {children}
-          <Footer/>
-        </Provider>
-      </body>
-    </html>
+    {/* <PomskyContext.Provider value={{data: data}}>
+
+    </PomskyContext.Provider> */}
+          <html lang="en">
+      <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAGMANAGER}`} />
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <Provider>
+            <Header/>
+            {children}
+            <Footer/>
+          </Provider>
+        </body>
+      </html>
     </>
   );
 }

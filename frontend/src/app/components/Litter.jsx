@@ -174,7 +174,7 @@ const Litter = (props ) => {
                         <div  key={`${litter.litterName}-${i}`} className=" ppp-puppies ">
                             <LitterTitle litter={litter}  />
                             <div className="ppp-flex-container">
-                                { litter.puppies.map((puppy, index)=>{
+                                { litter.puppies != null && litter.puppies.map((puppy, index)=>{
                                     if(puppy.isPuppy && puppy.published ){
                                
                                         return (
@@ -258,7 +258,6 @@ const Litter = (props ) => {
                                    </Link>
                                </div>
                             )}
-                         
                         </div>
                         <div className="ppp-filter-options">
                             { generateFilterList() }
