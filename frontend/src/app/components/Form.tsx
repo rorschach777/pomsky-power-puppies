@@ -229,7 +229,7 @@ const ContactForm = (props : PropsWithChildren<Iprops>) => {
                         <div className="form-group">
                             <label>Preferred Pomsky: </label>
                             <select id="ppp-form-element-pomsky-name" ref={pomskyNameRef} onChange={pomskyNameValidation}>
-                                {selectOptions.map((c,i)=>{ return (
+                                {selectOptions != undefined && selectOptions.map((c,i)=>{ return (
                                     <option key={`select-option-${i}`} value={c}>{c}</option>
                                 )})}
                             </select>
