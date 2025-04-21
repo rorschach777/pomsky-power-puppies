@@ -5,7 +5,6 @@ import { formReducer } from "../reducers/form-reducer";
 import { ActionType } from "../reducers/action-types"
 import {FormState,  FormGroup} from '../types/index';
 import { Spinner } from "@nextui-org/react";
-import { Interface } from "readline";
 
 
 interface Iprops {
