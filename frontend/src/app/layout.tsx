@@ -92,7 +92,7 @@ export default async function RootLayout({
       <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAGMANAGER}`} />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <Provider>
-            <Header/>
+            <Header availablePuppies={availablePuppies}/>
             {children}
             <Footer/>
           </Provider>

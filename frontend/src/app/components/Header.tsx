@@ -2,17 +2,24 @@
 
 import React from 'react'
 
-
+import {IData, IAvailablePuppies, IPuppy } from "../interfaces/interfaces";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
-
+import {PropsWithChildren } from "react";
 import Logo from './Logo';
 import Form from './Form';
 
-const Header = () => {
+interface IProps {
+    availablePuppies : IPuppy[]
+}
+
+
+
+const Header = (props : PropsWithChildren<IProps>) => {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
 
     const menuItems = [
         {name: "Home", path: ""},
@@ -75,7 +82,7 @@ const Header = () => {
                     </ModalHeader>
                     <ModalBody>
                     <div className="ppp-modal-body">
-                        <Form/>
+                        <Form dropDownOptions={props.availablePuppies.map(p=>p.pomskyName)}/>
                         <div>
                             You may call or text us at <a href="tel:610-800-0012">(610) 800-0012</a>. If we do not answer please leave a message in order to receive a callback.
                         </div>

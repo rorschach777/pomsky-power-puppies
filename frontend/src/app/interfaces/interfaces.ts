@@ -11,7 +11,7 @@
     }
 }
 
-interface IPuppy {
+export interface IPuppy {
     descriptions: string,
     currentlyAvailable: boolean, 
     published: boolean, 
@@ -27,7 +27,7 @@ interface IPuppy {
 
 }
 
-interface ILitter {
+export interface ILitter {
     _id : string,
     description: string,
     litterParents: string,
