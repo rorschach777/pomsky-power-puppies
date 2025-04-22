@@ -7,9 +7,9 @@ import Provider from './Provider'
 import { GoogleTagManager } from '@next/third-parties/google';
 // import PomskyContext from './store/pomsky-context';
 
-// import { client } from "@/sanity/client";
-// import { type SanityDocument } from "next-sanity";
-// import { IData } from "./interfaces/interfaces";
+import { client } from "@/sanity/client";
+import { type SanityDocument } from "next-sanity";
+import { IData } from "./interfaces/interfaces";
 
 
 const geistSans = localFont({
@@ -23,46 +23,47 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// const QUERY_OPTIONS = { next: { revalidate: 30 } };
+const QUERY_OPTIONS = { next: { revalidate: 30 } };
 
-// const PAGE_DATA_QUERY = `*[_type == "page"]{
-//   locations[]->{_id, locationName, published},
-//   slug->{},
-//   title,
-//   litters[]->{
-//     _id,
-//     description, 
-//     litterParents,
-//     publishedAt,
-//     published,
-//     location[]->{
-//       locationName
-//     },
-//     soldOut,
-//     published,
-//     litterName,
-//     puppies[]->{
-//       description,
-//       currentlyAvailable,
-//       published,
-//       pomskyName,
-//       weight,
-//       female,
-//       image{
-//         asset->
-//       },
-//       backgroundImage{
-//         asset->
-//       },
-//       eyeColor-> {
-//       color
-//       },
-//       isPuppy,
-//       showPrice,
-//       price
-//     }
-//   }
-// }`
+const PAGE_DATA_QUERY = `*[_type == "page"]{
+  locations[]->{_id, locationName, published},
+  slug->{},
+  title,
+  litters[]->{
+    _id,
+    description, 
+    litterParents,
+    publishedAt,
+    published,
+    location[]->{
+      locationName
+    },
+    soldOut,
+    published,
+    litterName,
+    puppies[]->{
+      description,
+      currentlyAvailable,
+      published,
+      pomskyName,
+      weight,
+      female,
+      image{
+        asset->
+      },
+      backgroundImage{
+        asset->
+      },
+      eyeColor-> {
+      color
+      },
+      isPuppy,
+      showPrice,
+      price
+    }
+  }
+}`
+
 
 
 
@@ -70,8 +71,8 @@ export default async function RootLayout({
   children}: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
-  // const data : any = await request[0];
+  const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
+  const data : any = await request[0];
   return (
     <>
     {/* <PomskyContext.Provider value={{data: data}}>
