@@ -40,9 +40,11 @@ interface ILitter {
 }
 
 export interface IData {
-    data: {
-        litters: ILitter[]
-    }
+    litters: ILitter[]
 }
 
+
+export interface IAvailablePuppies {
+    puppies : IPuppy[]
+}
 

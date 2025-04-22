@@ -9,7 +9,7 @@ import { GoogleTagManager } from '@next/third-parties/google';
 
 import { client } from "@/sanity/client";
 import { type SanityDocument } from "next-sanity";
-import { IData } from "./interfaces/interfaces";
+import {IData, IAvailablePuppies, IPuppy } from "./interfaces/interfaces";
 
 
 const geistSans = localFont({
@@ -67,17 +67,27 @@ const PAGE_DATA_QUERY = `*[_type == "page"]{
 
 
 
+
 export default async function RootLayout({
   children}: Readonly<{
   children: React.ReactNode;
 }>) {
   const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
-  const data : any = await request[0];
+  const response : any = await request[0];
+  const responseData : IData = await response;
+  let availablePuppies : IPuppy[] = []; 
+
+  responseData.litters.forEach(l => l.puppies.forEach(p => availablePuppies.push(p)));
+  availablePuppies = availablePuppies.filter(p => p.currentlyAvailable === true);
+ 
+  console.log(availablePuppies);
   return (
     <>
     {/* <PomskyContext.Provider value={{data: data}}>
 
     </PomskyContext.Provider> */}
+
+
           <html lang="en">
       <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAGMANAGER}`} />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
