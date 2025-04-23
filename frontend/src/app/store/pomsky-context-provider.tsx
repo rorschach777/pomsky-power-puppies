@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import PomskyContext from './pomsky-context';
 import { client } from "@/sanity/client";
-import { IData, IPuppy } from "../interfaces/interfaces";
+import { IData, IPuppy, IPage } from "../interfaces/interfaces";
 
 const PAGE_DATA_QUERY = `*[_type == "page"]{
   locations[]->{_id, locationName, published},
@@ -43,7 +43,7 @@ const PomskyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
     const fetchData = async () => {
       try {
         const result = await client.fetch(PAGE_DATA_QUERY, {}, { next: { revalidate: 30 } });
-        const home = result.find((p: any) => p.title === "Home");
+        const home = result.find((p: IPage) => p.title === "Home");
         const litters = home?.litters || [];
         const puppies = litters.flatMap((l: any) => l.puppies || []);
         const available = puppies.filter((p: IPuppy) => p.currentlyAvailable);
