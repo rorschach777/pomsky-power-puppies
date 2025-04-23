@@ -1,21 +1,16 @@
 "use client"
 
 import React from 'react'
-
-import {IData, IAvailablePuppies, IPuppy } from "../interfaces/interfaces";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
-import {PropsWithChildren } from "react";
 import Logo from './Logo';
 import Form from './Form';
 
-interface IProps {
-    availablePuppies : IPuppy[]
-}
 
 
 
-const Header = (props : PropsWithChildren<IProps>) => {
+
+const Header = () => {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -82,7 +77,7 @@ const Header = (props : PropsWithChildren<IProps>) => {
                     </ModalHeader>
                     <ModalBody>
                     <div className="ppp-modal-body">
-                        <Form dropDownOptions={props.availablePuppies.map(p=>p.pomskyName)}/>
+                        <Form />
                         <div>
                             You may call or text us at <a href="tel:610-800-0012">(610) 800-0012</a>. If we do not answer please leave a message in order to receive a callback.
                         </div>
@@ -90,7 +85,7 @@ const Header = (props : PropsWithChildren<IProps>) => {
                     </div>
                     </ModalBody>
                     <div className="ppp-header-modal-footer">
-                        <ModalFooter justify="justify-start" >
+                        <ModalFooter  >
                             <Button color="secondary" variant="bordered" onPress={onClose}>
                             Close
                             </Button>

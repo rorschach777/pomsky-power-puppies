@@ -1,18 +1,18 @@
 "use client";
 
-import { useReducer, useRef, useEffect, PropsWithChildren } from "react";
+import { useReducer, useRef, useEffect, PropsWithChildren, useContext } from "react";
 import { formReducer } from "../reducers/form-reducer";
 import { ActionType } from "../reducers/action-types"
 import {FormState,  FormGroup} from '../types/index';
 import { Spinner } from "@nextui-org/react";
+import PomskyContext from "../store/pomsky-context";
 
 
-interface Iprops {
-    dropDownOptions : string[]
-}
 
-const ContactForm = (props : PropsWithChildren<Iprops>) => {
 
+const ContactForm = () => {
+
+    const pomskyContext = useContext(PomskyContext);
 
     const initialState : FormState= {
         formIsValid: false,
@@ -54,6 +54,7 @@ const ContactForm = (props : PropsWithChildren<Iprops>) => {
 
   
     const [formState, formDispatch] = useReducer(formReducer, initialState);
+
 
     useEffect(()=>{
         const formIsValid = formValid();
@@ -182,7 +183,8 @@ const ContactForm = (props : PropsWithChildren<Iprops>) => {
     }
 
 
-    const selectOptions = props.dropDownOptions;
+    // const selectOptions = props.dropDownOptions;
+    const selectOptions = pomskyContext.availablePuppies;
 
     return (
         <div className="ppp-form">
@@ -230,7 +232,7 @@ const ContactForm = (props : PropsWithChildren<Iprops>) => {
                             <label>Preferred Pomsky: </label>
                             <select id="ppp-form-element-pomsky-name" ref={pomskyNameRef} onChange={pomskyNameValidation}>
                                 {selectOptions != undefined && selectOptions.map((c,i)=>{ return (
-                                    <option key={`select-option-${i}`} value={c}>{c}</option>
+                                    <option key={`select-option-${i}`} value={c.pomskyName}>{c.pomskyName}</option>
                                 )})}
                             </select>
                         </div>

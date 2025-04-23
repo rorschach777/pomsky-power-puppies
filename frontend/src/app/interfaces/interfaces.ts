@@ -1,4 +1,4 @@
-
+import React, { ReactNode } from 'react';
  interface IEyeColor {
     color: string
 }
@@ -48,3 +48,21 @@ export interface IAvailablePuppies {
     puppies : IPuppy[]
 }
 
+export interface IProps {
+    value: {
+        litters: ILitter[],
+        availablePuppies: IPuppy[]
+    },
+    children: ReactNode;
+    // other props
+}
+  
+
+export interface IPomskyContext {
+    availablePuppies : IPuppy[]
+}
+
+export interface IInitialState  {
+    litters : ILitter[],
+    availablePuppies: IPuppy[]
+}
