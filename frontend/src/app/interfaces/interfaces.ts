@@ -66,3 +66,7 @@ export interface IInitialState  {
     litters : ILitter[],
     availablePuppies: IPuppy[]
 }
+
+export interface IPage {
+    title : string
+}
