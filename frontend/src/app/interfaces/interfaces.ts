@@ -1,4 +1,4 @@
-
+import  { ReactNode } from 'react';
  interface IEyeColor {
     color: string
 }
@@ -11,7 +11,7 @@
     }
 }
 
-interface IPuppy {
+export interface IPuppy {
     descriptions: string,
     currentlyAvailable: boolean, 
     published: boolean, 
@@ -27,7 +27,7 @@ interface IPuppy {
 
 }
 
-interface ILitter {
+export interface ILitter {
     _id : string,
     description: string,
     litterParents: string,
@@ -40,9 +40,33 @@ interface ILitter {
 }
 
 export interface IData {
-    data: {
-        litters: ILitter[]
-    }
+    litters: ILitter[]
 }
 
 
+export interface IAvailablePuppies {
+    puppies : IPuppy[]
+}
+
+export interface IProps {
+    value: {
+        litters: ILitter[],
+        availablePuppies: IPuppy[]
+    },
+    children: ReactNode;
+    // other props
+}
+  
+
+export interface IPomskyContext {
+    availablePuppies : IPuppy[]
+}
+
+export interface IInitialState  {
+    litters : ILitter[],
+    availablePuppies: IPuppy[]
+}
+
+export interface IPage {
+    title : string
+}

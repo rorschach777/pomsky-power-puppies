@@ -5,11 +5,11 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Provider from './Provider'
 import { GoogleTagManager } from '@next/third-parties/google';
-// import PomskyContext from './store/pomsky-context';
+import PomskyProvider from './store/pomsky-context-provider';
 
 // import { client } from "@/sanity/client";
 // import { type SanityDocument } from "next-sanity";
-// import { IData } from "./interfaces/interfaces";
+// import {IData, IAvailablePuppies, IPuppy } from "./interfaces/interfaces";
 
 
 const geistSans = localFont({
@@ -66,27 +66,37 @@ const geistMono = localFont({
 
 
 
+
+
 export default async function RootLayout({
   children}: Readonly<{
   children: React.ReactNode;
 }>) {
   // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
-  // const data : any = await request[0];
+  // const response : any = await request[0];
+  // const responseData : IData = await response;
+  // let availablePuppies : IPuppy[] = []; 
+
+  // responseData.litters.forEach(l => l.puppies.forEach(p => availablePuppies.push(p)));
+  // availablePuppies = availablePuppies.filter(p => p.currentlyAvailable === true);
+ 
+  // console.log(availablePuppies);
   return (
     <>
-    {/* <PomskyContext.Provider value={{data: data}}>
+    <PomskyProvider>
 
-    </PomskyContext.Provider> */}
-          <html lang="en">
+
+    <html lang="en">
       <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAGMANAGER}`} />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          <Provider>
-            <Header/>
-            {children}
-            <Footer/>
-          </Provider>
-        </body>
-      </html>
+        <Provider>
+          <Header/>
+          {children}
+          <Footer/>
+        </Provider>
+      </body>
+    </html>
+    </PomskyProvider>
     </>
   );
 }
