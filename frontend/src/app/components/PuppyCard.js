@@ -9,7 +9,7 @@ const PuppyCard = (props) => {
                 <SanityImage 
                     image={props.image.asset.url}
                     alt={`Pomsky Puppy | ${props.puppyName}`} 
-                    maxWidth={480}
+                    maxWidth={270}
                     aspectRatio={16 / 9}
                 />
                 {/* <Image  
