@@ -9,13 +9,14 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,        
+    "module": "esnext",        
+    "moduleResolution": "node",     
     "plugins": [
       {
         "name": "next"
@@ -38,7 +39,7 @@
     "src/app/blog/page.jsx",
     "src/app/components/Litter.jsx",
     "src/app/components/LitterTitle.jsx"
-  ],
+, "src/app/store/pomsky-context.js"  ],
   "exclude": [
     "node_modules"
   ]
