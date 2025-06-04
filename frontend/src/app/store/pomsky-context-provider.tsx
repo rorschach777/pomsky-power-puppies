@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import PomskyContext from './pomsky-context';
 import { client } from "@/sanity/client";
-import { IData, IPuppy, IPage } from "../interfaces/interfaces";
+import { IData, IPuppy, IPage, ILitter} from "../interfaces/interfaces";
 
 const STORAGE_KEY = 'pomsky-data';
 const EXPIRATION_MS = 1000 * 60 * 5; // 5 minutes
@@ -43,7 +43,7 @@ const PAGE_DATA_QUERY = `{
 }`;
 
 const PomskyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [litters, setLitters] = useState<IData['litters']>([]);
+  const [litters, setLitters] = useState<ILitter[]>([]);
   const [availablePuppies, setAvailablePuppies] = useState<IPuppy[]>([]);
   const [pages, setPages] = useState<IPage[]>([]);
 

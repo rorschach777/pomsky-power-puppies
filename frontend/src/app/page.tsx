@@ -1,5 +1,5 @@
 
-
+"use client"
 import styles from "./page.module.css";
 
 import { type SanityDocument } from "next-sanity";
@@ -8,63 +8,67 @@ import {pageMeta, PAGE_META_DATA} from './utils/page-meta';
 import { Metadata } from "next";
 import * as React from "react";
 // import Gallery from './components/Gallery'
-import { ILitter, IPuppy } from './types/index'
+import { ILitter, IPuppy } from './interfaces/interfaces'
 import Hero from "./components/Hero";
 
 
 import "./components/FilterList";
 import Litter from "./components/Litter";
 import Inclusions from "./components/Inclusions";
+import { useContext } from 'react';
+import PomskyContext from './store/pomsky-context';
 
 
 
-export async function generateMetadata(): Promise<Metadata> {
-  return await pageMeta({query : PAGE_META_DATA, pageName : "Home"})
-}
-const QUERY_OPTIONS = { next: { revalidate: 30 } };
+// export async function generateMetadata(): Promise<Metadata> {
+//   return await pageMeta({query : PAGE_META_DATA, pageName : "Home"})
+// }
+// const QUERY_OPTIONS = { next: { revalidate: 30 } };
 
-const PAGE_DATA_QUERY = `*[_type == "page"]{
-  locations[]->{_id, locationName, published},
-  slug->{},
-  title,
-  litters[]->{
-    _id,
-    description, 
-    litterParents,
-    publishedAt,
-    published,
-    location[]->{
-      locationName
-    },
-    soldOut,
-    published,
-    litterName,
-    puppies[]->{
-      description,
-      currentlyAvailable,
-      published,
-      pomskyName,
-      weight,
-      female,
-      image{
-        asset->
-      },
-      backgroundImage{
-        asset->
-      },
-      eyeColor-> {
-      color
-      },
-      isPuppy,
-      showPrice,
-      price
-    }
-  }
-}`
+// const PAGE_DATA_QUERY = `*[_type == "page"]{
+//   locations[]->{_id, locationName, published},
+//   slug->{},
+//   title,
+//   litters[]->{
+//     _id,
+//     description, 
+//     litterParents,
+//     publishedAt,
+//     published,
+//     location[]->{
+//       locationName
+//     },
+//     soldOut,
+//     published,
+//     litterName,
+//     puppies[]->{
+//       description,
+//       currentlyAvailable,
+//       published,
+//       pomskyName,
+//       weight,
+//       female,
+//       image{
+//         asset->
+//       },
+//       backgroundImage{
+//         asset->
+//       },
+//       eyeColor-> {
+//       color
+//       },
+//       isPuppy,
+//       showPrice,
+//       price
+//     }
+//   }
+// }`
 
 export default async function Home() {
-  const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
-  const data = await request[0];
+  // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
+  // const data = await request[0];
+const { litters, availablePuppies, pages } = useContext(PomskyContext);
+const filteredLitters: ILitter[] = litters.filter(l => l.isHomepage);
 
 
   return(
@@ -77,7 +81,7 @@ export default async function Home() {
           contactForm={true}
           />
         <Litter 
-        data={data}
+        data={filteredLitters}
         litterTitle="Recent Pomsky Litters"
     
         />
@@ -111,7 +115,7 @@ export default async function Home() {
                 <div className="ppp-flex-container ppp-a-pomsky ">
                   <div className="half-column">
                   
-                  { data.litters.map((l : ILitter, i : number)=>{
+                  { filteredLitters.map((l : ILitter, i : number)=>{
                 
                     if(l.litterName  === "Adult Pomskys" ){
                       return(
@@ -146,7 +150,7 @@ export default async function Home() {
                   })}
                   </div>
                   <div className="half-column">
-                  { data.litters.map((l : ILitter, i : number)=>{
+                  { filteredLitters.map((l : ILitter, i : number)=>{
                  
                     if(l.litterName === "Adult Pomskys" ){
                       return(

@@ -12,7 +12,7 @@ import  { ReactNode } from 'react';
 }
 
 export interface IPuppy {
-    descriptions: string,
+    description: string,
     currentlyAvailable: boolean, 
     published: boolean, 
     pomskyName: string, 
@@ -31,6 +31,7 @@ export interface ILitter {
     _id : string,
     description: string,
     litterParents: string,
+    isHomepage: boolean,
     publishedAt: string,
     location: [],
     soldOut: boolean,

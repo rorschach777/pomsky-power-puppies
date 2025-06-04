@@ -42,17 +42,17 @@ export type IssueAction = {
 
 export type InputParams = { value: string; label: string; }
 
-export interface ILitter {
-    litterName : string
-    puppies : []
-}
+// export interface ILitter {
+//     litterName : string
+//     puppies : []
+// }
 
-export interface IPuppy {
-    description: string,
-    pomskyName: string,
-    image: {
-        asset : {
-            url : string
-        }
-    }
-}
+// export interface IPuppy {
+//     description: string,
+//     pomskyName: string,
+//     image: {
+//         asset : {
+//             url : string
+//         }
+//     }
+// }
