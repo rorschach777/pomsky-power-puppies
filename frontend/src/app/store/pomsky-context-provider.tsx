@@ -96,7 +96,7 @@ const PomskyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
   }, []);
 
   return (
-    <PomskyContext.Provider value={{ litters, availablePuppies }}>
+    <PomskyContext.Provider value={{ litters, availablePuppies, pages }}>
       {children}
     </PomskyContext.Provider>
   );
