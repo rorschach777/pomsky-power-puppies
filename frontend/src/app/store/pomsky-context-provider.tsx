@@ -8,19 +8,23 @@ import { IData, IPuppy } from "../interfaces/interfaces";
 const STORAGE_KEY = 'pomsky-data';
 const EXPIRATION_MS = 1000 * 60 * 5; // 5 minutes
 
-const PAGE_DATA_QUERY = `*[_type == "page"]{
-  locations[]->{_id, locationName, published},
-  slug->{},
-  title,
-  litters[]->{
+const PAGE_DATA_QUERY = `{
+  "pages": *[_type == "page"]{
+    title,
+    slug,
+    isHomepage,
+    metaTitle,
+    metaDescription
+  },
+  "locations": *[_type == "location" && published == true]{ _id, locationName },
+  "litters": *[_type == "litter" && published == true]{
     _id,
     description, 
     litterParents,
     publishedAt,
-    published,
-    location[]->{ locationName },
     soldOut,
     litterName,
+    location[]->{ locationName },
     puppies[]->{
       description,
       currentlyAvailable,
