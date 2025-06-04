@@ -15,12 +15,13 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-
     const menuItems = [
         {name: "Home", path: ""},
+        {name: "About Us", path: "about"},
         {name: "Contact Us", path: "contact"},
-        {name: "News", path: "blog"},
+        {name: "News", path: "blog"}
     ];
+
     return(
 
         <div className="ppp-header">
@@ -32,8 +33,6 @@ const Header = () => {
                     </a>
                 </NavbarBrand>
             </NavbarContent>
-
-  
             <NavbarContent justify="end">
                 <NavbarItem className="hidden lg:flex">
                 <Link href="#">Login</Link>
@@ -47,8 +46,7 @@ const Header = () => {
                 <NavbarMenuToggle
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
      
-                />
-
+            />
             </NavbarContent>
             <NavbarMenu className="ppp-mega-menu ">
                 {menuItems.map((item, index) => (
@@ -81,18 +79,15 @@ const Header = () => {
                         <div>
                             You may call or text us at <a href="tel:610-800-0012">(610) 800-0012</a>. If we do not answer please leave a message in order to receive a callback.
                         </div>
-                    
                     </div>
                     </ModalBody>
                     <div className="ppp-header-modal-footer">
-                        <ModalFooter  >
+                        <ModalFooter>
                             <Button color="secondary" variant="bordered" onPress={onClose}>
                             Close
                             </Button>
-                  
                         </ModalFooter>
                     </div>
-        
                     </>
                 )}
                 </ModalContent>

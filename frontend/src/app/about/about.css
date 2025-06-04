@@ -1,0 +1,12 @@
+h1 {
+    font-size: 4.5rem;
+    letter-spacing: -0.17rem;
+    color:#231a3f;
+}
+
+.container {
+    width: 108rem;
+    max-width: 100%;
+    margin: 5rem auto;
+    padding: 0 1.5rem;
+}
