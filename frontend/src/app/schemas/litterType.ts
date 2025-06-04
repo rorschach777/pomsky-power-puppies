@@ -63,6 +63,12 @@ export const litterType = defineType({
         validation: (rule) => rule.required(),
       }),
       defineField({
+        name: 'isHomepage',
+        title: "On Homepage",
+        description: 'If this is enabled this litter will display on the homepage',
+        type: 'boolean'
+      }),
+      defineField({
         name: 'description',
         type: 'array',
         of: [{type: 'block'}],

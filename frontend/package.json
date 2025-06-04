@@ -27,6 +27,7 @@
     "react": "^18",
     "react-dom": "^18",
     "resend": "^4.0.0",
+    "sanity": "^3.91.0",
     "sass": "^1.80.4"
   },
   "devDependencies": {
