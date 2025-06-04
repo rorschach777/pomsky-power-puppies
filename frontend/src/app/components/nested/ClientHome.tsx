@@ -3,10 +3,6 @@
 
 import styles from "../../page.module.css";
 
-import { type SanityDocument } from "next-sanity";
-import { client } from "@/sanity/client";
-import {pageMeta, PAGE_META_DATA} from '../../utils/page-meta';
-import { Metadata } from "next";
 import { useEffect } from "react";
 import * as React from "react";
 // import Gallery from './components/Gallery'
@@ -14,15 +10,14 @@ import { ILitter, IPuppy } from '../../interfaces/interfaces'
 import Hero from "../Hero";
 
 
-import FilterList from "../../components/FilterList";
+
 import Litter from "../Litter";
 import Inclusions from "../Inclusions";
 
 import PageMeta from '../PageMeta';
 import { useContext } from 'react';
 import PomskyContext from '../../store/pomsky-context';
-import { filter } from "sanity/migrate";
-import { li } from "framer-motion/dist/client";
+
 
 export default function ClientHome() {
  // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
