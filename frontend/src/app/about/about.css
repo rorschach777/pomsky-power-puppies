@@ -1,6 +1,18 @@
 h1 {
     font-size: 4.5rem;
+
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+.about-us h1, .about-us h3 {
     letter-spacing: -0.17rem;
+    color:#231a3f;
+}
+
+.about-us p {
     color:#231a3f;
 }
 
@@ -9,4 +21,11 @@ h1 {
     max-width: 100%;
     margin: 5rem auto;
     padding: 0 1.5rem;
+}
+.about-us-hero {
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    padding: 7.5rem 1.5rem;
+    background-color: purple;
 }

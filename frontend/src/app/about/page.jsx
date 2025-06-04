@@ -4,6 +4,7 @@ import styles from "../page.module.css";
 import ContactHero from '../components/ContactHero';
 import { getPageMeta } from '../utils/getPageMeta';
 import '../about/about.css';
+import ClientAbout from "../components/nested/ClientAbout";
 
 // ✅ Server-side metadata function
 export async function generateMetadata() {
@@ -13,12 +14,6 @@ export async function generateMetadata() {
 
 export default async function Page() { 
     return (
-        <div className={styles.page}>
-            <main className={styles.main}>
-              <div className="container">
-                <h1>About Us</h1>
-              </div>
-            </main>
-        </div>
+      <ClientAbout/>
     );
 }
