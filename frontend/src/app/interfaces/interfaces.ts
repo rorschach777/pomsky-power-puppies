@@ -64,9 +64,14 @@ export interface IPomskyContext {
 
 export interface IInitialState  {
     litters : ILitter[],
-    availablePuppies: IPuppy[]
+    availablePuppies: IPuppy[],
+    pages: IPage[]
 }
 
 export interface IPage {
-    title : string
+    title : string,
+    isHomepage: boolean,
+    metaDescription: string,
+    metaTitle: string
 }
+

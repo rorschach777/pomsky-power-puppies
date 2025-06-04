@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import PomskyContext from './pomsky-context';
 import { client } from "@/sanity/client";
-import { IData, IPuppy } from "../interfaces/interfaces";
+import { IData, IPuppy, IPage } from "../interfaces/interfaces";
 
 const STORAGE_KEY = 'pomsky-data';
 const EXPIRATION_MS = 1000 * 60 * 5; // 5 minutes
@@ -45,6 +45,7 @@ const PAGE_DATA_QUERY = `{
 const PomskyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [litters, setLitters] = useState<IData['litters']>([]);
   const [availablePuppies, setAvailablePuppies] = useState<IPuppy[]>([]);
+  const [pages, setPages] = useState<IPage[]>([]);
 
   useEffect(() => {
     const restoreFromCache = () => {
@@ -57,25 +58,32 @@ const PomskyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
         setLitters(data.litters);
         setAvailablePuppies(data.availablePuppies);
+        setPages(data.pages)
       } catch (e) {
         console.warn("Failed to parse cache:", e);
       }
     };
 
-    const fetchData = async () => {
+      const fetchData = async () => {
       try {
         const result = await client.fetch(PAGE_DATA_QUERY, {}, { next: { revalidate: 30 } });
-        const home = result.find((p: any) => p.title === "Home");
-        const litters = home?.litters || [];
-        const puppies = litters.flatMap((l: any) => l.puppies || []);
-        const available = puppies.filter((p: IPuppy) => p.currentlyAvailable);
 
-        setLitters(litters);
-        setAvailablePuppies(available);
+        const { pages, litters } = result;
 
-        // cache the fresh result
+        const availablePuppies = litters
+          ?.flatMap((l: any) => l.puppies || [])
+          .filter((p: IPuppy) => p.currentlyAvailable);
+
+        setLitters(litters || []);
+        setAvailablePuppies(availablePuppies || []);
+        setPages(pages || []);
+
         localStorage.setItem(STORAGE_KEY, JSON.stringify({
-          data: { litters, availablePuppies: available },
+          data: {
+            litters,
+            availablePuppies,
+            pages
+          },
           timestamp: Date.now()
         }));
       } catch (err) {
