@@ -24,6 +24,7 @@ const PAGE_DATA_QUERY = `{
     publishedAt,
     soldOut,
     litterName,
+    isHomepage,
     location[]->{ locationName },
     puppies[]->{
       description,

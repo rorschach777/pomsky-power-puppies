@@ -89,11 +89,12 @@ const litterReducer = (state, action) => {
 
 
 const Litter = (props ) => {
-    const locations = removeDuplicates(props.data.litters.map((l)=>l.location[0].locationName));
+    const locations = props.data.litters != null ? removeDuplicates(props.data.litters.map((l)=>l.location[0].locationName)) : null;
     const [litterState, litterDispatch] = useReducer(litterReducer, initialState);
 
 
     useEffect(()=>{
+          if (!props?.data?.litters) return;
         const sortedLitters = props.data.litters.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
         const defaultPuppies = sortedLitters.map(l=>{return l});
         const activeLitterLocation = sortedLitters[0].location[0].locationName;
@@ -218,11 +219,11 @@ const Litter = (props ) => {
                     value={litterState.filters.location.value}
                     onValueChange={locationHandler}
                     >
-                        {locations.map((l,i)=>{
+                        {locations != null ? locations.map((l,i)=>{
                             return(
                                 <Radio key={`location-name-${i + 1}`} value={l}>{l}</Radio>
                             );
-                        })} 
+                        }) : ''} 
                 </RadioGroup>
                 <RadioGroup
                     label="Show by Availability"
