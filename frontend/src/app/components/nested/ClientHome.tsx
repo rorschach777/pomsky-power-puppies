@@ -26,8 +26,9 @@ export default function ClientHome() {
  // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
   // const data = await request[0];
 const { litters, availablePuppies, pages } = useContext(PomskyContext);
-const filteredLitters = litters.filter(l => l.isHomepage === true);
-
+const filteredLitters: ILitter[] = litters.filter(l => l.isHomepage);
+console.log("Filtered Litters:")
+console.log(filteredLitters)
 const homepage = pages.find(p => p.title === 'Home');
 
   return(
@@ -40,14 +41,11 @@ const homepage = pages.find(p => p.title === 'Home');
           mainMessage="We are focused on defending and promoting the health and well-being of the pomsky breed. We work hard for our pomsky pack to provide our families with healthy, happy, confident pomsky puppies."
           contactForm={true}
           />
-        { filteredLitters.length > 0 && (
-            <Litter 
-            data={{data : {
-                litters: filteredLitters
-            }}}
+        {  <Litter 
+            data={{litters: filteredLitters}}
             litterTitle="Recent Pomsky Litters"
             />
-        )}
+        }
   
         {/* <Gallery images={["ppp-1", "ppp-2", "ppp-3"]}/> */}
         <div className="adult-pomsky">
@@ -79,7 +77,7 @@ const homepage = pages.find(p => p.title === 'Home');
                 <div className="ppp-flex-container ppp-a-pomsky ">
                   <div className="half-column">
                   
-                  { filteredLitters.length > 0 && filteredLitters.map((l : ILitter, i : number)=>{
+                  { filteredLitters.map((l : ILitter, i : number)=>{
                 
                     if(l.litterName  === "Adult Pomskys" ){
                       return(
@@ -114,7 +112,7 @@ const homepage = pages.find(p => p.title === 'Home');
                   })}
                   </div>
                   <div className="half-column">
-                  { filteredLitters.length > 0  && filteredLitters.map((l : ILitter, i : number)=>{
+                  { filteredLitters.map((l : ILitter, i : number)=>{
                  
                     if(l.litterName === "Adult Pomskys" ){
                       return(

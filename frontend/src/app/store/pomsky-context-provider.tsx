@@ -21,7 +21,7 @@ const PAGE_DATA_QUERY = `{
     _id,
     description, 
     litterParents,
-    publishedAt,
+    published,
     soldOut,
     litterName,
     isHomepage,
@@ -65,32 +65,30 @@ const PomskyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
       }
     };
 
-      const fetchData = async () => {
-      try {
-        const result = await client.fetch(PAGE_DATA_QUERY, {}, { next: { revalidate: 30 } });
+const fetchData = async () => {
+  try {
+    const result = await client.fetch(PAGE_DATA_QUERY, {}, { next: { revalidate: 30 } });
 
-        const { pages, litters } = result;
+    const { pages, litters } = result;
 
-        const availablePuppies = litters
-          ?.flatMap((l: any) => l.puppies || [])
-          .filter((p: IPuppy) => p.currentlyAvailable);
+    console.log("Raw fetched litters from Sanity:", litters); // ✅ RIGHT HERE
 
-        setLitters(litters || []);
-        setAvailablePuppies(availablePuppies || []);
-        setPages(pages || []);
+    const availablePuppies = litters
+      ?.flatMap((l: any) => l.puppies || [])
+      .filter((p: IPuppy) => p.currentlyAvailable);
 
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({
-          data: {
-            litters,
-            availablePuppies,
-            pages
-          },
-          timestamp: Date.now()
-        }));
-      } catch (err) {
-        console.error("Fetch failed in PomskyProvider:", err);
-      }
-    };
+    setLitters(litters || []);
+    setAvailablePuppies(availablePuppies || []);
+    setPages(pages || []);
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      data: { litters, availablePuppies, pages },
+      timestamp: Date.now()
+    }));
+  } catch (err) {
+    console.error("Fetch failed in PomskyProvider:", err);
+  }
+};
 
     restoreFromCache();
     fetchData();

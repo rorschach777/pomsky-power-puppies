@@ -94,24 +94,32 @@ const Litter = (props ) => {
 
 
     useEffect(()=>{
-          if (!props?.data?.litters) return;
-        const sortedLitters = props.data.litters.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+        const litters = props.data?.litters ?? [];
+
+        if (!Array.isArray(litters) || litters.length === 0) {
+            console.warn("No litters available to sort");
+            return;
+        } 
+        console.log("sortedLitters: ");
+
+        const sortedLitters = litters.sort(
+            (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        );
+                  console.log(sortedLitters);
+
+
+
+ 
         const defaultPuppies = sortedLitters.map(l=>{return l});
         const activeLitterLocation = sortedLitters[0].location[0].locationName;
-        const filteredResults = defaultPuppies.filter(l=> { return l.location[0].locationName === activeLitterLocation}) 
-        litterDispatch({type: "DEFAULT_SETUP", payload : { defaultPuppies : defaultPuppies, filteredResults : filteredResults, location: activeLitterLocation, status : 'Available'}});
-    },[])
+        // const filteredResults = defaultPuppies.filter(l=> { return l.location[0].locationName === activeLitterLocation}) 
+        litterDispatch({type: "DEFAULT_SETUP", payload : { defaultPuppies : defaultPuppies, filteredResults : props.data.litters, location: activeLitterLocation, status : 'Available'}});
+    },[props.data])
 
     useEffect(()=>{
         createPuppies();
-    }, [litterState.filteredResults])
-
-    useEffect(()=>{
-
-    }, [litterState])
-
-
-
+    }, [litterState.filteredResults, props.data])
 
 
     const filterLitters = ( params ) => {
@@ -167,10 +175,14 @@ const Litter = (props ) => {
     }
 
     const createPuppies = () => {
+        console.log("Create Puppies");
+        console.log(litterState.filteredResults)
         if(litterState.filteredResults.length > 0){
+           
             return litterState.filteredResults.map((litter, i)=> {
      
                 if(litter.published && litter.litterName != "Adult Pomskys"){
+                             console.log("Is Published")
                     return(
                         <div  key={`${litter.litterName}-${i}`} className=" ppp-puppies ">
                             <LitterTitle litter={litter}  />
