@@ -1,6 +1,5 @@
 'use client';
 
-
 import styles from "../../page.module.css";
 
 import { useEffect } from "react";
@@ -9,28 +8,25 @@ import * as React from "react";
 import { ILitter, IPuppy } from '../../interfaces/interfaces'
 import Hero from "../Hero";
 
-
-
 import Litter from "../Litter";
 import Inclusions from "../Inclusions";
 
-import PageMeta from '../PageMeta';
+
 import { useContext } from 'react';
 import PomskyContext from '../../store/pomsky-context';
 
 
 export default function ClientHome() {
- // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
-  // const data = await request[0];
-const { litters, availablePuppies, pages } = useContext(PomskyContext);
+// const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
+// const data = await request[0];
+const { litters, pages } = useContext(PomskyContext);
 const filteredLitters: ILitter[] = litters.filter(l => l.isHomepage);
+const homepage = pages.find(p => p.title === 'Home') ?? { title: '', slug: {}, metaTitle: '', metaDescription: '', isHomepage: false };
 
-
-const homepage = pages.find(p => p.title === 'Home');
 
 const createAdultList = () => {
-    const adultPomskys : ILitter[] = litters.filter(l=> l.litterName == "Adult Pomskys");
- return (
+const adultPomskys : ILitter[] = litters.filter(l=> l.litterName == "Adult Pomskys");
+  return (
             <div className="ppp-adult-list">
             <div className="ppp-container ppp-container-md">
                 <div className="ppp-headline">
@@ -42,7 +38,6 @@ const createAdultList = () => {
                     <div className="half-column">
                     
                     { adultPomskys.map((l : ILitter, i : number)=>{
-        
                         if(l.litterName  === "Adult Pomskys" ){
                         return(
                         <div key={`left-col-${i}`}>
@@ -71,15 +66,11 @@ const createAdultList = () => {
                             })}
                         </div>
                         )
-                        } else {
-           
-                        }
-                        
+                        } 
                     })}
                     </div>
                     <div className="half-column">
                     {  adultPomskys.map((l : ILitter, i : number)=>{
-        
                     return(
                             <div  key={`right-col-${i}`}>
                             {l.puppies.map((p : IPuppy, puppyIndex) => {
@@ -126,7 +117,7 @@ useEffect(()=>{
 
   return(
     <>
-      <PageMeta title={homepage?.metaTitle} description={homepage?.metaDescription} />
+   
       <div className={styles.page}>
         <main className={styles.main}>
         <Hero 

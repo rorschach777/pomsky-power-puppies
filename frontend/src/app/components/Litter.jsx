@@ -101,15 +101,10 @@ const Litter = (props ) => {
             console.warn("No litters available to sort");
             return;
         } 
-        console.log("sortedLitters: ");
 
         const sortedLitters = litters.sort(
             (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
         );
-                  console.log(sortedLitters);
-
-
-
  
         const defaultPuppies = sortedLitters.map(l=>{return l});
         const activeLitterLocation = sortedLitters[0].location[0].locationName;
@@ -175,14 +170,9 @@ const Litter = (props ) => {
     }
 
     const createPuppies = () => {
-        console.log("Create Puppies");
-        console.log(litterState.filteredResults)
         if(litterState.filteredResults.length > 0){
-           
             return litterState.filteredResults.map((litter, i)=> {
-     
                 if(litter.published && litter.litterName != "Adult Pomskys"){
-                             console.log("Is Published")
                     return(
                         <div  key={`${litter.litterName}-${i}`} className=" ppp-puppies ">
                             <LitterTitle litter={litter}  />
