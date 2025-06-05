@@ -5,8 +5,9 @@ const options = { next: { revalidate: 30 } };
 
 import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
-import {pageMeta, PAGE_META_DATA} from '../utils/page-meta';
-import type { Metadata } from 'next';
+import {getPageMeta} from '../utils/getPageMeta';
+
+// import type { Metadata } from 'next';
 
 const PAGE_DATA = `*[_type == "post"]{
   title,
@@ -28,8 +29,9 @@ const PAGE_DATA = `*[_type == "post"]{
   }
 }`;
 
-export async function generateMetadata(): Promise<Metadata> {
-    return await pageMeta({query : PAGE_META_DATA, pageName : "Blog"})
+// ✅ Server-side metadata function
+export async function generateMetadata() {
+  return await getPageMeta("Home");
 }
 
 

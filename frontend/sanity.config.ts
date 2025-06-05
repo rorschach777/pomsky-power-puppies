@@ -1,11 +1,14 @@
 import * as dotenv from 'dotenv';
 
+
 dotenv.config();
 
 import {Config, defineConfig} from 'sanity'
-import { deskTool } from "sanity/desk";
+
 import { schemaTypes } from './src/app/schemas'
 import { projectId, dataset } from '@/environment';
+import { deskTool } from 'sanity/desk';
+import { visionTool } from '@sanity/vision';
 
 export default defineConfig<Config>({
   basePath: "/studio",
@@ -13,6 +16,6 @@ export default defineConfig<Config>({
   title: "Pomsky Power Puppies",
   projectId: projectId,
   dataset: dataset,
-  plugins: [deskTool()],
+  plugins: [deskTool(),visionTool()],
   schema: { types: schemaTypes },
 });

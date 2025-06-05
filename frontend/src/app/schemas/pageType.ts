@@ -45,46 +45,46 @@ export const pageType = defineType({
         type: 'boolean',
         validation: (rule) => rule.required(),
       }),
-      // Other Docs
-      defineField({
-        name: 'litters',
-        type: 'array',
-        of: [
-          {
-            type: 'reference',
-            to: [
-              {type: 'litter'},
-            ]
-          }
-        ],
+      // // Other Docs
+      // defineField({
+      //   name: 'litters',
+      //   type: 'array',
+      //   of: [
+      //     {
+      //       type: 'reference',
+      //       to: [
+      //         {type: 'litter'},
+      //       ]
+      //     }
+      //   ],
 
-      }),
-      defineField({
-        name: 'locations',
-        type: 'array',
-        of: [
-          {
-            type: 'reference',
-            to: [
-              {type: 'location'},
-            ]
-          }
-        ],
+      // }),
+      // defineField({
+      //   name: 'locations',
+      //   type: 'array',
+      //   of: [
+      //     {
+      //       type: 'reference',
+      //       to: [
+      //         {type: 'location'},
+      //       ]
+      //     }
+      //   ],
 
-      }),
-      defineField({
-        name: 'pomsky',
-        type: 'array',
-        of: [
-          {
-            type: 'reference',
-            to: [
-              {type: 'pomsky'},
-            ]
-          }
-        ],
+      // }),
+      // defineField({
+      //   name: 'pomsky',
+      //   type: 'array',
+      //   of: [
+      //     {
+      //       type: 'reference',
+      //       to: [
+      //         {type: 'pomsky'},
+      //       ]
+      //     }
+      //   ],
 
-      }),
+      // }),
  
     ],
   })
