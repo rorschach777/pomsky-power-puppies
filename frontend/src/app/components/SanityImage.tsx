@@ -1,14 +1,15 @@
 // components/SanityImage.tsx
 import Image from 'next/image'
 import { urlFor } from '../lib/sanity'
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 type SanityImageProps = {
-  image: any
+  image: SanityImageSource
   alt?: string
   priority?: boolean
-  maxWidth?: number  // max image width to generate from Sanity (e.g. 1600)
+  maxWidth?: number
   objectFit?: 'cover' | 'contain' | 'fill'
-  aspectRatio?: number  // e.g. 16 / 9 = 1.78
+  aspectRatio?: number
 }
 
 export default function SanityImage({
@@ -33,4 +34,4 @@ export default function SanityImage({
       />
     </div>
   )
-}
+} 
