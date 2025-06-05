@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { urlFor } from '../lib/sanity'
 
-interface SanityImageProps {
+type SanityImageProps = {
   image: any
   alt?: string
   priority?: boolean
