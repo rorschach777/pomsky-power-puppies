@@ -1,7 +1,7 @@
 // components/SanityImage.tsx
 import Image from 'next/image'
 import { urlFor } from '../lib/sanity'
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import type { SanityImageSource } from '@sanity/image-url'
 
 type SanityImageProps = {
   image: SanityImageSource
