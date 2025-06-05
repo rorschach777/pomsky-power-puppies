@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import PomskyContext from './pomsky-context';
 import { client } from "@/sanity/client";
-import { IData, IPuppy, IPage, ILitter} from "../interfaces/interfaces";
+import {  IPuppy, IPage, ILitter} from "../interfaces/interfaces";
 
 const STORAGE_KEY = 'pomsky-data';
 const EXPIRATION_MS = 1000 * 60 * 5; // 5 minutes
