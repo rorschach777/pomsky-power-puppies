@@ -74,7 +74,7 @@ const fetchData = async () => {
     console.log("Raw fetched litters from Sanity:", litters); // ✅ RIGHT HERE
 
     const availablePuppies = litters
-      ?.flatMap((l: any) => l.puppies || [])
+.flatMap((l: ILitter) => Array.isArray(l.puppies) ? l.puppies : [])
       .filter((p: IPuppy) => p.currentlyAvailable);
 
     setLitters(litters || []);

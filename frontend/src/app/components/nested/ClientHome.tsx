@@ -19,7 +19,7 @@ import PomskyContext from '../../store/pomsky-context';
 export default function ClientHome() {
 // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
 // const data = await request[0];
-const { litters, pages } = useContext(PomskyContext);
+const { litters } = useContext(PomskyContext);
 const filteredLitters: ILitter[] = litters.filter(l => l.isHomepage);
 // const homepage = pages.find(p => p.title === 'Home') ?? { title: '', slug: {}, metaTitle: '', metaDescription: '', isHomepage: false };
 
