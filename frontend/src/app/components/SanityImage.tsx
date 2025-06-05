@@ -1,17 +1,21 @@
 // components/SanityImage.tsx
 import Image from 'next/image'
 import { urlFor } from '../lib/sanity'
-import type { SanityImageSource } from '@sanity/image-url'
 
 type SanityImageProps = {
-  image: SanityImageSource
-  alt?: string
-  priority?: boolean
-  maxWidth?: number
-  objectFit?: 'cover' | 'contain' | 'fill'
-  aspectRatio?: number
-}
-
+  image: {
+    _type: 'image';
+    asset: {
+      _ref: string;
+      _type: 'reference';
+    };
+  };
+  alt?: string;
+  priority?: boolean;
+  maxWidth?: number;
+  objectFit?: 'cover' | 'contain' | 'fill';
+  aspectRatio?: number;
+};
 export default function SanityImage({
   image,
   alt = '',
@@ -34,4 +38,4 @@ export default function SanityImage({
       />
     </div>
   )
-} 
+}
