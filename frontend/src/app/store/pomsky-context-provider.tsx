@@ -67,14 +67,15 @@ const PomskyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 const fetchData = async () => {
   try {
-    const result = await client.fetch(PAGE_DATA_QUERY, {}, { next: { revalidate: 30 } });
+    const result: {
+      pages: IPage[];
+      litters: ILitter[];
+    } = await client.fetch(PAGE_DATA_QUERY, {}, { next: { revalidate: 30 } });
 
     const { pages, litters } = result;
 
-    console.log("Raw fetched litters from Sanity:", litters); // ✅ RIGHT HERE
-
     const availablePuppies = litters
-.flatMap((l: ILitter) => Array.isArray(l.puppies) ? l.puppies : [])
+      .flatMap((l: ILitter) => Array.isArray(l.puppies) ? l.puppies : [])
       .filter((p: IPuppy) => p.currentlyAvailable);
 
     setLitters(litters || []);
