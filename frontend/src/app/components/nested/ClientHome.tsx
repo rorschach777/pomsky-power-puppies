@@ -21,7 +21,7 @@ export default function ClientHome() {
 // const data = await request[0];
 const { litters, pages } = useContext(PomskyContext);
 const filteredLitters: ILitter[] = litters.filter(l => l.isHomepage);
-const homepage = pages.find(p => p.title === 'Home') ?? { title: '', slug: {}, metaTitle: '', metaDescription: '', isHomepage: false };
+// const homepage = pages.find(p => p.title === 'Home') ?? { title: '', slug: {}, metaTitle: '', metaDescription: '', isHomepage: false };
 
 
 const createAdultList = () => {
