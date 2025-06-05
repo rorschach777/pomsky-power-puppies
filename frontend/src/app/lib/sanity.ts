@@ -1,18 +1,25 @@
-import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
-import {dataset, projectId} from '../../environment'
+import { createClient } from 'next-sanity'
+import { dataset, projectId } from '../../environment' // adjust path if needed
 
 export const sanityClient = createClient({
-  projectId: projectId,     // Replace with your actual Sanity project ID
-  dataset: dataset,            // Replace with your dataset
+  projectId,
+  dataset,
   useCdn: true,
   apiVersion: '2023-05-30',
 })
 
 const builder = imageUrlBuilder(sanityClient)
 
-// Define the image input type manually
-type SanityImageSource = string | Record<string, any>
+type SanityImageSource =
+  | string
+  | {
+      _type: 'image'
+      asset: {
+        _ref: string
+        _type: 'reference'
+      }
+    }
 
 export function urlFor(source: SanityImageSource) {
   return builder.image(source)
