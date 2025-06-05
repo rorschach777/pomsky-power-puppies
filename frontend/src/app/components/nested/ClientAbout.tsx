@@ -12,7 +12,7 @@ import PomskyContext from '../../store/pomsky-context';
 export default function ClientAbout() {
 // const request = (await client.fetch<SanityDocument[]>(PAGE_DATA_QUERY, {}, QUERY_OPTIONS)).filter(p=>p.title==="Home");
 // const data = await request[0];
-const { litters, pages } = useContext(PomskyContext);
+const { litters } = useContext(PomskyContext);
 
 
   return(
