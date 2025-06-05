@@ -7,7 +7,7 @@ import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
 import {getPageMeta} from '../utils/getPageMeta';
 
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 
 const PAGE_DATA = `*[_type == "post"]{
   title,
