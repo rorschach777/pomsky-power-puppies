@@ -1,16 +1,9 @@
 'use client';
 
 import styles from "../../page.module.css";
-
-import { useEffect } from "react";
 import * as React from "react";
 // import Gallery from './components/Gallery'
-import { ILitter, IPuppy } from '../../interfaces/interfaces'
-import Hero from "../Hero";
-
 import Litter from "../Litter";
-import Inclusions from "../Inclusions";
-
 
 import { useContext } from 'react';
 import PomskyContext from '../../store/pomsky-context';
