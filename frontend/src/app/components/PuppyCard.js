@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import {Badge} from "@nextui-org/react";
 import SanityImage from './SanityImage';
 
